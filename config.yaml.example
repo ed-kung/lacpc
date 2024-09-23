@@ -1,6 +1,18 @@
 # This is an example YAML file
 # Replace this file with config.yaml
 
+# Models
+PINECONE_EMBEDDING_MODEL: "multilingual-e5-large"
+PINECONE_EMBEDDING_DIMENSION: 1024
+OPENAI_MODEL: "gpt-3.5-turbo"
+
+# VectorStore Metadata
+PINECONE_INDEX_NAME: "lurlm"
+PINECONE_NAMESPACE: "main"
+PINECONE_CLOUD: "aws"
+PINECONE_REGION: "us-east-1"
+
 # API Keys
 OPENAI_API_KEY: ""
 PINECONE_API_KEY: ""
+

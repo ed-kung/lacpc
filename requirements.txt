@@ -3,7 +3,7 @@ lxml
 numpy
 pandas
 openai
-pinecone[gprc]
+pinecone
 langchain-pinecone
 langchain-openai
 langchain-text-splitters
