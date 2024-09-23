@@ -1,11 +1,13 @@
 import os
 import numpy as np
 import pandas as pd
+import yaml
 from openai import OpenAI
-from dotenv import load_dotenv
 
-load_dotenv()
-client = OpenAI()
+with open('../../config.yaml', 'r') as f:
+    config = yaml.safe_load(f)
+
+client = OpenAI(api_key=config['OPENAI_API_KEY'])
 
 def get_embedding(text, model="text-embedding-3-small"):
     text = text.replace("\n", " ")

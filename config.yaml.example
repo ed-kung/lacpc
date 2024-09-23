@@ -1,0 +1,6 @@
+# This is an example YAML file
+# Replace this file with config.yaml
+
+# API Keys
+OPENAI_API_KEY: ""
+PINECONE_API_KEY: ""
