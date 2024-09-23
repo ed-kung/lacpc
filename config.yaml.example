@@ -1,5 +1,4 @@
-# This is an example YAML file
-# Replace this file with config.yaml
+# Enter your API keys and save this file as config.yaml
 
 # Models
 PINECONE_EMBEDDING_MODEL: "multilingual-e5-large"
