@@ -93,16 +93,11 @@ def embed_and_upsert(dataframe, verbose=True):
     if verbose:
         print(pc_index.describe_index_stats())
 
-        
+
 """
-Run a similarity search for a query
+Return relevant sections
 """
-def similarity_search(query, top_k=5):
-    
-    # Wait for the index to be ready
-    while not pc.describe_index(PINECONE_INDEX_NAME).status['ready']:
-        time.sleep(1)
-    
+def get_relevant_sections(query, top_k=5):
     pc_index = pc.Index(PINECONE_INDEX_NAME)
         
     embedding = get_embeddings([query])[0]
@@ -111,8 +106,27 @@ def similarity_search(query, top_k=5):
         namespace = PINECONE_NAMESPACE,
         vector = embedding,
         top_k = top_k, 
+        filter = {'item_type': 'section_title'},
         include_values = False,
         include_metadata = True
     )
-    
     return results
+
+"""
+Return relevant chunks
+"""
+def get_relevant_chunks(query, top_k=5):
+    pc_index = pc.Index(PINECONE_INDEX_NAME)
+        
+    embedding = get_embeddings([query])[0]
+    
+    results = pc_index.query(
+        namespace = PINECONE_NAMESPACE,
+        vector = embedding,
+        top_k = top_k, 
+        filter = {'item_type': 'passage_chunk'},
+        include_values = False,
+        include_metadata = True
+    )
+    return results
+    
