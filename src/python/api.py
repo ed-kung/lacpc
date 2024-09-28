@@ -46,7 +46,6 @@ def embed_and_upsert(dataframe, verbose=True):
     
     assert 'id' in dataframe.columns, "dataframe must contain column 'id'"
     assert 'text' in dataframe.columns, "dataframe must contain column 'text'"
-    assert 'item_type' in dataframe.columns, "dataframe must contain column 'item_type'"
     
     # Create index if not exist
     if not pc.has_index(PINECONE_INDEX_NAME):
@@ -95,9 +94,9 @@ def embed_and_upsert(dataframe, verbose=True):
 
 
 """
-Return relevant sections
+Return relevant passages
 """
-def get_relevant_sections(query, top_k=5):
+def get_relevant_passages(query, top_k=5):
     pc_index = pc.Index(PINECONE_INDEX_NAME)
         
     embedding = get_embeddings([query])[0]
@@ -106,27 +105,46 @@ def get_relevant_sections(query, top_k=5):
         namespace = PINECONE_NAMESPACE,
         vector = embedding,
         top_k = top_k, 
-        filter = {'item_type': 'section_title'},
+        filter = {'item_type': 'passage'},
         include_values = False,
         include_metadata = True
     )
     return results
 
+
 """
-Return relevant chunks
+Tools for finding parents, siblings, and descendants of an item
 """
-def get_relevant_chunks(query, top_k=5):
-    pc_index = pc.Index(PINECONE_INDEX_NAME)
-        
-    embedding = get_embeddings([query])[0]
-    
-    results = pc_index.query(
-        namespace = PINECONE_NAMESPACE,
-        vector = embedding,
-        top_k = top_k, 
-        filter = {'item_type': 'passage_chunk'},
-        include_values = False,
-        include_metadata = True
-    )
-    return results
-    
+def get_parents(id, data):
+    parent_id = data.loc[id,'parent_id']
+    if parent_id == '':
+        return []
+    parents = get_parents(parent_id)
+    return parents + [parent_id]
+
+def get_siblings_left(id, data):
+    sibling_left_id = data.loc[id,'sibling_left_id']
+    if sibling_left_id == '':
+        return []
+    siblings_left = get_siblings_left(sibling_left_id)
+    return siblings_left + [sibling_left_id]
+
+def get_siblings_right(id, data):
+    sibling_right_id = data.loc[id,'sibling_right_id']
+    if sibling_right_id == '':
+        return []
+    siblings_right = get_siblings_right(sibling_right_id)
+    return [sibling_right_id] + siblings_right
+
+def get_descendants(id, data):
+    first_child_id = data.loc[id,'first_child_id']
+    if first_child_id == '':
+        return []
+    children = [first_child_id] + get_siblings_right(first_child_id)
+    descendants = []
+    for child in children:
+        descendants = descendants + [child]
+        descendants = descendants + get_descendants(child)
+    return descendants
+
+
