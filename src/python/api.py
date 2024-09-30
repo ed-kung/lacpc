@@ -18,7 +18,6 @@ EMBEDDING_DIMENSION = config['EMBEDDING_DIMENSION']
 BATCH_SIZE = config['BATCH_SIZE']
 
 PINECONE_INDEX_NAME = config['PINECONE_INDEX_NAME']
-PINECONE_NAMESPACE = config['PINECONE_NAMESPACE']
 PINECONE_CLOUD = config['PINECONE_CLOUD']
 PINECONE_REGION = config['PINECONE_REGION']
 
@@ -42,7 +41,7 @@ Get embeddings and upsert vectors into Pinecone
 Input is a dataframe
 Dataframe must have columns ['id','text','item_type']
 """
-def embed_and_upsert(dataframe, verbose=True):
+def embed_and_upsert(dataframe, namespace, verbose=True):
     
     assert 'id' in dataframe.columns, "dataframe must contain column 'id'"
     assert 'text' in dataframe.columns, "dataframe must contain column 'text'"
@@ -83,7 +82,7 @@ def embed_and_upsert(dataframe, verbose=True):
                 'metadata': dict(row)
             })
 
-        pc_index.upsert(vectors=vectors_to_upsert, namespace=PINECONE_NAMESPACE)
+        pc_index.upsert(vectors=vectors_to_upsert, namespace=namespace)
     
     # Wait for the index to be ready
     while not pc.describe_index(PINECONE_INDEX_NAME).status['ready']:
@@ -96,55 +95,19 @@ def embed_and_upsert(dataframe, verbose=True):
 """
 Return relevant passages
 """
-def get_relevant_passages(query, top_k=5):
+def get_relevant_items(query, namespace, item_type, top_k=5):
     pc_index = pc.Index(PINECONE_INDEX_NAME)
         
     embedding = get_embeddings([query])[0]
     
     results = pc_index.query(
-        namespace = PINECONE_NAMESPACE,
+        namespace = namespace,
         vector = embedding,
         top_k = top_k, 
-        filter = {'item_type': 'passage'},
+        filter = {'item_type': item_type},
         include_values = False,
         include_metadata = True
     )
     return results
-
-
-"""
-Tools for finding parents, siblings, and descendants of an item
-"""
-def get_parents(id, data):
-    parent_id = data.loc[id,'parent_id']
-    if parent_id == '':
-        return []
-    parents = get_parents(parent_id)
-    return parents + [parent_id]
-
-def get_siblings_left(id, data):
-    sibling_left_id = data.loc[id,'sibling_left_id']
-    if sibling_left_id == '':
-        return []
-    siblings_left = get_siblings_left(sibling_left_id)
-    return siblings_left + [sibling_left_id]
-
-def get_siblings_right(id, data):
-    sibling_right_id = data.loc[id,'sibling_right_id']
-    if sibling_right_id == '':
-        return []
-    siblings_right = get_siblings_right(sibling_right_id)
-    return [sibling_right_id] + siblings_right
-
-def get_descendants(id, data):
-    first_child_id = data.loc[id,'first_child_id']
-    if first_child_id == '':
-        return []
-    children = [first_child_id] + get_siblings_right(first_child_id)
-    descendants = []
-    for child in children:
-        descendants = descendants + [child]
-        descendants = descendants + get_descendants(child)
-    return descendants
 
 
