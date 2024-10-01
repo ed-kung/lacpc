@@ -13,6 +13,7 @@ with open('../../config.yaml', 'r') as f:
 PINECONE_API_KEY = config['PINECONE_API_KEY']
 OPENAI_API_KEY = config['OPENAI_API_KEY']
 
+CHAT_MODEL = config['CHAT_MODEL']
 EMBEDDING_MODEL = config['EMBEDDING_MODEL']
 EMBEDDING_DIMENSION = config['EMBEDDING_DIMENSION']
 BATCH_SIZE = config['BATCH_SIZE']
@@ -110,4 +111,15 @@ def get_relevant_items(query, namespace, item_type, top_k=5):
     )
     return results
 
-
+"""
+Get a Chat-GPT completion
+"""
+def get_gpt_completion(prompt):
+    completion = client.chat.completions.create(
+        model = CHAT_MODEL, 
+        messages = [
+            {'role':'user', 'content':prompt}
+        ],
+        temperature = 0
+    )
+    return completion.choices[0].message.content
