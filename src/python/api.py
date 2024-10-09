@@ -7,12 +7,15 @@ import time
 from pinecone import Pinecone, ServerlessSpec
 from openai import OpenAI
 
+with open('../../secrets.yaml', 'r') as f:
+    secrets = yaml.safe_load(f)
+
+PINECONE_API_KEY = secrets['PINECONE_API_KEY']
+OPENAI_API_KEY = secrets['OPENAI_API_KEY']
+
 with open('../../config.yaml', 'r') as f:
     config = yaml.safe_load(f)
     
-PINECONE_API_KEY = config['PINECONE_API_KEY']
-OPENAI_API_KEY = config['OPENAI_API_KEY']
-
 CHAT_MODEL = config['CHAT_MODEL']
 EMBEDDING_MODEL = config['EMBEDDING_MODEL']
 EMBEDDING_DIMENSION = config['EMBEDDING_DIMENSION']
