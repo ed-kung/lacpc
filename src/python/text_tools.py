@@ -66,4 +66,6 @@ def get_all_vertical_text(ids, data):
         indent = '  '*(level+2)
         out+= indent + row['text'] + '\n'
     return out
+
+
         
