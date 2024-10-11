@@ -50,10 +50,25 @@ def get_descendants(id, data):
         descendants = descendants + get_descendants(child, data)
     return descendants
 
+def get_descendants_and_right_siblings(id, data):
+    descendants = get_descendants(id, data)
+    out_ids = descendants
+    sibling_right_id = data.loc[id, 'sibling_right_id']
+    if sibling_right_id == '':
+        return out_ids
+    else:
+        out_ids = out_ids + [sibling_right_id] + get_descendants_and_right_siblings(sibling_right_id, data)
+        return out_ids
+
 def get_vertical_chain(id, data):
     parents = get_parents(id, data)
     descendants = get_descendants(id, data)
     return parents + [id] + descendants
+
+def get_vertical_chain_with_siblings(id, data):
+    parents = get_parents(id, data)
+    descendants_and_right_siblings = get_descendants_and_right_siblings(id, data)
+    return parents + [id] + descendants_and_right_siblings
 
 def get_all_vertical_text(ids, data):
     all_ids = set()
@@ -67,5 +82,15 @@ def get_all_vertical_text(ids, data):
         out+= indent + row['text'] + '\n'
     return out
 
+def get_text_from_ids(ids, data):
+    all_ids = list(set(ids))
+    out = ''
+    for idx, row in data.loc[all_ids].sort_values(by='text_order',ascending=True).iterrows():
+        level = row['item_level']
+        indent = '  '*(level+2)
+        out+= indent + row['text'] + '\n'
+    return out
+        
+    
 
         
