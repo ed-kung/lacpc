@@ -25,6 +25,10 @@ PINECONE_INDEX_NAME = config['PINECONE_INDEX_NAME']
 PINECONE_CLOUD = config['PINECONE_CLOUD']
 PINECONE_REGION = config['PINECONE_REGION']
 
+GEOCODE_URL = config['GEOCODE_URL']
+GEOCODE_BENCHMARK = config['GEOCODE_BENCHMARK']
+GEOCODE_VINTAGE = config['GEOCODE_VINTAGE']
+
 pc = Pinecone(api_key=PINECONE_API_KEY)
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -126,3 +130,29 @@ def get_gpt_completion(prompt):
         temperature = 0
     )
     return completion.choices[0].message.content
+
+"""
+Geocoding
+"""
+def geocode_address(street, zip , state):
+    request_params = {
+        'street': street,
+        'zip': zip, 
+        'state': state,
+        'benchmark': GEOCODE_BENCHMARK,
+        'vintage': GEOCODE_VINTAGE,
+        'format': 'json'
+    }
+    r = requests.get(GEOCODE_URL, params=request_params)
+    request_url = r.url
+    response_status_code = r.status_code
+    if response_status_code==200:
+        response_content = json.loads(r.content)
+    else:
+        response_content = r.content
+    return {
+        'request_params': request_params,
+        'request_url': request_url,
+        'response_status_code': response_status_code,
+        'response_content': response_content
+    }

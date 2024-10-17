@@ -15,3 +15,8 @@ PINECONE_INDEX_NAME: "lurlm"
 PINECONE_NAMESPACE: "main"
 PINECONE_CLOUD: "aws"
 PINECONE_REGION: "us-east-1"
+
+# Geocoding
+GEOCODE_URL: "https://geocoding.geo.census.gov/geocoder/geographies/address"
+GEOCODE_BENCHMARK: "Public_AR_Current"
+GEOCODE_VINTAGE: "Current_Current"
