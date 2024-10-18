@@ -9,3 +9,4 @@ langchain-openai
 langchain-text-splitters
 langchain
 unidecode
+openpyxl
