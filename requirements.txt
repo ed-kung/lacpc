@@ -10,3 +10,4 @@ langchain-text-splitters
 langchain
 unidecode
 openpyxl
+scikit-learn
