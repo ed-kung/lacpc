@@ -15,6 +15,12 @@ def get_la_planning_dept_cases(sheet=1):
         if col in df.columns:
             df[col] = pd.to_datetime(df[col], errors='coerce')
 
+    # Fix a council district
+    idx = df['Case Number']=='DIR-2018-1190-SPP'
+    df.loc[idx, 'Council District'] = 1
+    df['Council District'] = pd.to_numeric(df['Council District'], errors='coerce')
+    assert df['Council District'].isna().sum()==0
+
     # Drop any cases missing project description or requested entitlement
     for col in ['Project Description', 'Requested Entitlement']:
         if col in df.columns:

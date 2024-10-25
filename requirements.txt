@@ -11,3 +11,4 @@ langchain
 unidecode
 openpyxl
 scikit-learn
+xgboost
