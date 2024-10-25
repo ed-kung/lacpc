@@ -1,6 +1,31 @@
 import numpy as np
 import pandas as pd
 
+def parse_casenum(casenum, raw=True):
+    tokens = casenum.split('-')
+    parsed = {'prefix':'', 'year':'', 'canonical_casenum':'', 'suffixes':[]}
+    
+    prefix = tokens[0]
+    
+    parsed['prefix'] = prefix
+    
+    if len(tokens)>1:
+        token1 = tokens[1]
+        if pd.to_numeric(token1, errors='coerce')<=2022:
+            parsed['year'] = tokens[1]
+
+        if len(tokens)<=2:
+            parsed['canonical_casenum'] = '-'.join(tokens)
+        else:
+            parsed['canonical_casenum'] = '-'.join(tokens[0:3])
+            parsed['suffixes'] = tokens[3:]
+
+        return parsed
+    else:
+        parsed['canonical_casenum'] = tokens[0]
+    
+    return parsed
+
 def get_la_planning_dept_cases(sheet=1):
     df = pd.read_excel("../../raw_data/LA Business Council Data Request - 20220823.xlsx", sheet_name=sheet)
 
