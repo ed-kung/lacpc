@@ -41,8 +41,19 @@ def get_la_planning_dept_cases(sheet=1):
             df[col] = pd.to_datetime(df[col], errors='coerce')
 
     # Fix a council district
-    idx = df['Case Number']=='DIR-2018-1190-SPP'
-    df.loc[idx, 'Council District'] = 1
+    if sheet==1:
+        idx = df['Case Number']=='DIR-2018-1190-SPP'
+        df.loc[idx, 'Council District'] = 1
+    elif sheet==0:
+        idx = df['Case Number']=='CPC-2017-839-GPA-VZC-ZAD'
+        df.loc[idx, 'Council District'] = 13
+        idx = df['Case Number']=='DIR-2016-4984-DRB-SPP-MSP'
+        df.loc[idx, 'Council District'] = 4
+        idx = df['Case Number']=='DIR-2018-1190-SPP'
+        df.loc[idx, 'Council District'] = 1
+        idx = df['Case Number']=='ZA-2015-305-CUB-SPP'
+        df.loc[idx, 'Council District'] = 13
+    
     df['Council District'] = pd.to_numeric(df['Council District'], errors='coerce')
     assert df['Council District'].isna().sum()==0
 
