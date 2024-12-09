@@ -27,7 +27,7 @@ For each pair of related entities, extract the following information:
 Example 1:
 Entity_types: ZONE
 Text:
-The order of restrictiveness of these zones, the first being the most restrictive and last being the least restrictive, is as follows: OS, A1, A2, RA, RE.
+The order of restrictiveness of these zones, the first being the most restrictive and last being the least restrictive, is as follows: OS, A1, A2, RA, RE, RS.
 ######################
 Output:
 ("entity"<|>OS<|>ZONE<|>The OS zone is the most restrictive zone)
@@ -36,30 +36,63 @@ Output:
 ##
 ("entity"<|>A2<|>ZONE<|>The A2 zone is the third most restrictive zone)
 ##
-...
-...
-...
-
+("entity"<|>RA<|>ZONE<|>The RA zone is the fourth most restrictive zone)
+##
+("entity"<|>RE<|>ZONE<|>The RE zone is the fifth most restrictive zone)
+##
+("entity"<|>RS<|>ZONE<|>The RS zone is the sixth most restrictive zone)
+##
+("relationship"<|><OS><|><A1><|><OS and A1 are in the same list of zones, OS is more restrictive than A1><|><8>)
+##
+("relationship"<|><OS><|><A2><|><OS and A2 are in the same list of zones, OS is more restrictive than A2><|><8>)
+##
+("relationship"<|><OS><|><RA><|><OS and RA are in the same list of zones, OS is more restrictive than RA><|><8>)
+##
+("relationship"<|><OS><|><RE><|><OS and RE are in the same list of zones, OS is more restrictive than RE><|><8>)
+##
+("relationship"<|><OS><|><RS><|><OS and RS are in the same list of zones, OS is more restrictive than RS><|><8>)
+##
+("relationship"<|><A1><|><A2><|><A1 and A2 are in the same list of zones, A1 is more restrictive than A2><|><8>)
+##
+("relationship"<|><A1><|><RA><|><A1 and RA are in the same list of zones, A1 is more restrictive than RA><|><8>)
+##
+("relationship"<|><A1><|><RE><|><A1 and RE are in the same list of zones, A1 is more restrictive than RE><|><8>)
+##
+("relationship"<|><A1><|><RS><|><A1 and RS are in the same list of zones, A1 is more restrictive than RS><|><8>)
+##
+("relationship"<|><A2><|><RA><|><A2 and RA are in the same list of zones, A2 is more restrictive than RA><|><8>)
+##
+("relationship"<|><A2><|><RE><|><A2 and RE are in the same list of zones, A2 is more restrictive than RE><|><8>)
+##
+("relationship"<|><A2><|><RS><|><A2 and RS are in the same list of zones, A2 is more restrictive than RS><|><8>)
+##
+("relationship"<|><RA><|><RE><|><RA and RE are in the same list of zones, RA is more restrictive than RE><|><8>)
+##
+("relationship"<|><RA><|><RS><|><RA and RS are in the same list of zones, RA is more restrictive than RS><|><8>)
+##
+("relationship"<|><RE><|><RS><|><RE and RS are in the same list of zones, RE is more restrictive than RE><|><8>)
 <|COMPLETE|>
 
 ######################
 Example 2:
-Entity_types: ZONE, LAW
+Entity_types: ZONE, LAW, RESTRICTION
 Text:
   C.   In order to more adequately regulate and restrict the height and floor area of buildings and structures, each lot shall include a height district designation, except for lots in the HI Hybrid Industrial Live/Work Zone, where the height and floor area of buildings and structures shall be regulated by Section 12.04.06*, and except for lots in the R1V, R1F, R1R One-Family Variation Zones, where the height and Residential Floor Area of buildings and structures shall be regulated by Sections 12.08 C.5.(b) - (d)
 ######################
 Output:
 ("entity"<|>HI<|>ZONE<|>HI is the Hybrid Industrial Live/Work Zone)
 ##
-("entity"<|>R1V<|>ZONE<|>some description)
+("entity"<|>R1V<|>ZONE<|>Variation of a One-Family Zone)
 ##
-("entity"<|>R1F<|>ZONE<|>some description)
+("entity"<|>R1F<|>ZONE<|>Variation of a One-Family Zone)
 ##
-("entity"<|>R1R<|>ZONE<|>some description)
+("entity"<|>R1R<|>ZONE<|>Variation of a One-Family Zone)
 ##
 ("entity"<|>Section 12.04.06<|>LAW<|>Section 12.04.06 regulates the height and floor area of buildings and structures in the HI zone)
 ##
 ("entity"<|>Section 12.08 C.5<|>LAW<|>Section 12.08.C.5 regulates the height and floor area of buildings and structures in R1V, R1F, and R1R zones)
+##
+("entity"<|>height district designation<|>RESTRICTION<|>Restriction that regulates the height and floor area of buildings and structures, except in HI, R1V, R1F and R1R zones)
 ##
 ("relationship"<|>Section 12.04.06<|>HI<|>Section 12.04.06 regulates the height and floor area of buildings and structures in the HI zone<|>9)
 ##
@@ -68,6 +101,8 @@ Output:
 ("relationship"<|>Section 12.08 C.5<|>R1F<|>Section 12.08 C.5 regulates the height and floor area of buildings and structures in the R1F zone<|>9)
 ##
 ("relationship"<|>Section 12.08 C.5<|>R1R<|>Section 12.08 C.5 regulates the height and floor area of buildings and structures in the R1R zone<|>9)
+##
+("relationship"<|>Section 12.04.06<|>Section 12.08 C.5<|>Section 12.04.06 restricts the height and floor area of buildings and structures and Section 12.08 C.5 restricts the height and Residential Floor Area of buildings and structures <|>3)
 <|COMPLETE|>
 
 ######################
