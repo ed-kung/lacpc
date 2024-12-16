@@ -104,9 +104,54 @@ Output:
 ##
 ("relationship"<|>Section 12.04.06<|>Section 12.08 C.5<|>Section 12.04.06 restricts the height and floor area of buildings and structures and Section 12.08 C.5 restricts the height and Residential Floor Area of buildings and structures <|>3)
 <|COMPLETE|>
-
 ######################
 Example 3:
+Entity_types: SECTION, SUBSECTION
+Text:
+SEC. 12.30. BOUNDARIES OF ZONES.
+ 
+   A.   Purpose. It is intended that zone and height district boundaries coincide with street, alley, or lot lines, unless otherwise shown on the zoning map. However, under certain conditions, zone boundaries do not precisely coincide with street, alley, or lot lines and in those cases, the Director shall make adjustments pursuant to this section. Boundary adjustments are normally requested in contemplation of more extensive development of the property involved. In connection with those plans, standard street dedication is essential. Therefore, the following procedure is necessary to be established so that standard dedication and improvement of streets and alleys abutting the subject property may be required, where reasonable, as a prerequisite to the approval of the zone boundary adjustment.
+ 
+   B.   Street, Alley or Lot Lines. The zone boundaries shall be either street, alley or lot lines unless otherwise shown on the zoning map, and where the indicated boundaries on the zoning map are approximately street, alley or lot lines, the street, alley or lot lines shall be construed to be the boundaries of those zones.
+ 
+   C.   Scale on Map. Where the zone boundary lines are not approximately street alley or lot lines, or where property indicated on the zoning map is acreage and not subdivided into lots and blocks, the zone boundary lines on the zoning map shall be determined by the scale contained on the map.
+ 
+   D.   Symbol for Zone. Where one symbol is used on the zoning map to indicate the zone classification of an area divided by an alley or alleys, that symbol shall establish the classification of the whole of that area.
+######################
+Output:
+("entity"<|>SEC 12.30<|>SECTION<|>SEC 12.30 Outlines how the boundary lines of zones are to be traced and what exemptions and conditions exist)
+##
+("entity"<|>SEC 12.30 A. Purpouse.<|>SUBSECTION<|>SEC 12.30 A. Provides context as to the need for a section on the boundary of zones)
+##
+("entity"<|>SEC 12.30 B. Street, Alley or Lot Lines.<|>SUBSECTION<|>SEC 12.30 B. Defines the specifics for the tracing and mapping of zone boundries)
+##
+("entity"<|>SEC 12.30 C. Scale on Map.<|>SUBSECTION<|>SEC 12.30 C. Provides instructions of drawing boundary lines in cases where the breakdown of zones is not blocks and lots, where the boundary lines are conditional on the scale on the map)
+##
+("entity"<|>SEC 12.30 D. Symbol for Zone.<|>SUBSECTION<|>SEC 12.30 D. Defines the use of zone symbols that classify an area)
+##
+("relationship"<|>SEC 12.30<|>SEC 12.30 A.<|>In Section 12.30, SEC 12.30 A is a subection<|>10)
+##
+("relationship"<|>SEC 12.30<|>SEC 12.30 B<|>In Section 12.30, SEC 12.30 B is a subection<|>10)
+##
+("relationship"<|>SEC 12.30<|>SEC 12.30 C.<|>In Section 12.30, SEC 12.30 C is a subection<|>10)
+##
+("relationship"<|>SEC 12.30<|>SEC 12.30 D.<|>In Section 12.30, SEC 12.30 D is a subection<|>10)
+##
+("relationship"<|>SEC 12.30 A.<|>SEC 12.30 B.<|>Sibling subsections of SEC 12.30<|>10)
+##
+("relationship"<|>SEC 12.30 A.<|>SEC 12.30 C.<|>Sibling subsections of SEC 12.30<|>10)
+##
+("relationship"<|>SEC 12.30 A.<|>SEC 12.30 D.<|>Sibling subsections of SEC 12.30<|>10)
+##
+("relationship"<|>SEC 12.30 B.<|>SEC 12.30 C.<|>Sibling subsections of SEC 12.30<|>10)
+##
+("relationship"<|>SEC 12.30 B.<|>SEC 12.30 D.<|>Sibling subsections of SEC 12.30<|>10)
+##
+("relationship"<|>SEC 12.30 C.<|>SEC 12.30 D.<|>Sibling subsections of SEC 12.30<|>10)
+<|COMPLETE|>
+
+######################
+Example 4:
 Entity_types: ORGANIZATION,GEO,PERSON
 Text:
 Five Aurelians jailed for 8 years in Firuzabad and widely regarded as hostages are on their way home to Aurelia.
