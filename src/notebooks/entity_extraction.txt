@@ -104,6 +104,7 @@ Output:
 ##
 ("relationship"<|>Section 12.04.06<|>Section 12.08 C.5<|>Section 12.04.06 restricts the height and floor area of buildings and structures and Section 12.08 C.5 restricts the height and Residential Floor Area of buildings and structures <|>3)
 <|COMPLETE|>
+
 ######################
 Example 3:
 Entity_types: SECTION, SUBSECTION
@@ -148,6 +149,73 @@ Output:
 ("relationship"<|>SEC 12.30 B.<|>SEC 12.30 D.<|>Sibling subsections of SEC 12.30<|>10)
 ##
 ("relationship"<|>SEC 12.30 C.<|>SEC 12.30 D.<|>Sibling subsections of SEC 12.30<|>10)
+<|COMPLETE|>
+
+######################
+Example 4:
+Entity_types: ARTICLE, SECTION, SUBSECTION, PROVISION, LAW, GOVERNMENT AGENCY, ZONE
+Text:
+ARTICLE 4.5
+
+TRANSFER OF FLOOR AREA RIGHTS – CENTRAL CITY COMMUNITY PLAN AND CITY CENTER REDEVELOPMENT PROJECT AREAS
+ 
+Section
+14.5.1   Scope.
+14.5.2   Purpose.
+ 
+ 
+SEC. 14.5.1. SCOPE.
+ 
+   A.   This article implements the Transfer of Floor Area Rights (TFAR) in the Central City TFAR Area, as defined herein, and as permitted by Sections 512.4 and 512.5 of the City Center Redevelopment Plan during the period of effectiveness of said plan.
+ 
+   B.   This article provides the exclusive procedure to Transfer Floor Area Rights for all Projects involving any single Transfer of Floor Area Rights within the Central City TFAR Area. This article establishes separate procedures for transfers of less than 50,000 square feet and transfers of 50,000 square feet or greater.
+ 
+   C.   This article facilitates the implementation of the Central City Community Plan and the City Center Redevelopment Plans.
+ 
+   D.   This article provides the procedure for allocating Public Benefit Payments and TFAR Transfer Payments derived from the Transfer of Floor Area Rights.
+ 
+ 
+SEC. 14.5.2. PURPOSE.
+ 
+   It is the purpose of this article to establish standards and approval procedures for the Transfer of Floor Area Rights in the Central City TFAR Area; to effect maximum coordination between the Community Redevelopment Agency and the City; to provide for the keeping of records of available Floor Area Rights within the Central City TFAR Area; to provide for an accounting of allocations of Public Benefit Payments and TFAR Transfer Payments derived from the Transfer of Floor Area Rights; and to facilitate those Transfers that generate Public Benefits.
+
+######################
+Output:
+("entity"<|><ARTICLE 4.5><|><ARTICLE><|><ARTICLE 4.5: TRANSFER OF FLOOR AREA RIGHTS>)
+("entity"<|><14.5.1   Scope><|><SECTION><|><Section in Article 4.5 that describes the scope of TFAR>)
+("entity"<|><14.5.2   Purpose><|><SECTION><|><Section in Article 4.5 that defines the scope of the TFAR Provision>)
+("entity"<|><Transfer of Floor Area Rights><|><PROVISION><|><Provision in place to manage the transfer of floor area rights>)
+("entity"<|><512.4><|><LAW><|><entity_description>)
+("entity"<|><512.5><|><LAW><|><entity_description>)
+("entity"<|><City Center Redevelopment Plan><|><PROVISION><|><entity_description>)
+("entity"<|><Central City TFAR Area><|><ZONE><|><entity_description>)
+("entity"<|><Central City Community Plan><|><PROVISION><|><entity_description>)
+("entity"<|><Public Benefit Payments><|><PROVSION><|><entity_description>)
+("entity"<|><TFAR Transfer Payments><|><PROVISION><|><entity_description>)
+("entity"<|><Community Redevelopment Agency><|><GOVERNMENT ENTITY><|><entity_description>)
+("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+<|COMPLETE|>
+
+######################
+
+Example 5:
+Entity_types:
+Text:
+######################
+Output:
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("entity"<|><entity_name><|><entity_type><|><entity_description>)
+("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+
 <|COMPLETE|>
 
 ######################
