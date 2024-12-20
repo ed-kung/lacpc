@@ -181,98 +181,129 @@ SEC. 14.5.2. PURPOSE.
 
 ######################
 Output:
-("entity"<|><ARTICLE 4.5><|><ARTICLE><|><ARTICLE 4.5: TRANSFER OF FLOOR AREA RIGHTS>)
-("entity"<|><14.5.1   Scope><|><SECTION><|><Section in Article 4.5 that describes the scope of TFAR>)
-("entity"<|><14.5.2   Purpose><|><SECTION><|><Section in Article 4.5 that defines the scope of the TFAR Provision>)
-("entity"<|><Transfer of Floor Area Rights><|><PROVISION><|><Provision in place to manage the transfer of floor area rights>)
-("entity"<|><512.4><|><LAW><|><entity_description>)
-("entity"<|><512.5><|><LAW><|><entity_description>)
-("entity"<|><City Center Redevelopment Plan><|><PROVISION><|><entity_description>)
-("entity"<|><Central City TFAR Area><|><ZONE><|><entity_description>)
-("entity"<|><Central City Community Plan><|><PROVISION><|><entity_description>)
-("entity"<|><Public Benefit Payments><|><PROVSION><|><entity_description>)
-("entity"<|><TFAR Transfer Payments><|><PROVISION><|><entity_description>)
-("entity"<|><Community Redevelopment Agency><|><GOVERNMENT ENTITY><|><entity_description>)
-("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
+("entity"<|><ARTICLE 4.5><|><ARTICLE><|><ARTICLE 4.5 outlines the implementation of TFAR in it's respective zones and plans>)
+##
+("entity"<|><SECTION 14.5.1 Scope><|><SECTION><|><Section in Article 4.5 that describes zones and conditions where TFAR is to be implemented and under what pre-existing provisions it can be implemented>)
+##
+("entity"<|><SECTION 14.5.2 Purpose><|><SECTION><|><The purpouse section describes the mission of Article 4.5. Establish standards and procedures for TFAR, keep records, maximize coodrdination and provide accounting allocations>)
+##
+("entity"<|><Transfer of Floor Area Rights><|><PROVISION><|><Provision in place to manage the transfer of floor area rights (TFAR)>)
+##
+("entity"<|><512.4><|><LAW><|>< Section in the City Center Redevelopment Plan that defines and permits TFAR>)
+##
+("entity"<|><512.5><|><LAW><|><Section in the City Center Redevelopment Plan that defines and permits TFAR>)
+##
+("entity"<|><City Center Redevelopment Plan><|><PROVISION><|><Provision that introduces TFAR>)
+##
+("entity"<|><Central City TFAR Area><|><ZONE><|><Zone where TFAR can be implemented>)
+##
+("entity"<|><Central City Community Plan><|><PROVISION><|><Plan that is facilitated by article 4.5>)
+##
+("entity"<|><Public Benefit Payments><|><PROVSION><|><Payments made under TFAR>)
+##
+("entity"<|><TFAR Transfer Payments><|><PROVISION><|><Payments made by the implementation of TFAR>)
+##
+("entity"<|><Community Redevelopment Agency><|><GOVERNMENT ENTITY><|><Agency involved in the implemetation of TFAR>)
+##
+("relationship"<|><ARTICLE 4.5><|><SECTION 14.5.1 Scope><|><SECTION 14.5.1 lies in ARTICLE 4.5><|><10>)
+##
+("relationship"<|><ARTICLE 4.5><|><SECTION 14.5.2><|><SECTION 14.5.2 lies in ARTICLE 4.5><|><10>)
+##
+("relationship"<|><SECTION 14.5.1><|><SECTION 14.5.2><|><Sibling Sections><|><10>)
+##
+("relationship"<|><Transfer of Floor Area Rights><|><ARTICLE 4.5><|><ARTICLE 4.5 establishes Transfer of Floor Area Rights><|><10>)
+##
+("relationship"<|><Transfer of Floor Area Rights><|><SECTION 14.5.1 Scope><|><14.5.1 outlines the scope for Transfer of Floor Area Rights><|><10>)
+##
+("relationship"<|><Transfer of Floor Area Rights><|><Central City TFAR Area><|><Central City TFAR Area is where Transfer of Floor Area Rights is implemented><|><10>)
+##
+("relationship"<|><Section 512.4><|><Transfer of Floor Area Rights><|><Section 512.4 defines and permits the Transfer of Floor Area Rights><|><10>)
+##
+("relationship"<|><Section 512.5><|><Transfer of Floor Area Rights><|><Section 512.5 defines and permits the Transfer of Floor Area Rights><|><10>)
+##
+("relationship"<|><City Center Redevelopment Plan><|><Section 512.4><|><Section 512.4 is withing the City Center Redevelopment Plan><|><10>)
+##
+("relationship"<|><City Center Redevelopment Plan><|><Section 512.5><|><Section 512.5 is withing the City Center Redevelopment Plan><|><10>)
+##
+("relationship"<|><SECTION 14.5.1><|><Central City TFAR Area><|><Section 14.5.1 desginates Central City TFAR Area as the zone where TFAR is to be implemented><|><10>)
+##
+("relationship"<|><SECTION 14.5.1><|><Central City Community Plan><|><Section 14.5.1 introduces the Central City Communiy Plan into Article 4.5><|><9>)
+##
+("relationship"<|><SECTION 14.5.1><|><City Center Development Plans><|><Section 14.5.1 introduces the City Center Development Plans into Article 4.5><|><9>)
+##
+("relationship"<|><SECTION 14.5.1><|><Public Benefit Payments><|><Section 14.5.1 introduces Public Benefit Payments into Article 4.5><|><10>)
+##
+("relationship"<|><SECTION 14.5.1><|><TFAR Transfer Payments><|><Section 14.5.1 introduces TFAR Transfer Payments into Article 4.5><|><10>)
+##
+("relationship"<|><SECTION 14.5.2><|><Transfer of Floor Area Rights><|><SECTION 14.5.2 establishes standards and approval procedures for the Transfer of Floor Area Rights><|><10>)
+##
+("relationship"<|><SECTION 14.5.2 Purpose><|><Community Redevelopment Agency><|><SECTION 14.5.2 emphasizes maximum coordination with the Community Redevelopment Agency><|><10>)
 <|COMPLETE|>
 
 ######################
 
 Example 5:
-Entity_types:
+Entity_types: SECTION, SUBSECTION, PROJECT, REGULATION, LAW
 Text:
+
+SEC. 12.95.3. CONVERSION PROJECTS: COMMERCIAL/INDUSTRIAL; COMMERCIAL/INDUSTRIAL TO RESIDENTIAL;
+
+   D.   Application Requirements:
+ 
+   1.   Commercial/Industrial to Residential Conversion Projects:
+ 
+   a.   A commercial/industrial to residential conversion project shall comply with the Division of Land regulations in Article 7 of this chapter, the provisions of this section and other applicable state laws and local ordinances.
+ 
+   b.   In addition to the information required by other applicable sections of this Code, the following information shall be submitted at the time of filing:
+ 
+   (1)   Building plans or other documents containing the following information pertaining to the project as proposed, certified as to accuracy by a licensed engineer:
+ 
+   (a)   Description of the features of the type of building and project, including age, type of construction, number of dwelling units, number of habitable rooms per dwelling unit; and
+ 
 ######################
 Output:
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("entity"<|><entity_name><|><entity_type><|><entity_description>)
-("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
-("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
-("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
-("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
-("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)
 
-<|COMPLETE|>
-
-######################
-Example 4:
-Entity_types: ORGANIZATION,GEO,PERSON
-Text:
-Five Aurelians jailed for 8 years in Firuzabad and widely regarded as hostages are on their way home to Aurelia.
-
-The swap orchestrated by Quintara was finalized when $8bn of Firuzi funds were transferred to financial institutions in Krohaara, the capital of Quintara.
-
-The exchange initiated in Firuzabad's capital, Tiruzia, led to the four men and one woman, who are also Firuzi nationals, boarding a chartered flight to Krohaara.
-
-They were welcomed by senior Aurelian officials and are now on their way to Aurelia's capital, Cashion.
-
-The Aurelians include 39-year-old businessman Samuel Namara, who has been held in Tiruzia's Alhamia Prison, as well as journalist Durke Bataglani, 59, and environmentalist Meggie Tazbah, 53, who also holds Bratinas nationality.
-######################
-Output:
-("entity"<|>FIRUZABAD<|>GEO<|>Firuzabad held Aurelians as hostages)
+("entity"<|><SEC 12.95.3><|><SECTION><|><Parent section that includes subsection 12.95.3 D, specifying criteria for conversion projects, commercial/industrial to residential in specific>)
 ##
-("entity"<|>AURELIA<|>GEO<|>Country seeking to release hostages)
+("entity"<|><SEC 12.95.3 D. Application Requirements><|><SUBSECTION><|><Set of criteria and documentation required for the conversion projects>)
 ##
-("entity"<|>QUINTARA<|>GEO<|>Country that negotiated a swap of money in exchange for hostages)
+("entity"<|><Commercial/Industrial to Residential Conversion Projects><|><PROJECT><|><Projects involving the conversion of commercial or industrial properties into residential uses>)
 ##
+("entity"<|><Division of Land Regulations><|><REGULATION><|><Rules outlined in Article 7 of this chapter>)
 ##
-("entity"<|>TIRUZIA<|>GEO<|>Capital of Firuzabad where the Aurelians were being held)
+("entity"<|><Article 7><|><REGULATION><|><Specific article within the chapter detailing Division of Land Regulations>)
 ##
-("entity"<|>KROHAARA<|>GEO<|>Capital city in Quintara)
+("entity"<|><State Laws><|><LAW><|><State level, legal requirements for Commercial/Industrial to Residential Conversion Projects>)
 ##
-("entity"<|>CASHION<|>GEO<|>Capital city in Aurelia)
+("entity"<|><Local Ordinances><|><LAW><|><Local laws governing Commercial/Industrial to Residential Conversion Projects>)
 ##
-("entity"<|>SAMUEL NAMARA<|>PERSON<|>Aurelian who spent time in Tiruzia's Alhamia Prison)
+("entity"<|><Filing Requirements><|><REQUIREMENT><|><Documents required to be submitted at the time of filing, including building plans, site plans, and parking plans>)
 ##
-("entity"<|>ALHAMIA PRISON<|>GEO<|>Prison in Tiruzia)
+("entity"<|><Building Plans><|><DOCUMENT><|><Plans containing information about a project's features, certified by a licensed engineer>)
 ##
-("entity"<|>DURKE BATAGLANI<|>PERSON<|>Aurelian journalist who was held hostage)
+("entity"<|><Site Plan><|><DOCUMENT><|><Plan detailing the layout of buildings, structures,yards, open spaces, accessory storage areas and buildings, including trash storage areas>)
 ##
-("entity"<|>MEGGIE TAZBAH<|>PERSON<|>Bratinas national and environmentalist who was held hostage)
+("entity"<|><Parking Plan><|><DOCUMENT><|><Plan detailing parking provisions, including total spaces, total number required if different from that actually provided; dimensions of stalls, aisles and driveways; location of columns, walls and other obstructions; total number of covered and uncovered parking spaces and location and number of guest parking spaces>)
 ##
-("relationship"<|>FIRUZABAD<|>AURELIA<|>Firuzabad negotiated a hostage exchange with Aurelia<|>2)
+("relationship"<|><SEC 12.95.3><|><SEC 12.95.3 D. Application Requirements><|><SEC 12.95.3 D. is a subsection of SEC 12.95.3 specifying application requirements for commercial/industrial to residential conversion projects><|><10>)
 ##
-("relationship"<|>QUINTARA<|>AURELIA<|>Quintara brokered the hostage exchange between Firuzabad and Aurelia<|>2)
+("relationship"<|><SEC 12.95.3 D. Application Requirements><|><Commercial/Industrial to Residential Conversion Projects><|><SEC 12.95.3 D. specifies criteria for Commercial/Industrial to Residential Conversion Projects><|><10>)
 ##
-("relationship"<|>QUINTARA<|>FIRUZABAD<|>Quintara brokered the hostage exchange between Firuzabad and Aurelia<|>2)
+("relationship"<|><SEC 12.95.3 D. Application Requirements><|><Division of Land Regulations><|><SEC 12.95.3 D. requires compliance with Division of Land Regulations in Article 7><|><10>)
 ##
-("relationship"<|>SAMUEL NAMARA<|>ALHAMIA PRISON<|>Samuel Namara was a prisoner at Alhamia prison<|>8)
+("relationship"<|><Division of Land Regulations><|><Article 7><|><Division of Land Regulations are found in Article 7><|><10>)
 ##
-("relationship"<|>SAMUEL NAMARA<|>MEGGIE TAZBAH<|>Samuel Namara and Meggie Tazbah were exchanged in the same hostage release<|>2)
+("relationship"<|><SEC 12.95.3 D. Application Requirements><|><State Laws><|><SEC 12.95.3 D. requires compliance with State Laws><|><8>)
 ##
-("relationship"<|>SAMUEL NAMARA<|>DURKE BATAGLANI<|>Samuel Namara and Durke Bataglani were exchanged in the same hostage release<|>2)
+("relationship"<|><SEC 12.95.3 D. Application Requirements><|><Local Ordinances><|><SEC 12.95.3 D. requires compliance with Local Ordinances><|><8>)
 ##
-("relationship"<|>MEGGIE TAZBAH<|>DURKE BATAGLANI<|>Meggie Tazbah and Durke Bataglani were exchanged in the same hostage release<|>2)
+("relationship"<|><SEC 12.95.3 D. Application Requirements><|><Filing Requirements><|><SEC 12.95.3 D. specifies Filing Requirements to be submitted at the time of filing><|><9>)
 ##
-("relationship"<|>SAMUEL NAMARA<|>FIRUZABAD<|>Samuel Namara was a hostage in Firuzabad<|>2)
+("relationship"<|><Filing Requirements><|><Building Plans><|><Filing Requirements include submitting Building Plans certified by a Licensed Engineer><|><10>)
 ##
-("relationship"<|>MEGGIE TAZBAH<|>FIRUZABAD<|>Meggie Tazbah was a hostage in Firuzabad<|>2)
+("relationship"<|><Filing Requirements><|><Site Plan><|><Filing Requirements include submitting a Site Plan detailing the layout of the project site><|><10>)
 ##
-("relationship"<|>DURKE BATAGLANI<|>FIRUZABAD<|>Durke Bataglani was a hostage in Firuzabad<|>2)
+("relationship"<|><Filing Requirements><|><Parking Plan><|><Filing Requirements include submitting a Parking Plan detailing parking provisions><|><10>)
 <|COMPLETE|>
 
 ######################
