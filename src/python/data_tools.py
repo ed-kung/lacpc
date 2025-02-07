@@ -1,6 +1,72 @@
 import numpy as np
 import pandas as pd
 
+prefix_map = {
+	'AA': 'AA',      # advisory agency
+	'ADM': 'ADM',   # administrative review
+	'APCC': 'APC',   # area planning commission
+	'APCE': 'APC',
+	'APCH': 'APC',
+	'APCNV': 'APC',
+	'APCS': 'APC',
+	'APCSV': 'APC',
+	'APCW': 'APC',
+	'CPC': 'CPC',    # city planning commission
+	'DIR': 'DIR',    # director of planning
+	'ENV': 'ENV',    # environmental
+	'TT': 'VTT',     # tentative tract
+	'VTT': 'VTT',    # vesting tentative tract
+	'ZA': 'ZA',      # zoning administration
+	'ZAI': 'ZA'      
+}
+
+suffix_map = {
+	'ADU': 'ADU',     # accessory dwelling units
+	'ADUH': 'ADU',    
+	'CCMP': 'CCMP',   # certificate of compatability
+	'CDO': 'CDO',     # community design overlay district
+	'CDP': 'CDP',     # coastal development permit
+	'CPIO': 'CPIO',   # community plan implementation overlay
+	'CPIOA': 'CPIO',
+	'CPIOC': 'CPIO',
+	'CPIOE': 'CPIO',
+	'CU': 'CU',       # conditional use permits
+	'CUB': 'CU',
+	'CUE': 'CU',
+	'CUW': 'CU',
+	'CUX': 'CU',
+	'CUZ': 'CU',
+	'CWC': 'CWC',     # conforming work contributing elements
+	'CWNC': 'CWC',    # conforming work non-contributing elements
+	'DB': 'DB',       # density bonus
+	'DRB': 'DRB',     # design review board
+	'GPA': 'GPA',     # general plan amendment
+	'GPAJ': 'GPAJ',   
+	'HCA': 'HCA',     # housing crisis act
+	'HD': 'HD',       # height district
+	'MCUP': 'MCUP',   # master conditional use permit
+	'MEL': 'MEL',     # mello act compliance review
+	'MSP': 'MSP',     # mulholland specific plan
+	'OVR': 'OVR',     # overlay review
+	'PHP': 'PHP',     # priority housing project
+	'PMLA': 'PMLA',   # parcel map
+	'QC': 'QC',       # Q condition clearance
+	'RDP': 'RDP',     # redevelopment plan project
+	'SL': 'SL',       # small lot subdivision
+	'SPP': 'SPP',     # specific plan project permit compliance
+	'SPR': 'SPR',     # site plan review
+	'TOC': 'TOC',     # transit oriented communities
+	'UDU': 'UDU',     # unapproved dwelling unit
+	'VZC': 'VZC',     # vesting zone change
+	'VZCJ': 'VZCJ',   
+	'WDI': 'WDI',     # waiver of dedication and improvements
+	'ZAA': 'ZAA',     # line adjustments gt 20% (slight modifications)
+	'ZAD': 'ZAD',     # ZA determination
+	'ZC': 'ZC',       # zone change
+	'ZCJ': 'ZC',
+	'ZV': 'ZV',       # zone variance
+}
+
 def parse_casenum(casenum, raw=True):
     tokens = casenum.split('-')
     parsed = {'prefix':'', 'year':'', 'canonical_casenum':'', 'suffixes':[]}
@@ -67,6 +133,13 @@ def get_la_planning_dept_cases(sheet=1):
             df = df.loc[idx]
     df = df.reset_index(drop=True)
 
+    # Drop any cases with a missing filed date
+    for col in ['Filed Date']:
+        if col in df.columns:
+            idx = df[col].notnull()
+            df = df.loc[idx]
+    df = df.reset_index(drop=True)
+
     # Create a unified text column inclusive of project description and requested entitlement
     df['text'] = ''
     for idx, row in df.iterrows():
@@ -78,5 +151,23 @@ def get_la_planning_dept_cases(sheet=1):
 Requested Entitlement:
 {requested_entitlement}
 """
+
+    # attach dummy columns for prefixes and suffixes
+    df['case_pfx'] = ''
+    for k in prefix_map.keys():
+        df[prefix_map[k]] = 0
+    for k in suffix_map.keys():
+        df[suffix_map[k]] = 0
+    for idx, row in df.iterrows():
+        casenum = row['Case Number']
+        parsed = parse_casenum(casenum)
+        pfx = parsed['prefix']
+        if pfx in prefix_map.keys():
+            df.loc[idx, 'case_pfx'] = prefix_map[pfx]
+            df.loc[idx, prefix_map[pfx]] = 1
+        for sfx in parsed['suffixes']:
+            if sfx in suffix_map.keys():
+                df.loc[idx, suffix_map[sfx]] = 1
+    
     return df
 
