@@ -12,3 +12,6 @@ unidecode
 openpyxl
 scikit-learn
 xgboost
+matplotlib
+adjustText
+
