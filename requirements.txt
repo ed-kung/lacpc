@@ -15,3 +15,7 @@ xgboost
 matplotlib
 adjustText
 pdfplumber
+pymupdf
+pytesseract
+pdf2image
+pillow
