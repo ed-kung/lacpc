@@ -171,9 +171,12 @@ def get_gpt_completion(prompt):
         messages = [
             {'role':'user', 'content':prompt}
         ],
-        temperature = 0
+        temperature = 0,
+        logprobs = True
     )
-    return completion.choices[0].message.content
+    message = completion.choices[0].message.content
+    score = completion.choices[0].logprobs.content[0].logprob
+    return message, score
 
 """
 Geocoding
