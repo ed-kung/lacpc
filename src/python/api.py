@@ -6,6 +6,7 @@ import time
 import requests
 import json
 import hashlib
+import pickle
 
 from pinecone import Pinecone, ServerlessSpec
 from openai import OpenAI
@@ -33,6 +34,8 @@ GEOCODE_VINTAGE = config['GEOCODE_VINTAGE']
 
 pc = Pinecone(api_key=PINECONE_API_KEY)
 client = OpenAI(api_key=OPENAI_API_KEY)
+
+RESPONSE_STORE = "../../response_store/response_store.pkl"
 
 """
 Hash of a string
@@ -177,6 +180,32 @@ def get_gpt_completion(prompt):
     message = completion.choices[0].message.content
     score = completion.choices[0].logprobs.content[0].logprob
     return message, score
+
+"""
+Get a Chat-GPT response, first checking whether an answer for the 
+prompt already exists.
+"""
+def get_response(prompt, overwrite=False):
+    if os.path.exists(RESPONSE_STORE):
+        with open(RESPONSE_STORE, 'rb') as f:
+            response_store = pickle.load(f)
+    else:
+        response_store = {}
+        
+    my_hash = get_hash(prompt)
+
+    if (not overwrite) and (response_store.get(my_hash)):
+        message, score = response_store.get(my_hash)
+        return message, score
+
+    message, score = get_gpt_completion(prompt)
+    response_store[my_hash] = message, score
+
+    with open(RESPONSE_STORE, 'wb') as f:
+        pickle.dump(response_store, f)
+
+    return message, score
+        
 
 """
 Geocoding
