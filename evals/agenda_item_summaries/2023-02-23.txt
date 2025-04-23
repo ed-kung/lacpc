@@ -1,0 +1,51 @@
+ITEM NO: 1  
+TITLE: DIRECTOR’S REPORT AND COMMISSION BUSINESS  
+SUMMARY: Updates on legal actions, City Planning Commission status reports, hybrid meeting technology, and resources for virtual public participation.  
+
+------  
+
+ITEM NO: 2  
+TITLE: NEIGHBORHOOD COUNCIL POSITION STATEMENTS ON AGENDA ITEMS  
+SUMMARY: Presentations by Neighborhood Council representatives on resolutions or community impact statements related to agenda items.  
+
+------  
+
+ITEM NO: 3  
+TITLE: GENERAL PUBLIC COMMENT  
+SUMMARY: Opportunity for the public to address the Commission on non-agenda items within the Commission's jurisdiction for up to 30 minutes.  
+
+------  
+
+ITEM NO: 4  
+TITLE: RECONSIDERATIONS  
+SUMMARY: The Commission may reconsider actions on previous agenda items if a motion to reconsider is approved, allowing discussion on the merits of the original action.  
+
+------  
+
+ITEM NO: 5  
+TITLE: CONSENT CALENDAR (5a)  
+SUMMARY: Non-controversial items treated as one agenda item, enacted by one motion without separate discussion unless removed for consideration.  
+
+------  
+
+ITEM NO: 5a  
+TITLE: CPC-2022-4989-DB-HCA  
+SUMMARY: Proposal for a six-story building with 18 units, including affordable housing, at 1317-1319 West Jefferson Boulevard. Requests include CEQA exemption and density bonus with incentives for increased FAR, building height, and reduced setbacks.  
+
+------  
+
+ITEM NO: 6  
+TITLE: CPC-2020-2115-DB  
+SUMMARY: Proposal for an eight-story mixed-use building with 33 units, including affordable housing, at 1848 South Gramercy Place. Requests include CEQA exemption and density bonus with incentives for increased FAR, waived development standards, and reduced setbacks.  
+
+------  
+
+ITEM NO: 7  
+TITLE: CPC-2022-5865-CU-SPR  
+SUMMARY: Proposal for a public charter elementary school with 28 classrooms and a maximum enrollment of 552 students at 15526 and 15544 West Plummer Street. Requests include CEQA consideration, conditional use permit, and site plan review.  
+
+------  
+
+ITEM NO: 8  
+TITLE: DIR-2020-7210-TOC-SPR-HCA-1A  
+SUMMARY: Proposal for a five-story residential building with 110 units, including affordable housing, at 2859 West Francis Avenue. Includes an appeal of the Director of Planning's determination, with requests for TOC incentives and site plan review.

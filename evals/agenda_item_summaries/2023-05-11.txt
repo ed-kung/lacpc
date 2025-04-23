@@ -1,0 +1,39 @@
+ITEM NO: 1  
+TITLE: DIRECTOR’S REPORT AND COMMISSION BUSINESS  
+SUMMARY: The Director's Report includes updates on legal actions and issues, items of interest, the advance calendar, commission requests, and the approval of meeting minutes from previous dates.
+
+------
+
+ITEM NO: 2  
+TITLE: NEIGHBORHOOD COUNCIL POSITION STATEMENTS ON AGENDA ITEMS  
+SUMMARY: Neighborhood Council representatives present resolutions or community impact statements related to agenda items. These presentations may be taken at the time the agenda item is considered.
+
+------
+
+ITEM NO: 3  
+TITLE: GENERAL PUBLIC COMMENT  
+SUMMARY: The Commission provides a 30-minute opportunity for the public to address non-agenda items of interest within the Commission's jurisdiction.
+
+------
+
+ITEM NO: 4  
+TITLE: RECONSIDERATIONS  
+SUMMARY: The Commission may reconsider actions on previous agenda items if a motion to reconsider is approved, allowing the Commission to address the merits of the original action.
+
+------
+
+ITEM NO: 5a  
+TITLE: CPC-2021-7188-DB-HCA  
+SUMMARY: Proposal for a six-story residential building with 60 units, including six for Very Low Income households, at 1436-1450 West Jefferson Boulevard. The project seeks exemptions and incentives related to density and building height.
+
+------
+
+ITEM NO: 5b  
+TITLE: CPC-2022-8155-CU-DB-SPR-PHP-VHCA  
+SUMMARY: Proposal for a seven-story residential building with 101 units, including 15 for Very Low Income households, at 308-320 North Oxford Avenue and 311-321 North Serrano Avenue. The project requests exemptions, a Conditional Use Permit, and various incentives and waivers.
+
+------
+
+ITEM NO: 6  
+TITLE: CPC-2022-7047-CU-DB-SPR-HCA  
+SUMMARY: Proposal for a seven-story mixed-use building with 151 units, including 17 for Very Low Income households, at 1200-1218 North Vine Street and 6245-6247 West Lexington Avenue. The project seeks exemptions, a Conditional Use Permit, and incentives related to floor area and yard requirements.

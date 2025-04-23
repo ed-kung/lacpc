@@ -1,0 +1,69 @@
+ITEM NO: 1  
+TITLE: DIRECTOR’S REPORT AND COMMISSION BUSINESS  
+SUMMARY: Updates on City Planning Commission status reports, legal actions, other items of interest, advance calendar, commission requests, and approval of meeting minutes from previous dates.
+
+------
+
+ITEM NO: 2  
+TITLE: NEIGHBORHOOD COUNCIL PRESENTATION  
+SUMMARY: Presentation by Neighborhood Council representatives on resolutions or community impact statements related to agenda items, to be presented when the relevant agenda item is considered.
+
+------
+
+ITEM NO: 3  
+TITLE: GENERAL PUBLIC COMMENT  
+SUMMARY: Opportunity for the public to address the Commission on non-agenda items within the Commission's jurisdiction, with a total time limit of 30 minutes.
+
+------
+
+ITEM NO: 4  
+TITLE: RECONSIDERATIONS  
+SUMMARY: The Commission may reconsider actions on previous agenda items if a motion to reconsider is approved, allowing for discussion on the merits of the original action.
+
+------
+
+ITEM NO: 5a  
+TITLE: CPC-2019-4939-CU  
+SUMMARY: Proposal to convert a religious facility into a public charter high school with a maximum of 500 students, including tenant improvements and additional facilities. Actions requested include CEQA exemption and conditional use permit for school operation in the RA-1 Zone.
+
+------
+
+ITEM NO: 5b  
+TITLE: CPC-2019-7615-DB-CU-SIP  
+SUMMARY: Demolition of existing structures for a new residential project with 87 low-income units, including incentives for reduced setbacks and increased FAR. Actions requested include ministerial review for streamlined approval and density bonus compliance.
+
+------
+
+ITEM NO: 5c  
+TITLE: CPC-2019-4908-DB-SPR  
+SUMMARY: Construction of a four-story residential building with 102 units, including 12 for Very Low Income households, with incentives for increased FAR and reduced open space. Actions requested include CEQA exemption and density bonus compliance review.
+
+------
+
+ITEM NO: 6  
+TITLE: CPC-2015-4557-MCUP-CUX-TDR-SPR-DD  
+SUMMARY: Development of a 57-story mixed-use building with retail, office, hotel, and residential spaces. Actions requested include EIR certification, transfer of floor area rights, and various permits for alcohol sales, reduced tree requirements, and site plan review.
+
+------
+
+ITEM NO: 7  
+TITLE: CPC-2014-4856-DB  
+SUMMARY: Construction of a six-story multi-family building with 91 units, including 11 for Very Low-Income households, with incentives for reduced open space and increased height. Actions requested include CEQA exemption and density bonus compliance review.
+
+------
+
+ITEM NO: 8  
+TITLE: CPC-2017-3251-TDR-MCUP-SPR  
+SUMMARY: Construction of a 70-story mixed-use high-rise with residential units, commercial space, and a public plaza. Actions requested include transfer of floor area rights, master conditional use permit for alcohol sales, and site plan review.
+
+------
+
+ITEM NO: 9  
+TITLE: DIR-2019-4004-DB-1A  
+SUMMARY: Construction of a five-story residential building with 34 units, including six affordable units, with incentives for reduced setbacks and increased height. Appeal of the Director of Planning’s determination regarding CEQA exemption and project approval.
+
+------
+
+ITEM NO: 10  
+TITLE: DIR-2018-5925-TOC-1A  
+SUMMARY: Demolition of an existing dwelling for a new five-story residential building with 21 units, including two for Extremely Low Income households, with incentives for increased height and reduced setbacks. Appeal of the Director of Planning’s determination regarding CEQA exemption and project approval.
