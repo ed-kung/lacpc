@@ -19,3 +19,5 @@ pymupdf
 pytesseract
 pdf2image
 pillow
+nltk
+
