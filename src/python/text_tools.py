@@ -3,9 +3,17 @@ import numpy as np
 import pandas as pd
 import yaml
 import time
+import re
 
 with open('../../config.yaml', 'r') as f:
     config = yaml.safe_load(f)
+
+"""
+Check if a string is a valid planning department case number
+"""
+def is_casenum(s):
+    pattern = r'^[A-Za-z]{2,3}-\d+-[A-Za-z0-9-]+$'
+    return bool(re.match(pattern, s))
 
     
 """
