@@ -29,6 +29,11 @@
     - Stores the extracted data in `intermediate_data/cpc/<year>/<date>/agenda-items.pkl`
     - Does not use ChatGPT
 
+6. `split-minutes-items.ipynb`
+    - Use the extracted agenda items to parse through the minutes and extract the sections of the minutes matched to each agenda item
+    - Stores the extracted data in `intermediate_data/cpc/<year>/<date>/minutes-items.pkl`
+    - Does not use ChatGPT
+
 5. `construct-evals.ipynb`
     - Construct examples of ChatGPT responses for manual evaluation
     
