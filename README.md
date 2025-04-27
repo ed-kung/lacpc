@@ -34,10 +34,15 @@
     - Stores the extracted data in `intermediate_data/cpc/<year>/<date>/minutes-items.pkl`
     - Does not use ChatGPT
 
-5. `construct-evals.ipynb`
+7. `generate-minutes-summaries.ipynb`
+    - Generates summaries of the deliberations of each agenda item by the CPC
+    - Stores the summaries a dataframe in `intermediate_data/cpc/<year>/<date>/minutes-summaries.pkl`
+    - Uses ChatGPT
+
+8. `construct-evals.ipynb`
     - Construct examples of ChatGPT responses for manual evaluation
     
-6. `explore-cpc-docs.ipynb`
+9. `explore-cpc-docs.ipynb`
     - Generates summary statistics for the documents collection 
 
 # Land Use Regulation Language Model
