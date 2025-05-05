@@ -39,10 +39,15 @@
     - Stores the summaries a dataframe in `intermediate_data/cpc/<year>/<date>/minutes-summaries.pkl`
     - Uses ChatGPT
 
-8. `construct-evals.ipynb`
+8. `generate-supplemental-docs-summaries.ipynb`
+    - Generates summaries of the supplemental documents
+    - Stores the summares in a dataframe in `intermediate_data/cpc/<year>/<date>/supplemental-docs-summaries.pkl`
+    - Uses ChatGPT
+
+9. `construct-evals.ipynb`
     - Construct examples of ChatGPT responses for manual evaluation
     
-9. `explore-cpc-docs.ipynb`
+10. `explore-cpc-docs.ipynb`
     - Generates summary statistics for the documents collection 
 
 # Land Use Regulation Language Model
