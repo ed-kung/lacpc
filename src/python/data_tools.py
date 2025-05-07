@@ -171,3 +171,79 @@ Requested Entitlement:
     
     return df
 
+def get_supplemental_docs(verbose=True, clean=True):
+    colmap = {
+        'TYPE OF DOCUMENT:': 'doc_type',
+        'TYPE OF AUTHOR:': 'author_type',
+        'SUMMARY OF DOCUMENT:': 'summary',
+        'REFERENCED AGENDA ITEMS:': 'referenced_items',
+        'SUPPORT OR OPPOSE:': 'support_or_oppose'
+    }
+
+    meta_df = pd.read_csv("../../intermediate_data/cpc/meetings_metadata.csv")
+    df = []
+    for i, irow in meta_df.iterrows():
+        date = irow['date']
+        year = irow['year']
+        try:
+            summ_df = pd.read_pickle(f"../../intermediate_data/cpc/{year}/{date}/supplemental-docs-summaries.pkl")
+            docs_df = pd.read_pickle(f"../../intermediate_data/cpc/{year}/{date}/supplemental-docs.pkl")
+            summ_df = summ_df.merge(docs_df[['doc_id','content']], how='left', on='doc_id')
+        except:
+            if verbose:
+                print(f"No data found for {date}")
+            continue
+        for j, jrow in summ_df.iterrows():
+            doc_id = jrow['doc_id']
+            start_page = jrow['start_page']
+            end_page = jrow['end_page']
+            prompt = jrow['prompt']
+            response = jrow['response']
+            content = jrow['content']
+            score = jrow['score']
+
+            out_row = {'year': year, 'date': date, 'doc_id': doc_id, 
+                       'start_page': start_page, 'end_page': end_page,
+                       'content': content, 'prompt': prompt,
+                       'response': response, 'score': score}
+
+            # Find the starting indexes for each part of the response
+            start_indexes = {}
+            for heading, colname in colmap.items():
+                start_indexes[heading] = response.find(heading)
+
+            if start_indexes['SUPPORT OR OPPOSE:']==-1:
+                if verbose:
+                    print(f"No proper response found for {date}, doc_id {doc_id}, pages {start_page}-{end_page}")
+                    print(f"Content: {content}")
+                    print("")
+                continue
+
+            for k in range(len(colmap)):
+                heading = list(colmap.keys())[k]
+                colname = colmap[heading]
+                start_index = start_indexes[heading] + len(heading)
+                if heading=='SUPPORT OR OPPOSE:':
+                    end_index = len(response)
+                else:
+                    heading2 = list(colmap.keys())[k+1]
+                    end_index = start_indexes[heading2]
+                text = response[start_index:end_index].strip()
+                out_row[colname] = text
+
+            df.append(out_row)
+            
+    df = pd.DataFrame.from_dict(df)
+
+    if clean:
+        for idx, row in df.iterrows():
+            doc_type = row['doc_type'].lower()
+            if doc_type.startwith('the submitted document is a letter'):
+                doc_type = 'letter'
+            elif doc_type.startswith('other'):
+                doc_type = 'other'
+            elif doc_type.startswith('procedural matter'):
+                doc_type = 'procedural_matter'
+    
+    return df
+
