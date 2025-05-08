@@ -20,4 +20,6 @@ pytesseract
 pdf2image
 pillow
 nltk
+wordcloud
+shap
 
