@@ -247,3 +247,87 @@ def get_supplemental_docs(verbose=True, clean=True):
     
     return df
 
+
+def get_minutes(verbose=True, clean=True):
+    colmap = {
+        'RELATED CASES:': 'related_cases',
+        'SUMMARY OF AGENDA ITEM:': 'agenda_item_summary',
+        'SUMMARY OF CPC DELIBERATIONS:': 'deliberations_summary',
+        'SUMMARY OF CPC MOTION:': 'motion_summary',
+        'VOTES FOR:': 'votes_for',
+        'VOTES AGAINST:': 'votes_against',
+        'VOTES ABSENT:': 'votes_absent',
+        'VOTE RESULT:': 'vote_result',
+        'RESULT OF APPEAL:': 'appeal_result',
+        'IMPLICATION FOR PROJECT:': 'project_result'
+    }
+
+    meta_df = pd.read_csv("../../intermediate_data/cpc/meetings_metadata.csv")
+    df = []
+    for i, irow in meta_df.iterrows():
+        date = irow['date']
+        year = irow['year']
+        try:
+            minutes_df = pd.read_pickle(f"../../intermediate_data/cpc/{year}/{date}/minutes-summaries.pkl")
+        except:
+            if verbose:
+                print(f"No data found for {date}")
+            continue
+    
+        for j, jrow in minutes_df.iterrows():
+            item_no = jrow['item_no']
+            title = jrow['title']
+            prompt = jrow['prompt']
+            response = jrow['response']
+            score = jrow['score']
+
+            out_row = {'year': year, 'date': date, 'item_no': item_no,
+                       'title': title, 'prompt': prompt, 'response': response,
+                       'score': score}
+
+            # Find the starting indexes for each part of the response
+            start_indexes = {}
+            for heading, colname in colmap.items():
+                start_indexes[heading] = response.find(heading)
+
+            if start_indexes['IMPLICATION FOR PROJECT:']==-1:
+                if verbose:
+                    print(f"No proper response found for {date}, item_no {item_no}")
+                    print(f"Response: {response}")
+                    print("")
+                continue
+
+            for k in range(len(colmap)):
+                heading = list(colmap.keys())[k]
+                colname = colmap[heading]
+                start_index = start_indexes[heading] + len(heading)
+                if heading=='IMPLICATION FOR PROJECT:':
+                    end_index = len(response)
+                else:
+                    heading2 = list(colmap.keys())[k+1]
+                    end_index = start_indexes[heading2]
+                text = response[start_index:end_index].strip()
+                out_row[colname] = text
+
+            df.append(out_row)
+            
+    df = pd.DataFrame.from_dict(df)
+
+    if clean:
+        for idx, row in df.iterrows():
+            appeal_result = row['appeal_result']
+            if appeal_result=="NO APPEAL, DELIBERATIONS CONTINUED TO FUTURE DATE":
+                df.loc[idx, 'appeal_result'] = "NO APPEAL"
+
+            vote_result = row['vote_result']
+            if vote_result=="DELIBERATIONS CONTINUED TO FUTURE DATE":
+                df.loc[idx, 'vote_result'] = "N/A"
+            if vote_result=="MOTION FAILED (initial motion), MOTION PASSED (second motion)":
+                df.loc[idx, 'vote_result'] = "MOTION PASSED"
+                df.loc[idx, 'votes_for'] = "Millman, Zamora, Cabildo, Lawshe, Leung"
+                df.loc[idx, 'votes_against'] = ""
+    return df
+
+
+
+
