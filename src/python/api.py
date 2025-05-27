@@ -36,6 +36,7 @@ pc = Pinecone(api_key=PINECONE_API_KEY)
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 RESPONSE_STORE = "../../response_store/response_store.pkl"
+URL_RESPONSE_STORE = "../../response_store/url_response_store.pkl"
 
 """
 Hash of a string
@@ -232,3 +233,80 @@ def geocode_address(street, zip , state):
         'response_status_code': response_status_code,
         'response_content': response_content
     }
+
+"""
+Scraping
+"""
+def request_url(url, overwrite=False, verbose=True):
+    if os.path.exists(URL_RESPONSE_STORE):
+        with open(URL_RESPONSE_STORE, 'rb') as f:
+            url_response_store = pickle.load(f)
+    else:
+        url_response_store = {}
+
+    if (not overwrite) and (url_response_store.get(url)):
+        response = url_response_store.get(url)
+        return response
+
+    r = requests.get(url)
+    if r.status_code!=200:
+        if verbose:
+            print("****")
+            print(f"Warning: Invalid response from {url}")
+            print(r.text)
+            print("****")
+        return None
+
+    url_response_store[url] = r.text
+    with open(URL_RESPONSE_STORE, 'wb') as f:
+        pickle.dump(url_response_store, f)
+
+    return r.text
+
+
+def get_id_from_caseno(caseno):
+    # get PDIS internal caseid from planning dept case number
+    url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/SearchCaseNumber?caseNo={caseno}"
+    response = request_url(url)
+    
+    if not response:
+        return None
+
+    j = json.loads(response)
+    if len(j)==0:
+        if verbose:
+            print(f"Warning: No case data found for {caseno}")
+        return None
+
+    caseid = j[0]['encodedCaseId']
+    return caseid
+
+def get_case_info_from_caseid(caseid):
+    # get case info from caseid
+    url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/GetCaseInfoDataEncoded?encodedCaseId={caseid}"
+    response = request_url(url)
+
+    if not response:
+        return None
+
+    j = json.loads(response)
+    if j==None:
+        if verbose:
+            print(f"Warning: No data found for caseid {caseid}")
+        return None
+    if len(j)==0:
+        if verbose:
+            print(f"Warning: No data found for caseid {caseid}")
+        return None
+
+    return j
+
+
+    
+        
+    
+    
+
+
+
+
