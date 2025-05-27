@@ -314,18 +314,7 @@ def get_minutes(verbose=True, clean=True):
     df = pd.DataFrame.from_dict(df)
 
     if clean:
-        for idx, row in df.iterrows():
-            appeal_result = row['appeal_result']
-            if appeal_result=="NO APPEAL, DELIBERATIONS CONTINUED TO FUTURE DATE":
-                df.loc[idx, 'appeal_result'] = "NO APPEAL"
-
-            vote_result = row['vote_result']
-            if vote_result=="DELIBERATIONS CONTINUED TO FUTURE DATE":
-                df.loc[idx, 'vote_result'] = "N/A"
-            if vote_result=="MOTION FAILED (initial motion), MOTION PASSED (second motion)":
-                df.loc[idx, 'vote_result'] = "MOTION PASSED"
-                df.loc[idx, 'votes_for'] = "Millman, Zamora, Cabildo, Lawshe, Leung"
-                df.loc[idx, 'votes_against'] = ""
+        print('')
     return df
 
 
