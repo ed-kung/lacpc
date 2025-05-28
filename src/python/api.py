@@ -237,9 +237,20 @@ def geocode_address(street, zip , state):
     }
 
 """
-Scraping
+Scraping PDIS
 """
-def request_url(url, overwrite=False, verbose=True, wait_time=60):
+def canonicalize(caseno):
+    case_parts = caseno.split('-')
+    if case_parts[0]=='VTT':
+        case_parts = case_parts[0:2]
+        case_parts[1] = case_parts[1].lstrip('0')
+        return '-'.join(case_parts)
+    else:
+        case_parts = case_parts[0:3]
+        case_parts[2] = case_parts[2].lstrip('0')
+        return '-'.join(case_parts)
+
+def request_url(url, overwrite=False, verbose=True, wait_time=2):
     if os.path.exists(URL_RESPONSE_STORE):
         with open(URL_RESPONSE_STORE, 'rb') as f:
             url_response_store = pickle.load(f)
@@ -253,7 +264,7 @@ def request_url(url, overwrite=False, verbose=True, wait_time=60):
     if verbose:
         print(f"Requesting {url}...")
     r = requests.get(url)
-    time.sleep(rng.uniform(wait_time, wait_time+5))
+    time.sleep(rng.uniform(wait_time, wait_time+2))
     if r.status_code!=200:
         if verbose:
             print('')
@@ -271,71 +282,66 @@ def request_url(url, overwrite=False, verbose=True, wait_time=60):
     return r.text
 
 
-def get_id_from_caseno(caseno, overwrite=False, verbose=True):
+def get_id_from_caseno(caseno, overwrite=False, verbose=True, wait_time=60):
     # get PDIS internal caseid from planning dept case number
-    url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/SearchCaseNumber?caseNo={caseno}"
-    response = request_url(url, overwrite, verbose)
     
-    if response is None:
-        return None
-
-    ok = True
+    
+    # ---- First attempt
+    url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/SearchCaseNumber?caseNo={caseno}"
+    response = request_url(url, overwrite, verbose, wait_time)
     j = json.loads(response)
-    if len(j)==0:
-        ok = False
-    elif j[0]['encodedCaseId']=='MA0':
-        ok = False
-    if ok:
-        caseid = j[0]['encodedCaseId']
-        return caseid
+    if len(j)>0:
+        for item in j:
+            if canonicalize(caseno)==canonicalize(item['caseNbr']):
+                return item['encodedCaseId']
 
+    # ---- Second attempt with only first three case parts
     short_caseno = '-'.join(caseno.split('-')[0:3])
-    if verbose:
-        print(f"retrying as {short_caseno}... ")
+    #if verbose:
+    #    print(f"Failed to find {caseno}, retrying as {short_caseno}... ")
     url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/SearchCaseNumber?caseNo={short_caseno}"
-    response = request_url(url, overwrite, verbose)
+    response = request_url(url, overwrite, verbose, wait_time)
+    j = json.loads(response)
+    if len(j)>0:
+        for item in j:
+            if canonicalize(caseno)==canonicalize(item['caseNbr']):
+                return item['encodedCaseId']
 
-    if response is None:
-        return None
-
-    ok = True
-    if len(j)==0:
-        ok = False
-    elif j[0]['encodedCaseId']=='MA0':
-        ok = False
-    if ok:
-        caseid = j[0]['encodedCaseId']
-        return caseid
-
+    # ---- Third attempt with leading 0s stripped from third case part
+    canonical_caseno = canonicalize(caseno)
+    #if verbose:
+    #    print(f"Failed to find {short_caseno}, retrying as {short_caseno_stripped}... ")
+    url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/SearchCaseNumber?caseNo={canonical_caseno}"
+    response = request_url(url, overwrite, verbose, wait_time)
+    j = json.loads(response)
+    if len(j)>0:
+        for item in j:
+            if canonicalize(caseno)==canonicalize(item['caseNbr']):
+                return item['encodedCaseId']
+        
     if verbose:
         print(f"Warning: failed to retrieve data for {caseno}")
     return None
 
-def get_case_info_from_caseid(caseid, overwrite=False, verbose=True):
+def get_case_info_from_caseid(caseid, overwrite=False, verbose=True, wait_time=60):
     # get case info from caseid
     url = f"https://planning.lacity.org/pdiscaseinfo/api/Service/GetCaseInfoDataEncoded?encodedCaseId={caseid}"
-    response = request_url(url, overwrite, verbose)
+    response = request_url(url, overwrite, verbose, wait_time)
 
     if response is None:
         return None
 
     j = json.loads(response)
     if j is None:
-        if verbose:
-            print(f"Warning: no data found for caseid {caseid}... ")
         return None
     if len(j)==0:
-        if verbose:
-            print(f"Warning: no data found for caseid {caseid}... ")
         return None
     if j['caseNbr']==None:
-        if verbose:
-            print(f"Warning: no data found for caseid {caseid}... ")
         return None
 
     return j
 
-def get_case_info(caseno, overwrite=False, verbose=True):
-    j = get_case_info_from_caseid(get_id_from_caseno(caseno, overwrite, verbose), overwrite, verbose)
+def get_case_info(caseno, overwrite=False, verbose=True, wait_time=60):
+    j = get_case_info_from_caseid(get_id_from_caseno(caseno, overwrite, verbose, wait_time), overwrite, verbose, wait_time)
     return j
     
