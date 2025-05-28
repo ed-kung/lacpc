@@ -44,10 +44,15 @@
     - Stores the summares in a dataframe in `intermediate_data/cpc/<year>/<date>/supplemental-docs-summaries.pkl`
     - Uses ChatGPT
 
-9. `construct-evals.ipynb`
+9. `generate-casedata.ipynb`
+    - Generates information on all relevant cases extracted from the minutes
+    - Stores the data in a dataframe `intermediate_data/cpc/case-data.pkl`
+    - Uses URL requests to PDIS
+
+10. `construct-evals.ipynb`
     - Construct examples of ChatGPT responses for manual evaluation
     
-10. `explore-cpc-docs.ipynb`
+11. `explore-cpc-docs.ipynb`
     - Generates summary statistics for the documents collection 
 
 # Land Use Regulation Language Model
