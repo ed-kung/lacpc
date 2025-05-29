@@ -215,8 +215,6 @@ def get_supplemental_docs(verbose=True, clean=True):
             if start_indexes['SUPPORT OR OPPOSE:']==-1:
                 if verbose:
                     print(f"No proper response found for {date}, doc_id {doc_id}, pages {start_page}-{end_page}")
-                    print(f"Content: {content}")
-                    print("")
                 continue
 
             for k in range(len(colmap)):
@@ -235,16 +233,6 @@ def get_supplemental_docs(verbose=True, clean=True):
             
     df = pd.DataFrame.from_dict(df)
 
-    if clean:
-        for idx, row in df.iterrows():
-            doc_type = row['doc_type'].lower()
-            if doc_type.startwith('the submitted document is a letter'):
-                doc_type = 'letter'
-            elif doc_type.startswith('other'):
-                doc_type = 'other'
-            elif doc_type.startswith('procedural matter'):
-                doc_type = 'procedural_matter'
-    
     return df
 
 
@@ -293,8 +281,6 @@ def get_minutes(verbose=True, clean=True):
             if start_indexes['IMPLICATION FOR PROJECT:']==-1:
                 if verbose:
                     print(f"No proper response found for {date}, item_no {item_no}")
-                    print(f"Response: {response}")
-                    print("")
                 continue
 
             for k in range(len(colmap)):
@@ -313,10 +299,10 @@ def get_minutes(verbose=True, clean=True):
             
     df = pd.DataFrame.from_dict(df)
 
-    if clean:
-        print('')
     return df
 
-
+def get_cases(verbose=True, clean=True):
+    df = pd.read_pickle("../../intermediate_data/cpc/case-data.pkl")
+    return df
 
 
