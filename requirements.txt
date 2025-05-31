@@ -22,4 +22,6 @@ pillow
 nltk
 wordcloud
 shap
+statsmodels
+stargazer
 
