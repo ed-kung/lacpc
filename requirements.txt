@@ -21,3 +21,4 @@ statsmodels
 unidecode
 wordcloud
 xgboost
+yaml
