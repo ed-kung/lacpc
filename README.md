@@ -24,7 +24,14 @@ All page ranges not contained in this file are single page documents.
 
 ## Extract raw PDFs into text files
 
-Use `extract-pdf-to-text.ipynb` to extract the raw PDF files into raw text documents, with pages separated by `<PAGE BREAK>`. Resulting text files are stored in `intermediate_data/<apc>/<year>/<date>`. Also generates a `metadata.csv` showing page counts for each document.
+Use `extract-pdf-to-text.ipynb` to extract the raw PDF files into raw text documents, with pages separated by `<PAGE BREAK>`. Resulting text files are stored in `intermediate_data/cpc/<year>/<date>`.
+
+## Create the list of meetings for analysis
+
+Use `create-meetings-manifest.ipynb` to create a list of meetings that will be used for analysis. A meeting will be used for analysis if it contains all three of `agenda.pdf`, `minutes.pdf`, `supplemental-docs.pdf`, and has entries in `supplemental-docs-splits.csv`.
+
+
+
 
 
 
