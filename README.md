@@ -1,5 +1,15 @@
 # City Planning Commission Documents
 
+## Setup local config
+
+Before starting, create a file named `config.local.yaml` containing:
+
+```
+LOCAL_PATH = "<path to this repo on your machine>"
+OPENAI_API_KEY = "<your openai api key>"
+PINECONE_API_KEY = "<your pinecone api key>"
+```
+
 ## Data Requirements
 
 - CPC documents contained in `raw_data/cpc`
