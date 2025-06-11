@@ -9,12 +9,24 @@ LOCAL_PATH: "<path to this repo on your machine>"
 OPENAI_API_KEY: "<your openai api key>"
 PINECONE_API_KEY: "<your pinecone api key>"
 CHROMEDRIVER: "<path to chromedriver>"
+TESSERACT: "<path to your tesseract cmd>"
 ```
 
-## Data Requirements
+## Download the documents
 
-- CPC documents contained in `raw_data/cpc`
-- Annotations for start and end pages of supplemental documents: `raw_data/cpc/cpc-supplemental-docs-splits.csv`
+Use `download-docs.ipynb` to download the raw pdf documents. It can be run again to download any new documents which have been uploaded to the Planning Department website. By default, already downloaded documents won't be re-downloaded. You can change this by setting the `overwrite` flag in the notebook.
+
+## Identify document boundaries for supplemental docs
+
+Supplemental documents are spliced together in one giant PDF file. So far, I have found that existing LLMs are not great at identifying the document boundaries (I've tried ChatGPT, Claude, and Google NotebookLM). Thus, I've manually identified document boundaries and put them in `supplemental-docs-splits.csv`. This contains the page ranges of individual documents inside `supplemental-docs.pdf`, along with notes for whether the document contains attachments or a major report that should be ignored for analysis.
+
+All page ranges not contained in this file are single page documents.
+
+## Extract raw PDFs into text files
+
+Use `extract-pdf-to-text.ipynb` to extract the raw PDF files into raw text documents, with pages separated by `<PAGE BREAK>`. Resulting text files are stored in `intermediate_data/<apc>/<year>/<date>`. Also generates a `metadata.csv` showing page counts for each document.
+
+
 
 ## Run Order
 
