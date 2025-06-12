@@ -1,9 +1,8 @@
-import time
 import os
 import sys
-import requests
 import yaml
-from datetime import datetime
+import time
+import requests
 
 with open('../../config.local.yaml', 'r') as f:
     local_config = yaml.safe_load(f)
