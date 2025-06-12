@@ -79,18 +79,6 @@ For each agenda item and related minutes, summarizes the minutes using ChatGPT. 
 Summarizes each supplemental document using ChatGPT. Stores results in a dataframe: `supplemental-docs-summaries.pkl`.
 
 
-## Run Order
-
-
-7. `generate-minutes-summaries.ipynb`
-    - Generates summaries of the deliberations of each agenda item by the CPC
-    - Stores the summaries a dataframe in `intermediate_data/cpc/<year>/<date>/minutes-summaries.pkl`
-    - Uses ChatGPT
-
-8. `generate-supplemental-docs-summaries.ipynb`
-    - Generates summaries of the supplemental documents
-    - Stores the summares in a dataframe in `intermediate_data/cpc/<year>/<date>/supplemental-docs-summaries.pkl`
-    - Uses ChatGPT
 
 9. `generate-casedata.ipynb`
     - Generates information on all relevant cases extracted from the minutes
