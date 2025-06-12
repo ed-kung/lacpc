@@ -56,6 +56,15 @@ Uses ChatGPT to summarize individual agenda items from the raw text. Responses a
 
 Parse the extracted summaries and split into individual agenda items. Store the results in a dataframe: `agenda-items.pkl`.
 
+## Split minutes items
+
+`split-minutes-items.ipynb`
+
+Generates two files: `minutes.pkl` and `minutes-items.pkl`.
+
+`minutes.pkl` is the split of the raw minutes text into individual items, showing the start and end line of each split.
+
+`minutes-items.pkl` is organized by agenda item and finds all the sections of the minutes that were relevant to that agenda item.
 
 
 
