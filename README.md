@@ -66,28 +66,21 @@ Generates two files: `minutes.pkl` and `minutes-items.pkl`.
 
 `minutes-items.pkl` is organized by agenda item and finds all the sections of the minutes that were relevant to that agenda item.
 
+## Summarize minutes items
+
+`summarize-minutes.ipynb`
+
+For each agenda item and related minutes, summarizes the minutes using ChatGPT. Stores results in a dataframe: `minutes-summaries.pkl`.
+
+## Summarize supplemental docs
+
+`summarize-supplemental-docs.ipynb`
+
+Summarizes each supplemental document using ChatGPT. Stores results in a dataframe: `supplemental-docs-summaries.pkl`.
 
 
 ## Run Order
 
-
-3. `generate-meetings-metadata.ipynb`
-    - Generates `intermediate_data/cpc/meetings_metadata.csv` for a list of meetings that contains all three of `agenda.pdf`, `supplemental-docs.pdf`, and `minutes.pdf`
-  
-4. `extract-agenda-items.ipynb`
-    - Goes through each agenda's text and extracts the individual agenda items, along with a summary of each agenda item
-    - Stores result in `intermediate_data/cpc/<year>/<date>/agenda-item-summaries.txt`
-    - Uses ChatGPT
-
-5. `split-agenda-items.ipynb`
-    - Using the extracted summaries, parses through the text again to extract hard data about each agenda item
-    - Stores the extracted data in `intermediate_data/cpc/<year>/<date>/agenda-items.pkl`
-    - Does not use ChatGPT
-
-6. `split-minutes-items.ipynb`
-    - Use the extracted agenda items to parse through the minutes and extract the sections of the minutes matched to each agenda item
-    - Stores the extracted data in `intermediate_data/cpc/<year>/<date>/minutes-items.pkl`
-    - Does not use ChatGPT
 
 7. `generate-minutes-summaries.ipynb`
     - Generates summaries of the deliberations of each agenda item by the CPC
