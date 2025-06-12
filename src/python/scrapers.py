@@ -3,6 +3,7 @@ import sys
 import yaml
 import time
 import requests
+import pickle
 
 with open('../../config.local.yaml', 'r') as f:
     local_config = yaml.safe_load(f)
@@ -12,7 +13,7 @@ URL_RESPONSE_STORE = os.path.join(LOCAL_PATH, 'response_store/url_response_store
 
 sys.path.append(os.path.join(LOCAL_PATH, "src/python"))
 
-from utils import get_hash
+from utils import get_hash, canonicalize_casenum
 
 def request_url_text(url, overwrite=False, verbose=True, wait=0):
     if os.path.exists(URL_RESPONSE_STORE):
@@ -21,7 +22,7 @@ def request_url_text(url, overwrite=False, verbose=True, wait=0):
     else:
         url_response_store = {}
 
-    if (not overwrite) and (url_response_store.get(url)):
+    if (not overwrite) and (url in url_response_store):
         response = url_response_store.get(url)
         return response
 
@@ -65,3 +66,6 @@ def save_url_file(url, saveas, overwrite=False, verbose=True, wait=0):
     if verbose:
         print(f"Saved to {saveas}")
     return
+
+
+

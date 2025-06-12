@@ -78,31 +78,9 @@ For each agenda item and related minutes, summarizes the minutes using ChatGPT. 
 
 Summarizes each supplemental document using ChatGPT. Stores results in a dataframe: `supplemental-docs-summaries.pkl`.
 
+## Scrape case data
 
+`scrape-casedata.ipynb`
 
-9. `generate-casedata.ipynb`
-    - Generates information on all relevant cases extracted from the minutes
-    - Stores the data in a dataframe `intermediate_data/cpc/case-data.pkl`
-    - Uses URL requests to PDIS
-
-10. `construct-evals.ipynb`
-    - Construct examples of ChatGPT responses for manual evaluation
-    
-11. `explore-cpc-docs.ipynb`
-    - Generates summary statistics for the documents collection 
-
-# Land Use Regulation Language Model
-
-## Data Requirements
-
-The following files should be in `raw_data` on your local machine.
-
-- `lamunicipalcode.html`
-- `LA Business Council Data Request - 20220823.xlsx`
-
-## Run in following order
-- `parse0.ipynb`
-- `parse2.ipynb`
-- `embed_and_upsert.ipynb`
-- `query_test.ipynb`
+Scrapes PDIS for information on all relevant cases extracted from the minutes. Storse results in `case-data.pkl`.
 
