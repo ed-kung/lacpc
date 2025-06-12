@@ -14,9 +14,13 @@ TESSERACT: "<path to your tesseract cmd>"
 
 ## Download the documents
 
-Use `download-docs.ipynb` to download the raw pdf documents. It can be run again to download any new documents which have been uploaded to the Planning Department website. By default, already downloaded documents won't be re-downloaded. You can change this by setting the `overwrite` flag in the notebook.
+`download-docs.ipynb`
+
+Downloads the raw pdf documents. It can be run again to download any new documents which have been uploaded to the Planning Department website. By default, already downloaded documents won't be re-downloaded. You can change this by setting the `overwrite` flag in the notebook.
 
 ## Identify document boundaries for supplemental docs
+
+`supplemental-docs-splits.csv`
 
 Supplemental documents are spliced together in one giant PDF file. So far, I have found that existing LLMs are not great at identifying the document boundaries (I've tried ChatGPT, Claude, and Google NotebookLM). Thus, I've manually identified document boundaries and put them in `supplemental-docs-splits.csv`. This contains the page ranges of individual documents inside `supplemental-docs.pdf`, along with notes for whether the document contains attachments or a major report that should be ignored for analysis.
 
@@ -24,12 +28,21 @@ All page ranges not contained in this file are single page documents.
 
 ## Extract raw PDFs into text files
 
-Use `extract-pdf-to-text.ipynb` to extract the raw PDF files into raw text documents, with pages separated by `<PAGE BREAK>`. Resulting text files are stored in `intermediate_data/cpc/<year>/<date>`.
+`extract-pdf-to-text.ipynb`
+
+Extracts the PDF files into raw text documents, with pages separated by `<PAGE BREAK>`. Resulting text files are stored in `intermediate_data/cpc/<year>/<date>`.
 
 ## Create the list of meetings for analysis
 
-Use `create-meetings-manifest.ipynb` to create a list of meetings that will be used for analysis. A meeting will be used for analysis if it contains all three of `agenda.pdf`, `minutes.pdf`, `supplemental-docs.pdf`, and has entries in `supplemental-docs-splits.csv`.
+`create-meetings-manifest.ipynb`
 
+Creates a list of meetings that will be used for analysis. A meeting will be used for analysis if it contains all three of `agenda.pdf`, `minutes.pdf`, `supplemental-docs.pdf`, and has entries in `supplemental-docs-splits.csv`.
+
+## Split the supplemental documents files
+
+`split-supplemental-docs.ipynb`
+
+Uses `supplemental-docs-splits.csv` to split `supplemental-docs.pdf` for all meetings contained in `meetings-manifest.csv`. Text content of each individual supplemental document is stored in `intermediate_data/cpc/<year>/<date>/supplemental-docs.pkl`.
 
 
 
@@ -37,14 +50,6 @@ Use `create-meetings-manifest.ipynb` to create a list of meetings that will be u
 
 ## Run Order
 
-1. `extract-cpc-docs.ipynb`
-    - Extracts the PDF files into raw text documents, separated by `<PAGE BREAK>`
-    - `raw_data/cpc/<year>/<date>/<filename>.pdf` is converted to plain text and saved to `intermediate_data/cpc/<year>/<date>/<filename>.txt`
-    - Also generates `intermediate_data/cpc/metadata.csv`
-
-2. `split-supplemental-docs.ipynb`
-    - Uses hand annotated start and end pages to split the supplemental documents
-    - Text content of each supplemental document is stored in `intermediate_data/cpc/<year>/<date>/supplemental-docs.pkl`
 
 3. `generate-meetings-metadata.ipynb`
     - Generates `intermediate_data/cpc/meetings_metadata.csv` for a list of meetings that contains all three of `agenda.pdf`, `supplemental-docs.pdf`, and `minutes.pdf`
