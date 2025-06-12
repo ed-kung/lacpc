@@ -42,13 +42,19 @@ Creates a list of meetings that will be used for analysis. A meeting will be use
 
 `split-supplemental-docs.ipynb`
 
-Uses `supplemental-docs-splits.csv` to split `supplemental-docs.pdf` for all meetings contained in `meetings-manifest.csv`. Text content of each individual supplemental document is stored in `intermediate_data/cpc/<year>/<date>/supplemental-docs.pkl`.
+Uses `supplemental-docs-splits.csv` to split `supplemental-docs.pdf` for all meetings contained in `meetings-manifest.csv`. Text content of each individual supplemental document is stored in `supplemental-docs.pkl`.
 
-## Split and summarize agenda items
+## Summarize agenda items
 
 `summarize-agenda-items.ipynb`
 
-Uses ChatGPT to extract and summarize individual agenda items from the raw text. Responses are stored in `intermediate_data/cpc/<year>/<date>/agenda-item-summaries.txt`.
+Uses ChatGPT to summarize individual agenda items from the raw text. Responses are stored in `agenda-item-summaries.txt`.
+
+## Split agenda items
+
+`split-agenda-items.ipynb`
+
+Parse the extracted summaries and split into individual agenda items. Store the results in a dataframe: `agenda-items.pkl`.
 
 
 
