@@ -1,7 +1,15 @@
+import os
+import sys
+import yaml
 import numpy as np
 import pandas as pd
 
-prefix_map = {
+with open('../../config.local.yaml', 'r') as f:
+    local_config = yaml.safe_load(f)
+
+LOCAL_PATH = local_config['LOCAL_PATH']
+
+PREFIX_MAP = {
 	'AA': 'AA',      # advisory agency
 	'ADM': 'ADM',   # administrative review
 	'APCC': 'APC',   # area planning commission
@@ -20,7 +28,7 @@ prefix_map = {
 	'ZAI': 'ZA'      
 }
 
-suffix_map = {
+SUFFIX_MAP = {
 	'ADU': 'ADU',     # accessory dwelling units
 	'ADUH': 'ADU',    
 	'CCMP': 'CCMP',   # certificate of compatability
@@ -92,85 +100,6 @@ def parse_casenum(casenum, raw=True):
     
     return parsed
 
-def get_la_planning_dept_cases(sheet=1):
-    df = pd.read_excel("../../raw_data/LA Business Council Data Request - 20220823.xlsx", sheet_name=sheet)
-
-    # Coerce date vars to date
-    for col in [
-        'Filed Date', 
-        'Case Deemed Complete Date', 
-        'DCP Hearing Date', 
-        'CPC/APC Hearing Date', 
-        'Completion Date'
-    ]:
-        if col in df.columns:
-            df[col] = pd.to_datetime(df[col], errors='coerce')
-
-    # Fix a council district
-    if sheet==1:
-        idx = df['Case Number']=='DIR-2018-1190-SPP'
-        df.loc[idx, 'Council District'] = 1
-    elif sheet==0:
-        idx = df['Case Number']=='CPC-2017-839-GPA-VZC-ZAD'
-        df.loc[idx, 'Council District'] = 13
-        idx = df['Case Number']=='DIR-2016-4984-DRB-SPP-MSP'
-        df.loc[idx, 'Council District'] = 4
-        idx = df['Case Number']=='DIR-2018-1190-SPP'
-        df.loc[idx, 'Council District'] = 1
-        idx = df['Case Number']=='ZA-2015-305-CUB-SPP'
-        df.loc[idx, 'Council District'] = 13
-    
-    df['Council District'] = pd.to_numeric(df['Council District'], errors='coerce')
-    assert df['Council District'].isna().sum()==0
-
-    # Drop any cases missing project description or requested entitlement
-    for col in ['Project Description', 'Requested Entitlement']:
-        if col in df.columns:
-            df[col] = df[col].fillna('')
-            df[col] = df[col].astype('str')
-            df[col] = df[col].str.strip()
-            idx = df[col].str.len()>0
-            df = df.loc[idx]
-    df = df.reset_index(drop=True)
-
-    # Drop any cases with a missing filed date
-    for col in ['Filed Date']:
-        if col in df.columns:
-            idx = df[col].notnull()
-            df = df.loc[idx]
-    df = df.reset_index(drop=True)
-
-    # Create a unified text column inclusive of project description and requested entitlement
-    df['text'] = ''
-    for idx, row in df.iterrows():
-        project_description = row['Project Description']
-        requested_entitlement = row['Requested Entitlement']
-        df.loc[idx, 'text'] = fr"""Project Description:
-{project_description}
-
-Requested Entitlement:
-{requested_entitlement}
-"""
-
-    # attach dummy columns for prefixes and suffixes
-    df['case_pfx'] = ''
-    for k in prefix_map.keys():
-        df[prefix_map[k]] = 0
-    for k in suffix_map.keys():
-        df[suffix_map[k]] = 0
-    for idx, row in df.iterrows():
-        casenum = row['Case Number']
-        parsed = parse_casenum(casenum)
-        pfx = parsed['prefix']
-        if pfx in prefix_map.keys():
-            df.loc[idx, 'case_pfx'] = prefix_map[pfx]
-            df.loc[idx, prefix_map[pfx]] = 1
-        for sfx in parsed['suffixes']:
-            if sfx in suffix_map.keys():
-                df.loc[idx, suffix_map[sfx]] = 1
-    
-    return df
-
 def get_supplemental_docs(verbose=True, clean=True):
     colmap = {
         'TYPE OF DOCUMENT:': 'doc_type',
@@ -180,14 +109,16 @@ def get_supplemental_docs(verbose=True, clean=True):
         'SUPPORT OR OPPOSE:': 'support_or_oppose'
     }
 
-    meta_df = pd.read_csv("../../intermediate_data/cpc/meetings_metadata.csv")
+    meetings_df = pd.read_csv(os.path.join(LOCAL_PATH, "intermediate_data/cpc/meetings-manifest.csv"))
+    DATES = sorted(list(meetings_df['date']))
+    
     df = []
-    for i, irow in meta_df.iterrows():
-        date = irow['date']
-        year = irow['year']
+    for date in DATES:
+        year = date[0:4]
+        PATH = os.path.join(LOCAL_PATH, f"intermediate_data/cpc/{year}/{date}")
         try:
-            summ_df = pd.read_pickle(f"../../intermediate_data/cpc/{year}/{date}/supplemental-docs-summaries.pkl")
-            docs_df = pd.read_pickle(f"../../intermediate_data/cpc/{year}/{date}/supplemental-docs.pkl")
+            summ_df = pd.read_pickle(os.path.join(PATH, "supplemental-docs-summaries.pkl"))
+            docs_df = pd.read_pickle(os.path.join(PATH, "supplemental-docs.pkl"))
             summ_df = summ_df.merge(docs_df[['doc_id','content']], how='left', on='doc_id')
         except:
             if verbose:
@@ -228,11 +159,9 @@ def get_supplemental_docs(verbose=True, clean=True):
                     end_index = start_indexes[heading2]
                 text = response[start_index:end_index].strip()
                 out_row[colname] = text
-
             df.append(out_row)
             
     df = pd.DataFrame.from_dict(df)
-
     return df
 
 
@@ -250,13 +179,15 @@ def get_minutes(verbose=True, clean=True):
         'IMPLICATION FOR PROJECT:': 'project_result'
     }
 
-    meta_df = pd.read_csv("../../intermediate_data/cpc/meetings_metadata.csv")
+    meetings_df = pd.read_csv(os.path.join(LOCAL_PATH, "intermediate_data/cpc/meetings-manifest.csv"))
+    DATES = sorted(list(meetings_df['date']))
+    
     df = []
-    for i, irow in meta_df.iterrows():
-        date = irow['date']
-        year = irow['year']
+    for date in DATES:
+        year = date[0:4]
+        PATH = os.path.join(LOCAL_PATH, f"intermediate_data/cpc/{year}/{date}")
         try:
-            minutes_df = pd.read_pickle(f"../../intermediate_data/cpc/{year}/{date}/minutes-summaries.pkl")
+            minutes_df = pd.read_pickle(os.path.join(PATH, "minutes-summaries.pkl"))
         except:
             if verbose:
                 print(f"No data found for {date}")
@@ -294,11 +225,9 @@ def get_minutes(verbose=True, clean=True):
                     end_index = start_indexes[heading2]
                 text = response[start_index:end_index].strip()
                 out_row[colname] = text
-
             df.append(out_row)
             
     df = pd.DataFrame.from_dict(df)
-
     return df
 
 def get_cases(verbose=True, clean=True):
