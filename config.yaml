@@ -1,14 +1,12 @@
-# Enter your API keys and save this file as config.yaml
-
-# Technical Configuration
+# Embeddings Configuration
 BATCH_SIZE: 128 
 CHUNK_SIZE: 1000
 CHUNK_OVERLAP: 200
+EMBEDDING_MODEL: "text-embedding-3-small"
+EMBEDDING_DIMENSION: 1536
 
 # Models
 CHAT_MODEL: "gpt-4o-2024-08-06"
-EMBEDDING_MODEL: "text-embedding-3-small"
-EMBEDDING_DIMENSION: 1536
 
 # VectorStore 
 PINECONE_CLOUD: "aws"

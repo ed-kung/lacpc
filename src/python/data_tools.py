@@ -160,8 +160,12 @@ def get_supplemental_docs(verbose=True, clean=True):
                 text = response[start_index:end_index].strip()
                 out_row[colname] = text
             df.append(out_row)
-            
+
     df = pd.DataFrame.from_dict(df)
+
+    if clean:
+        df['author_type'] = df['author_type'].str.replace('JOURNALIST', 'OTHER')
+    
     return df
 
 
