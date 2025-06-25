@@ -62,9 +62,9 @@ Parse the extracted summaries and split into individual agenda items. Store the 
 
 Generates two files: `minutes.pkl` and `minutes-items.pkl`.
 
-`minutes.pkl` is the split of the raw minutes text into individual items, showing the start and end line of each split.
+`minutes.pkl` is the split of the raw minutes text into individual sections, by start line and end line. These sections usually deal with just one item, but sometimes multiple at a time.
 
-`minutes-items.pkl` is organized by agenda item and finds all the sections of the minutes that were relevant to that agenda item.
+`minutes-items.pkl` is organized by agenda item and finds all the sections of the minutes that were relevant to that agenda item, as well as the text content of that section.
 
 ## Summarize minutes items
 

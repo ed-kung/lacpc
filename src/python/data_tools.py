@@ -200,13 +200,18 @@ def get_minutes(verbose=True, clean=True):
         for j, jrow in minutes_df.iterrows():
             item_no = jrow['item_no']
             title = jrow['title']
+            agenda_content = jrow['agenda_content']
+            minutes_content = jrow['minutes_content']
+            minutes_start_line = jrow['minutes_start_line']
+            minutes_end_line = jrow['minutes_end_line']
             prompt = jrow['prompt']
             response = jrow['response']
             score = jrow['score']
 
-            out_row = {'year': year, 'date': date, 'item_no': item_no,
-                       'title': title, 'prompt': prompt, 'response': response,
-                       'score': score}
+            out_row = {'year': year, 'date': date, 'item_no': item_no, 'title': title, 
+                       'agenda_content': agenda_content, 'minutes_content': minutes_content,
+                       'minutes_start_line': minutes_start_line, 'minutes_end_line': minutes_end_line,
+                       'prompt': prompt, 'response': response, 'score': score}
 
             # Find the starting indexes for each part of the response
             start_indexes = {}
@@ -238,4 +243,25 @@ def get_cases(verbose=True, clean=True):
     df = pd.read_pickle("../../intermediate_data/cpc/case-data.pkl")
     return df
 
+def get_agenda_items(verbose=True, clean=True):
+    meetings_df = pd.read_csv(os.path.join(LOCAL_PATH, "intermediate_data/cpc/meetings-manifest.csv"))
+    DATES = sorted(list(meetings_df['date']))
+    
+    df = []
+    for date in DATES:
+        year = date[0:4]
+        PATH = os.path.join(LOCAL_PATH, f"intermediate_data/cpc/{year}/{date}")
+        try:
+            agenda_items_df = pd.read_pickle(os.path.join(PATH, "agenda-items.pkl"))
+        except:
+            if verbose:
+                print(f"No data found for {date}")
+            continue
+        df.append(agenda_items_df)
+
+    df = pd.concat(df)
+    return df
+    
+    
+    
 
