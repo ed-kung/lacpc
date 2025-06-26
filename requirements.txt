@@ -13,6 +13,7 @@ pillow
 pinecone
 pymupdf
 pytesseract
+python-Levenshtein
 scikit-learn
 selenium
 shap

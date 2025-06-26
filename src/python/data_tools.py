@@ -3,6 +3,7 @@ import sys
 import yaml
 import numpy as np
 import pandas as pd
+import Levenshtein
 
 with open('../../config.local.yaml', 'r') as f:
     local_config = yaml.safe_load(f)
@@ -75,6 +76,34 @@ SUFFIX_MAP = {
 	'ZV': 'ZV',       # zone variance
 }
 
+MEMBERS = [
+    'AMBROZ',
+    'CABILDO',
+    'CAMPBELL',
+    'CHOE',
+    'DAKE WILSON',
+    'DIAZ',
+    'GOLD',
+    'HORNSTOCK',
+    'KHORSAND',
+    'KLEIN',
+    'LAWSHE',
+    'LEUNG',
+    'LOPEZ-LEDESMA',
+    'MACK',
+    'MILLMAN',
+    'MITCHELL',
+    'NEWHOUSE',
+    'NOONAN',
+    'PADILLA-CAMPOS',
+    'PERLMAN',
+    'RELAN',
+    'SAITMAN',
+    'ZAMORA',
+    'NONE',
+    'N/A'
+]
+
 def parse_casenum(casenum, raw=True):
     tokens = casenum.split('-')
     parsed = {'prefix':'', 'year':'', 'canonical_casenum':'', 'suffixes':[]}
@@ -100,6 +129,19 @@ def parse_casenum(casenum, raw=True):
     
     return parsed
 
+def clean_member_name(x, max_distance=4):
+    best_dist = 1000
+    best_match = x
+    for member in MEMBERS:
+        lev = Levenshtein.distance(x.strip().upper(), member)
+        if lev < best_dist:
+            best_dist = lev
+            best_match = member
+    if best_dist <= max_distance:
+        return best_match
+    else:
+        return x
+    
 def get_supplemental_docs(verbose=True, clean=True):
     colmap = {
         'TYPE OF DOCUMENT:': 'doc_type',
@@ -175,9 +217,13 @@ def get_minutes(verbose=True, clean=True):
         'SUMMARY OF AGENDA ITEM:': 'agenda_item_summary',
         'SUMMARY OF CPC DELIBERATIONS:': 'deliberations_summary',
         'SUMMARY OF CPC MOTION:': 'motion_summary',
-        'VOTES FOR:': 'votes_for',
-        'VOTES AGAINST:': 'votes_against',
-        'VOTES ABSENT:': 'votes_absent',
+        'MOVED:': 'moved',
+        'SECONDED:': 'seconded',
+        'AYES:': 'ayes',
+        'NAYS:': 'nays',
+        'ABSTAINED:': 'abstained',
+        'RECUSED:': 'recused',
+        'ABSENT:': 'absent',
         'VOTE RESULT:': 'vote_result',
         'RESULT OF APPEAL:': 'appeal_result',
         'IMPLICATION FOR PROJECT:': 'project_result'
@@ -237,6 +283,37 @@ def get_minutes(verbose=True, clean=True):
             df.append(out_row)
             
     df = pd.DataFrame.from_dict(df)
+
+    if clean:
+        # Clean up the commissioner names
+        for col in ['moved', 'seconded', 'ayes', 'nays', 'abstained', 'recused', 'absent']:
+            df[f"{col}_count"] = 0
+            df[col] = df[col].str.replace('Commissioner', '')
+            df[col] = df[col].str.replace('Choe Mitchell', 'Choe, Mitchell')
+            df[col] = df[col].str.replace(r'(?<!Dake[-\s])Wilson', 'Dake Wilson', regex=True)
+            for idx, row in df.iterrows():
+                mylist = [clean_member_name(x.strip()) for x in row[col].split(',')]
+                df.loc[idx, col] = ', '.join(mylist)
+
+        # Count the ayes and nays
+        df['n_ayes'] = 0
+        df['n_nays'] = 0
+        df['n_abstained'] = 0
+        df['n_recused'] = 0
+        df['n_absent'] = 0
+        for idx, row in df.iterrows():
+            lists = {}
+            for col in ['moved', 'seconded', 'ayes', 'nays', 'abstained', 'recused', 'absent']:
+                lists[col] = []
+                for x in row[col].split(','):
+                    if (x.strip() in MEMBERS) and (x.strip() not in ['NONE', 'N/A']):
+                        lists[col].append(x.strip())
+            df.loc[idx, 'n_ayes'] = len(set(lists['moved']).union(set(lists['seconded'])).union(set(lists['ayes'])))
+            df.loc[idx, 'n_nays'] = len(set(lists['nays']))
+            df.loc[idx, 'n_abstained'] = len(set(lists['abstained']))
+            df.loc[idx, 'n_recused'] = len(set(lists['recused']))
+            df.loc[idx, 'n_absent'] = len(set(lists['absent']))
+    
     return df
 
 def get_cases(verbose=True, clean=True):
