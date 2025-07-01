@@ -46,9 +46,9 @@ Uses `supplemental-docs-splits.csv` to split `supplemental-docs.pdf` for all mee
 
 ## Summarize agenda items
 
-`summarize-agenda-items.ipynb`
+`summarize-agendas.ipynb`
 
-Uses ChatGPT to summarize individual agenda items from the raw text. Responses are stored in `agenda-item-summaries.txt`.
+Uses ChatGPT to summarize individual agenda items from the raw text. Responses are stored in `agenda-summary.txt`.
 
 ## Split agenda items
 
