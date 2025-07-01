@@ -211,7 +211,7 @@ def get_supplemental_docs(verbose=True, clean=True):
     return df
 
 
-def get_minutes(verbose=True, clean=True):
+def get_minutes(verbose=True, clean=True, caseinfo=True):
     colmap = {
         'RELATED CASES:': 'related_cases',
         'SUMMARY OF AGENDA ITEM:': 'agenda_item_summary',
@@ -317,7 +317,10 @@ def get_minutes(verbose=True, clean=True):
     return df
 
 def get_cases(verbose=True, clean=True):
-    df = pd.read_pickle("../../intermediate_data/cpc/case-data.pkl")
+    df = pd.read_pickle(os.path.join(LOCAL_PATH, "intermediate_data/cpc/case-data.pkl"))
+    if clean:
+        df['filing_date'] = pd.to_datetime(df['filingDt'], errors='coerce')
+        
     return df
 
 def get_agenda_items(verbose=True, clean=True):
