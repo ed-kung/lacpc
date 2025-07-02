@@ -356,12 +356,12 @@ def get_agenda_items(verbose=True, clean=True):
             agenda_content = jrow['agenda_content']
             prompt = jrow['prompt']
             response = jrow['response']
-            score = jrow['score']
+            perplexity = jrow['perplexity']
 
             out_row = {
                 'year': year, 'date': date, 'item_no': item_no, 'title': title, 
                 'agenda_content': agenda_content, 'prompt': prompt, 
-                'response': response, 'score': score
+                'response': response, 'perplexity': perplexity
             }
 
             # Find the starting indexes for each part of the response
