@@ -252,12 +252,12 @@ def get_minutes(verbose=True, clean=True, caseinfo=True):
             minutes_end_line = jrow['minutes_end_line']
             prompt = jrow['prompt']
             response = jrow['response']
-            score = jrow['score']
+            perplexity = jrow['perplexity']
 
             out_row = {'year': year, 'date': date, 'item_no': item_no, 'title': title, 
                        'agenda_content': agenda_content, 'minutes_content': minutes_content,
                        'minutes_start_line': minutes_start_line, 'minutes_end_line': minutes_end_line,
-                       'prompt': prompt, 'response': response, 'score': score}
+                       'prompt': prompt, 'response': response, 'perplexity': perplexity}
 
             # Find the starting indexes for each part of the response
             start_indexes = {}
