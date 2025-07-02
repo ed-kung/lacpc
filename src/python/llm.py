@@ -5,6 +5,7 @@ import time
 import requests
 import json
 import pickle
+import numpy as np
 from pinecone import Pinecone, ServerlessSpec
 from openai import OpenAI
 
@@ -166,8 +167,16 @@ def get_gpt_completion(prompt):
         logprobs = True
     )
     message = completion.choices[0].message.content
-    score = completion.choices[0].logprobs.content[0].logprob
-    return message, score
+    total_logprob = sum(tok.logprob for tok in completion.choices[0].logprobs.content)
+    n_tokens = len(completion.choices[0].logprobs.content)
+    perplexity = np.exp(-total_logprob/n_tokens)
+    return {
+        'prompt': prompt,
+        'message': message,
+        'total_logprob': total_logprob,
+        'n_tokens': n_tokens,
+        'perplexity': perplexity
+    }
 
 """
 Get a Chat-GPT response, first checking whether an answer for the 
@@ -183,13 +192,13 @@ def get_response(prompt, overwrite=False):
     my_hash = get_hash(prompt)
 
     if (not overwrite) and (response_store.get(my_hash)):
-        message, score = response_store.get(my_hash)
-        return message, score
+        response = response_store.get(my_hash)
+        return response
 
-    message, score = get_gpt_completion(prompt)
-    response_store[my_hash] = message, score
+    response = get_gpt_completion(prompt)
+    response_store[my_hash] = response
 
     with open(RESPONSE_STORE, 'wb') as f:
         pickle.dump(response_store, f)
 
-    return message, score
+    return response

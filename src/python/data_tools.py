@@ -324,6 +324,18 @@ def get_cases(verbose=True, clean=True):
     return df
 
 def get_agenda_items(verbose=True, clean=True):
+    colmap = {
+        'RELATED CASES:': 'related_cases',
+        'COUNCIL DISTRICT:': 'council_district',
+        'COUNCIL MEMBER:': 'council_member',
+        'LAST DAY TO ACT:': 'last_day_to_act',
+        'SUMMARY OF PROJECT:': 'project_summary',
+        'RELEVANT LAWS:': 'relevant_laws',
+        'APPEALED:': 'appealed',
+        'SUMMARY OF APPEAL:': 'appeal_summary',
+        'DISPUTED LAWS:': 'disputed_laws'
+    }
+    
     meetings_df = pd.read_csv(os.path.join(LOCAL_PATH, "intermediate_data/cpc/meetings-manifest.csv"))
     DATES = sorted(list(meetings_df['date']))
     
@@ -332,14 +344,55 @@ def get_agenda_items(verbose=True, clean=True):
         year = date[0:4]
         PATH = os.path.join(LOCAL_PATH, f"intermediate_data/cpc/{year}/{date}")
         try:
-            agenda_items_df = pd.read_pickle(os.path.join(PATH, "agenda-items.pkl"))
+            minutes_df = pd.read_pickle(os.path.join(PATH, "agenda-item-summaries.pkl"))
         except:
             if verbose:
                 print(f"No data found for {date}")
             continue
-        df.append(agenda_items_df)
+    
+        for j, jrow in minutes_df.iterrows():
+            item_no = jrow['item_no']
+            title = jrow['title']
+            agenda_content = jrow['agenda_content']
+            prompt = jrow['prompt']
+            response = jrow['response']
+            score = jrow['score']
 
-    df = pd.concat(df)
+            out_row = {
+                'year': year, 'date': date, 'item_no': item_no, 'title': title, 
+                'agenda_content': agenda_content, 'prompt': prompt, 
+                'response': response, 'score': score
+            }
+
+            # Find the starting indexes for each part of the response
+            start_indexes = {}
+            for heading, colname in colmap.items():
+                start_indexes[heading] = response.find(heading)
+
+            if start_indexes['DISPUTED LAWS:']==-1:
+                if verbose:
+                    print(f"No proper response found for {date}, item_no {item_no}")
+                continue
+
+            for k in range(len(colmap)):
+                heading = list(colmap.keys())[k]
+                colname = colmap[heading]
+                start_index = start_indexes[heading] + len(heading)
+                if heading=='DISPUTED LAWS:':
+                    end_index = len(response)
+                else:
+                    heading2 = list(colmap.keys())[k+1]
+                    end_index = start_indexes[heading2]
+                text = response[start_index:end_index].strip()
+                out_row[colname] = text
+            df.append(out_row)
+            
+    df = pd.DataFrame.from_dict(df)
+
+    if clean:
+        df['last_day_to_act'] = pd.to_datetime(df['last_day_to_act'], errors='coerce')
+        df['appealed'] = (df['appealed']=='YES')
+
     return df
     
     
