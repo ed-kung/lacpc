@@ -353,13 +353,17 @@ def get_agenda_items(verbose=True, clean=True):
         for j, jrow in minutes_df.iterrows():
             item_no = jrow['item_no']
             title = jrow['title']
+            is_cc_heading = jrow['is_cc_heading']
+            is_cc_part = jrow['is_cc_part']
+            is_casenum = jrow['is_casenum']
             agenda_content = jrow['agenda_content']
             prompt = jrow['prompt']
             response = jrow['response']
             perplexity = jrow['perplexity']
 
             out_row = {
-                'year': year, 'date': date, 'item_no': item_no, 'title': title, 
+                'year': year, 'date': date, 'item_no': item_no, 'title': title,
+                'is_cc_heading': is_cc_heading, 'is_cc_part': is_cc_part, 'is_casenum': is_casenum,
                 'agenda_content': agenda_content, 'prompt': prompt, 
                 'response': response, 'perplexity': perplexity
             }
