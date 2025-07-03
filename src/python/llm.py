@@ -171,7 +171,6 @@ def get_gpt_completion(prompt):
     n_tokens = len(completion.choices[0].logprobs.content)
     perplexity = np.exp(-total_logprob/n_tokens)
     return {
-        'prompt': prompt,
         'message': message,
         'total_logprob': total_logprob,
         'n_tokens': n_tokens,
