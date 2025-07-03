@@ -173,12 +173,12 @@ def get_supplemental_docs(verbose=True, clean=True):
             prompt = jrow['prompt']
             response = jrow['response']
             content = jrow['content']
-            score = jrow['score']
+            perplexity = jrow['perplexity']
 
             out_row = {'year': year, 'date': date, 'doc_id': doc_id, 
                        'start_page': start_page, 'end_page': end_page,
                        'content': content, 'prompt': prompt,
-                       'response': response, 'score': score}
+                       'response': response, 'perplexity': perplexity}
 
             # Find the starting indexes for each part of the response
             start_indexes = {}
