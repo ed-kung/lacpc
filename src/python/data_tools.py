@@ -287,7 +287,6 @@ def get_minutes(verbose=True, clean=True, caseinfo=True):
     if clean:
         # Clean up the commissioner names
         for col in ['moved', 'seconded', 'ayes', 'nays', 'abstained', 'recused', 'absent']:
-            df[f"{col}_count"] = 0
             df[col] = df[col].str.replace('Commissioner', '')
             df[col] = df[col].str.replace('Choe Mitchell', 'Choe, Mitchell')
             df[col] = df[col].str.replace(r'(?<!Dake[-\s])Wilson', 'Dake Wilson', regex=True)
