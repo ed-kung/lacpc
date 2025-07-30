@@ -22,3 +22,19 @@ def canonicalize_casenum(caseno):
         case_parts[2] = case_parts[2].lstrip('0')
         return '-'.join(case_parts)
 
+# Parse case number into its components
+def parse_casenum(caseno):
+    if not is_casenum(caseno):
+        raise ValueError(f"Invalid case number format: {caseno}")
+    
+    canonical_casenum = canonicalize_casenum(caseno)
+
+    prefix = canonical_casenum.split('-')[0]
+    suffixes = caseno[len(canonical_casenum):].split('-')[1:]
+
+    return {
+        'casenum': caseno, 
+        'canonical_casenum': canonical_casenum,
+        'prefix': prefix,
+        'suffixes': suffixes
+    }
