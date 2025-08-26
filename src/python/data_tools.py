@@ -12,7 +12,7 @@ with open('../../config.local.yaml', 'r') as f:
 LOCAL_PATH = local_config['LOCAL_PATH']
 
 RESULTS_JSON = os.path.join(LOCAL_PATH, 'results', 'results.json')
-RESULTS_TEX = os.path.join(LOCAL_PATH, 'results', '99results.tex')
+RESULTS_TEX = os.path.join(LOCAL_PATH, 'results', 'results.tex')
 
 PREFIX_MAP = {
 	'AA': 'AA',      # advisory agency
