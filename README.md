@@ -90,3 +90,11 @@ Summarizes each supplemental document using ChatGPT. Stores results in a datafra
 
 Scrapes PDIS for information on all relevant cases extracted from the minutes. Storse results in `case-data.pkl`.
 
+## Export main data for estimation
+
+`create-estimation-data.ipynb`
+
+## Summary statistics
+
+`summary-statistics.ipynb`
+

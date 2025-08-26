@@ -3,12 +3,16 @@ import sys
 import yaml
 import numpy as np
 import pandas as pd
+import json
 import Levenshtein
 
 with open('../../config.local.yaml', 'r') as f:
     local_config = yaml.safe_load(f)
 
 LOCAL_PATH = local_config['LOCAL_PATH']
+
+RESULTS_JSON = os.path.join(LOCAL_PATH, 'results', 'results.json')
+RESULTS_TEX = os.path.join(LOCAL_PATH, 'results', '99results.tex')
 
 PREFIX_MAP = {
 	'AA': 'AA',      # advisory agency
@@ -399,5 +403,27 @@ def get_agenda_items(verbose=True, clean=True):
     return df
     
     
-    
+def get_analysis_data():
+    filename = os.path.join(LOCAL_PATH, "intermediate_data/cpc/analysis_data.pkl")
+    df = pd.read_pickle(filename)
+    return df
 
+def update_results(x):
+    if os.path.exists(RESULTS_JSON):
+        with open(RESULTS_JSON, 'r') as f:
+            results = json.load(f)
+    else:
+        results = {}
+
+    for k, v in x.items():
+        results[k] = v
+
+    with open(RESULTS_JSON, 'w') as f:
+        json.dump(results, f)
+    with open(RESULTS_TEX, 'w') as f:
+        for k, v in results.items():
+            f.write(f"%<*{k}>\n")
+            f.write(f"{v}\n")
+            f.write(f"%</{k}>\n")
+    
+    return results
