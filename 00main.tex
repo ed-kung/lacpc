@@ -95,17 +95,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 \input{01intro}
 \input{02data}
-%\input{02background}
-%\input{03data}
-%\input{04statmodels}
-%\input{05completions}
-%\input{06conclusion}
 
 %\bibliographystyle{aer}
-%\bibliography{98refs}
+%\bibliography{81refs}
 
 %\pagebreak
-%\input{tables/tab_summary}
 
 \pagebreak
 
@@ -157,14 +151,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 \pagebreak
 
+\appendix
+\renewcommand{\thefigure}{A\arabic{figure}}
+
+\input{95data}
+
+
+
+\pagebreak
+
 \begin{figure}[H]
 \caption{Prompt to Split and Summarize Agenda} \label{fig_split_agenda_prompt}
+\vspace{-0.5cm}
+\begin{center}
+\fbox{
+\begin{minipage}{0.9\textwidth}
+\texttt{
 \input{figures/agenda_split_prompt.tex}
+}
+\end{minipage}
+}
+\end{center}
 \end{figure}
 
 
 
-%\appendix
-%\input{AAappendix}
 \end{document}
 
