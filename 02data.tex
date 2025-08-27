@@ -18,7 +18,9 @@ Figures \ref{fig_example_support_letter} and \ref{fig_example_oppose_letter} sho
 
 \subsection{Data Extraction}
 
-The documentary data provides a wealth of information 
+The documentary data provides a wealth of information about CPC cases and their outcomes. However, the information is locked within textual data that is difficult to process using traditional methods. For example, traditional NLP methods based on token and pattern matching would have a hard time comparing the agenda to the minutes and determining whether the requested actions were approved, partially approved, approved with conditions, denied, or whether the decision was postponed to a future date. 
+
+To extract usable features from the textual content more robustly, we make use of OpenAI's \texttt{gpt-4o} generative chat model. The first step is to extract individual agenda items, and a short summary of each one's content, out of the full agenda PDF for each CPC meeting. This step is necessary because the meeting agenda PDFs do not always contain consistent boundary markers for when one agenda item ends and another one begins. The generative AI is therefore tasked with splitting the document into its unique components. Figure \ref{fig_agenda_split_prompt} shows the prompt used to do this split and summary.
 
 
 
