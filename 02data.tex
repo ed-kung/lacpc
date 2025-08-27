@@ -4,6 +4,12 @@
 
 The Los Angeles planning and approvals process for urban development is a multi-layered process that requires the input of multiple agencies. 
 
-\subsection{Data Acquisition}
+\subsection{Data Acquisition and Extraction}
 
-The Planning Department's website maintains robust public documentation of City Planning Commission Meetings. For each meeting, the agenda, minutes, and any supplemental documents relevant to the meeting (letters from the public, traffic assessments, architectural reports, etc.) are available for download as PDF files.\footnote{As of August 26th, 2025, these documents are available at the URL: \url{https://planning.lacity.gov/about/commissions-boards-hearings}.} We downloaded these documents for all City Planning Commission meetings from May 10th, 2018 to December 19th, 2024. This resulted in documentary data for \gn{NumberOfMeetings} meetings, covering \gn{NumberOfAgendaItems} agenda items, with \gn{NumberOfSupplementalDocs} supplemental documents, spanning \gn{PageCount} pages of text.
+The Planning Department's website maintains robust public documentation of City Planning Commission Meetings. For each meeting, the agenda, minutes, and any supplemental documents relevant to the meeting (letters from the public, traffic assessments, architectural reports, etc.) are available for download as PDF files.\footnote{As of August 26th, 2025, these documents are available at the URL: \url{https://planning.lacity.gov/about/commissions-boards-hearings}.} We downloaded these documents for all City Planning Commission meetings from May 10th, 2018 to December 19th, 2024. This resulted in documentary data for \gn{NumberOfMeetings} meetings, covering \gn{NumberOfAgendaItems} agenda items, with \gn{NumberOfSupplementalDocs} supplemental documents, spanning \gn{PageCount} pages of text. Download occurred on April 10th, 2025.
+
+Since we are primarily interested in bureaucratic decision making, we limit our attention to the agenda items requiring a decision from the board. These are identified by agenda items titled by their Planning Department case numbers, which have a standardized format of ``[CASE PREFIX]-[YEAR]-[SERIAL NUMBER]-[CASE SUFFIXES]''. Other agenda items include items like ``Director's Report'' and ``General Public Comment'' which do not require any decisions on the part of the board. Altogether, there were \gn{NumberOfCases} agenda items requiring a decision from the board, as identified by their Planning Department case numbers.
+
+A typical agenda item is a request from a developer to approve a development plan that goes beyond what the site's zoning designation would allow, either in terms of the architectural properties of the development or in terms of the proposed use of the development. 
+
+
