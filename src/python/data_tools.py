@@ -408,22 +408,3 @@ def get_analysis_data():
     df = pd.read_pickle(filename)
     return df
 
-def update_results(x):
-    if os.path.exists(RESULTS_JSON):
-        with open(RESULTS_JSON, 'r') as f:
-            results = json.load(f)
-    else:
-        results = {}
-
-    for k, v in x.items():
-        results[k] = v
-
-    with open(RESULTS_JSON, 'w') as f:
-        json.dump(results, f)
-    with open(RESULTS_TEX, 'w') as f:
-        for k, v in results.items():
-            f.write(f"%<*{k}>\n")
-            f.write(f"{v}\n")
-            f.write(f"%</{k}>\n")
-    
-    return results
