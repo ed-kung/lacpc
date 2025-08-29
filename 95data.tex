@@ -6,9 +6,13 @@ Extracting data from the raw PDFs downloaded from the Planning Department websit
 
 The first step, therefore, is to extract the individual agenda items. Figure \ref{fig_split_agenda_prompt} shows the prompt we used to have the LLM read the agenda, then extract each individual agenda item. We ask the LLM to return the agenda's item number, its title (which is a Planning Department case number for any items requiring a decision), and a short summary of the agenda item.
 
-After the agenda items are extracted, the next step is to extract data about each agenda item, using the agenda text. The raw agenda PDF is split into its individual components based on the extracted item number and title for each agenda item. The text for each individual agenda item is then fed into the prompt shown in Figure \ref{fig_agenda_items_prompt}. The outputted response is then used to extract the data features listed in Section \ref{sec_data}.
+After the agenda items are extracted, the next step is to extract data about each agenda item, using the agenda text. The raw agenda PDF is split into its individual components based on the extracted item number and title for each agenda item. The text for each individual agenda item is then fed into the prompt shown in Figure \ref{fig_agenda_items_prompt}. The outputted response is then processed to extract the data features listed in Section \ref{sec_data}.
 
 After extracting data from the agenda text, we extract information about the deliberations over each agenda item from the minutes text. We first split the minutes PDF into the components relevant to each individual item, using the item number and title. We then take the agenda text for that item and the minutes text for that item and feed it into the prompt shown in Figure \ref{fig_minutes_prompt}. The response from the LLM is then processed to extract the data features.
 
-Lastly, we 
+Lastly, we need to extract data from the supplemental documents. This step is challenging because all of the supplemental documents are spliced together into a single PDF, and we need to split the PDF into individual documents. While this would be relatively easy for a human to do, we found that LLMs were not able to accomplish this task reliably. We found that LLMs struggled to process longer PDFs, and it also had a hard time recognizing document boundaries when, for example, the document contains a large number of attachments, or when the document contains a page dedicated entirely to signatures. We therefore had to manually annotate the document boundaries in each of the PDFs containing supplemental documents. 
+
+After manually splitting the individual documents out of the supplemental document PDFs, we fed the document text into the prompt shown in Figure \ref{fig_supplemental_docs_prompt}, along with the full text of the agenda for the associated meeting. It is necessary to include the full agenda in order to identify which agenda items the document is in reference to. We then process the LLM output to extract the relevant data features.
+
+
 
