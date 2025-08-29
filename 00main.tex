@@ -8,6 +8,7 @@
 \usepackage{geometry}
 \geometry{verbose,tmargin=1.25in,bmargin=1.25in,lmargin=1.25in,rmargin=1.25in}
 \usepackage{float}
+\usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{setspace}
@@ -95,6 +96,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 \input{01intro}
 \input{02data}
+\input{03methodology}
+\input{04results}
+\input{05conclusion}
 
 %\bibliographystyle{aer}
 %\bibliography{81refs}
@@ -152,12 +156,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \pagebreak
 
 \begin{table}[H]
-\caption{Summary of Vote Results}
+\caption{Summary of Motion Outcomes and Vote Results}
 \vspace{0.2cm}
 \label{tab_result_unanimity}
 \begin{adjustbox}{max width=\textwidth}
 \begin{threeparttable}
 \input{tables/tab_result_unanimity.tex}
+\begin{tablenotes}
+\item {\textit{Notes: } This table shows the number of cases decided on by the City Planning Commission, organized by the implication of the motion for the project proposal and the unanimity of the vote.}
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
+
+\pagebreak
+
+\begin{table}[H]
+\caption{Summary Statistics for Case Features}
+\vspace{0.2cm}
+\label{tab_summary_stats}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{center}
+[Summary statistics for variables used in analysis]
+\end{center}
 \begin{tablenotes}
 \item {\textit{Notes: } Notes.}
 \end{tablenotes}
@@ -167,12 +189,37 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 \pagebreak
 
+\begin{table}[H]
+\caption{Ordered Logit Regression Results}
+\vspace{0.2cm}
+\label{tab_ologit_results}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{center}
+[Ordered logit results]
+\end{center}
+\begin{tablenotes}
+\item {\textit{Notes: } This table reports results from the ordered logit regression discussed in Section \ref{sec_methodology}. The ordering of the outcomes: is 0:DENIED / DELIBERATIONS CONTINUED TO FUTURE DATE; 1:PARTIALLY APPROVED OR APPROVED WITH MODIFICATIONS; 2:APPROVED.}
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
+
+
+
+\pagebreak
+
 \appendix
-\renewcommand{\thefigure}{A\arabic{figure}}
+
+\renewcommand{\thefigure}{\thesection\arabic{figure}}
+\renewcommand{\thetable}{\thesection\arabic{table}}
+
+\makeatletter
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\makeatother
 
 \input{95data}
-
-
 
 \pagebreak
 
