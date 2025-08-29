@@ -1,35 +1,10 @@
 \section{Data Appendix} \label{sec_data_appendix}
 
-\subsection{Data Acquisition}
+\subsection{Data Extraction with LLMs}
 
-The Planning Department's website maintains robust public documentation of City Planning Commission Meetings. For each meeting, the agenda, minutes, and any supplemental documents relevant to the meeting (letters from the public, traffic assessments, architectural reports, etc.) are available for download as PDF files.\footnote{As of August 26th, 2025, these documents are available at the URL: \url{https://planning.lacity.gov/about/commissions-boards-hearings}.} We downloaded these documents for all City Planning Commission meetings from May 10th, 2018 to December 19th, 2024. This resulted in documentary data for \gn{NumberOfMeetings} meetings, covering \gn{NumberOfAgendaItems} agenda items, with \gn{NumberOfSupplementalDocs} supplemental documents, spanning \gn{PageCount} pages of PDF documents. Download occurred on April 10th, 2025.
+Extracting data from the raw PDFs downloaded from the Planning Department website is a multi-step process. First, individual agenda items need to be extracted from the raw agenda PDF. This is difficult using traditional NLP methods because the boundaries between agenda items in the PDF are not always consistently demarcated. However, LLMs are quite suited to this task of identifying the unique agenda items out of a single PDF containing the agenda.
 
-Since we are primarily interested in bureaucratic decision making, we limit our attention to the agenda items requiring a decision from the board. These are identified by agenda items titled by their Planning Department case numbers, which have a standardized format of ``[CASE PREFIX]-[YEAR]-[SERIAL NUMBER]-[CASE SUFFIXES]''. Other agenda items include items like ``Director's Report'' and ``General Public Comment'' which do not require any decisions on the part of the board. Altogether, there were \gn{NumberOfCases} agenda items requiring a decision from the board, as identified by their Planning Department case numbers.
+The first step, therefore, is to extract the individual agenda items. Figure \ref{fig_split_agenda_prompt} shows the prompt we used to have the LLM read the agenda, then extract each individual agenda item. We ask the LLM to return the agenda's item number, its title (which is a Planning Department case number for any items requiring a decision), and a short summary of the agenda item.
 
-A typical agenda item is a request from a developer to approve a development plan that goes beyond what the site's zoning designation would allow, or an appeal of a previously approved plan. Figure \ref{fig_example_agenda_item} shows an example of an agenda item. The case number is DIR-2019-6048-TOC-SPR-WDI-1A. This was a project that was initially approved by the Director of Planning (DIR), granting the project bonuses under the Los Angeles Transit Oriented Communities program (TOC), requiring a Site Plan Review (SPR), and granting a waiver of dedication and improvements (WDI). However, this previously approved plan was appealed (1A), and the appeal is now to be considered by the City Planning Commission. In addition to the information contained in the case number, the agenda shows additional information such as the Countil District that the project is located in, and other specific details about the project proposal.
-
-Figure \ref{fig_example_minutes_item} shows the associated minutes for the agenda item shown in Figure \ref{fig_example_agenda_item}. From the minutes, we can see that the appeal was granted in part and denied in part. The Director of Planning's previous decision was upheld by the CPC, but additional conditions were applied, thus allowing the project to move forward as long as the developer adheres to the new conditions. This outcome, the partial granting of an appeal or the approval of a project with conditions, is common but not the only kind of outcome. Sometimes, the requested actions by the developer are granted in their entirety. Sometimes, the requested actions are denied entirely but this is rare. A more common occurrence is that the CPC puts the decision off to a later date. We will discuss the distribution of motion outcomes and voting patterns later in Section XX.
-
-Figures \ref{fig_example_support_letter} and \ref{fig_example_oppose_letter} show examples of letters submitted by the public in support of and in opposition to the above project. The support letter emphasizes how the project will ease traffic, reduce air pollution, and increase housing availability. The opposition letter emphasizes concerns about displacement and how the proposed units will be unaffordable to current residents of the neighborhood. These letters typify the kinds of concerns expressed by community residents in this dataset; however, the number of letters this project attracted is atypical---it turns out that DIR-2019-6048 was a particularly controversial project. We will discuss the distribution of support and oppose letters across projects later in Section XX.
-
-\subsection{Data Extraction}
-
-The documentary data provides a wealth of information about CPC cases and their outcomes. However, the information is locked within textual data that is difficult to process using traditional methods. For example, traditional NLP methods based on token and pattern matching would have a hard time comparing the agenda to the minutes and determining whether the requested actions were approved, partially approved, approved with conditions, denied, or whether the decision was postponed to a future date. 
-
-To extract usable features from the textual content more robustly, we make use of OpenAI's \texttt{gpt-4o} generative chat model. Here is an overview of the process:
-
-\begin{itemize}
-\item For each meeting's agenda PDF:
-    \begin{itemize}
-    \item Use AI to split the agenda into its individual items, extracting the item number, title, and a short summary of each item.
-    \end{itemize}
-\item For each agenda item:
-    \begin{itemize}
-    \item Use AI to read the agenda text and extract information on 
-    \end{itemize}
-\end{itemize}
-
-The first step is to extract individual agenda items, and a short summary of each one's content, out of the full agenda PDF for each CPC meeting. This step is necessary because the meeting agenda PDFs do not always contain consistent boundary markers for when one agenda item ends and another one begins. The AI is therefore tasked with splitting the document into its unique components. Figure \ref{fig_split_agenda_prompt} shows the prompt used to do this split and summary.
-
-Once the individual items are extracted, it becomes easier to split the agenda PDF into individual items by pattern matching on the agenda item numbers and titles.  
+After the agenda items are extracted, the next step is to extract data about each agenda item, using the agenda text. The raw agenda PDF is split into its individual components based on the extracted item number and title for each agenda item. The text for each individual agenda item is then fed into the prompt shown in Figure \ref{fig_agenda_items_prompt}. 
 

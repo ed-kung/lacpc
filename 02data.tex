@@ -7,7 +7,7 @@ The Los Angeles planning and approvals process for urban development is a multi-
 
 \subsection{Data Acquisition}
 
-The Planning Department's website maintains robust public documentation of City Planning Commission Meetings. For each meeting, the agenda, minutes, and any supplemental documents relevant to the meeting (letters from the public, traffic assessments, architectural reports, etc.) are available for download as PDF files.\footnote{As of August 26th, 2025, these documents are available at the URL: \url{https://planning.lacity.gov/about/commissions-boards-hearings}.} We downloaded these documents for all City Planning Commission meetings from May 10th, 2018 to December 19th, 2024. This resulted in documentary data for \gn{NumberOfMeetings} meetings, covering \gn{NumberOfAgendaItems} agenda items, with \gn{NumberOfSupplementalDocs} supplemental documents, spanning \gn{PageCount} pages of PDF documents. Download occurred on April 10th, 2025.
+The Los Angeles Planning Department's website maintains robust public documentation of City Planning Commission Meetings. For each meeting, the agenda, minutes, and any supplemental documents relevant to the meeting (letters from the public, traffic assessments, architectural reports, etc.) are available for download as PDF files.\footnote{As of August 26th, 2025, these documents are available at the URL: \url{https://planning.lacity.gov/about/commissions-boards-hearings}.} We downloaded these documents for all City Planning Commission meetings from May 10th, 2018 to December 19th, 2024. This resulted in documentary data for \gn{NumberOfMeetings} meetings, covering \gn{NumberOfAgendaItems} agenda items, with \gn{NumberOfSupplementalDocs} supplemental documents, spanning \gn{PageCount} pages of PDF documents. Download occurred on April 10th, 2025.
 
 Since we are primarily interested in bureaucratic decision making, we limit our attention to the agenda items requiring a decision from the board. These are identified by agenda items titled by their Planning Department case numbers, which have a standardized format of ``[CASE PREFIX]-[YEAR]-[SERIAL NUMBER]-[CASE SUFFIXES]''. Other agenda items include items like ``Director's Report'' and ``General Public Comment'' which do not require any decisions on the part of the board. Altogether, there were \gn{NumberOfCases} agenda items requiring a decision from the board, as identified by their Planning Department case numbers.
 
@@ -24,7 +24,7 @@ The documentary data provides a wealth of information about CPC cases and their 
 To extract usable features from the textual content more robustly, we make use of OpenAI's \texttt{gpt-4o} generative chat model. For example, the model can be asked to read the text of the agenda, read the text of the minutes, and explain what the result of committee's proposed motion was in terms of its implications for the development project: was the project approved, partially approved or approved with conditions, denied, or was the decision postponed? The methodology and prompts we used to perform the data extraction are described in detail in Appendix \ref{sec_data_appendix}. In this section, we will instead focus on what data features were extracted form the text.
 
 \paragraph{Agenda items.} For each agenda item, extract the following information from its agenda text: 
-\begin{itemize}
+\begin{itemize}[noitemsep, topsep=0pt]
 \item Item number (used primarily for identification);
 \item Item title (for cases requiring a decision, this is always a Planning Department case number)
 \item Short AI-generated summary of the agenda item's content;
@@ -36,7 +36,7 @@ To extract usable features from the textual content more robustly, we make use o
 \end{itemize}
 
 \paragraph{Minutes.} For each agenda item, we extract the following information from its minutes text:
-\begin{itemize}
+\begin{itemize}[noitemsep, topsep=0pt]
 \item Short AI-generated summary of the deliberations and the motion that was ultimately voted on;
 \item Name of Commission Member who moved the motion;
 \item Name of the Member who seconded;
@@ -46,7 +46,7 @@ To extract usable features from the textual content more robustly, we make use o
 \end{itemize}
 
 \paragraph{Supplemental documents.} For each supplemental document, we extract the following information from its text:
-\begin{itemize}
+\begin{itemize}[noitemsep, topsep=0pt]
 \item Type of document: whether it is a letter or petition, a technical modification or procedural matter, a scientific or technical report (traffic, environmental, etc), or a credentials document (CV, resume, biography, etc); 
 \item Type of author: whether the author of the document is an individual, an advocacy group, a consultant, a lawyer, a developer, or a public official;
 \item Which agenda item(s) it references;
@@ -56,4 +56,6 @@ To extract usable features from the textual content more robustly, we make use o
 
 \subsection{Descriptive Statistics} \label{sec_descriptive_statistics}
 
-The resulting dataset contains \gn{NumberOfCases} agenda items. Table \ref{tab_result_unanimity} shows the distribution of the hearing outcomes, by implication for the proposed project and by the unanimity of the vote. Two important facts emerge about the CPC process. First, a minuscule number of projects are denied outright (\gn{CasesDeniedPct} of all projects). Rat
+The resulting dataset contains \gn{NumberOfCases} agenda items with motions voted on by the CPC Members. Table \ref{tab_result_unanimity} shows the distribution of the hearing outcomes, by implication for the proposed project and by the unanimity of the vote. Two important facts emerge about the CPC process. First, a minuscule number of projects are denied outright (\gn{CasesDeniedPct} of all cases). Rather than being denied, a more common occurrence is that the decision is postponed to a later date (\gn{CasesContinuedPct} of cases) or the requested actions are partially approved or approved with conditions or modifications (\gn{CasesApprovedWithModsPct} of cases). Second, a large majority of motions are approved unanimously (\gn{CasesUnanimousPct} of all cases). Because of these two facts, we do not view disagreement within the board as a significant source of friction in moving development projects through the pipeline. Moreover, few projects are denied outright, so the impact of CPC hearings on total development come through either i) a slowing down of the process due to having to wait for a CPC decision, which itself may be delayed multiple times; or ii) changes to the project plan that potentially add cost or time to the development, or which could even dissuade the developer from moving forward with the project. Our primary analysis will therefore focus on the bureaucratic factors which lead to delayed decision making or the decision to attach conditions and modifications to the project proposal.
+
+
