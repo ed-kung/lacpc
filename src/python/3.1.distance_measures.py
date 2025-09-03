@@ -7,7 +7,17 @@ import math
 import numpy as np
 from scipy.spatial import distance
 
-input_path = '/Users/hal9004/Library/Mobile Documents/com~apple~CloudDocs/research/projects/cityplanning/data/analysis5'
+import yaml, os
+
+
+with open("../../config.local.yaml", 'r') as f:
+    local_config = yaml.safe_load(f)
+
+LOCAL_PATH = local_config['LOCAL_PATH']
+
+input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
+
+
 working_file1 = 'working_file1.csv'
 working_file2 = 'working_file2.csv'
 

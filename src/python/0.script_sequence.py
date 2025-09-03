@@ -1,8 +1,15 @@
 # run python script sequence
 
 import subprocess
+import os
+import yaml
 
-script_path = '/Users/hal9004/Library/Mobile Documents/com~apple~CloudDocs/research/Code/scraping/cityplanning'
+with open("../../config.local.yaml", 'r') as f:
+    local_config = yaml.safe_load(f)
+
+LOCAL_PATH = local_config['LOCAL_PATH']
+
+script_path = os.path.join(LOCAL_PATH, 'src/python')
 
 # 1. Build sample from original export
 
