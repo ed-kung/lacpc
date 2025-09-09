@@ -67,15 +67,15 @@ if _rc {
 
 esttab m0 m2 m3 m4 using "`filename1'", replace ///
     se b(3)                           ///
-    stats(N r2_p p,                   ///
+    stats(N r2_p p, fmt(0 3 3)        ///
           labels("Obs" "Pseudo R-squared" "Prob > chi2")) ///
     title("Ologit coeffs")
 
 esttab me2 me1 me0 using "`filename2'", append ///
     se b(3)                                   ///
-    stats(N, labels("Obs"))                   ///
+    stats(N, fmt(0) labels("Obs"))            ///
     mtitles("ME: outcome 2" "ME: outcome 1" "ME: outcome 0")
-
+	
 * 4) Robustness
 
 * A) Baseline (few controls)
