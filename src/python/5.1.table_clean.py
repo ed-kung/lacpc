@@ -139,6 +139,9 @@ colnames = [""] + model_headers
 clean = pd.DataFrame(out, columns=colnames)
 
 with open(f"{output_path}/{output_file}", "w") as f:
-    f.write(clean.style.to_latex(
+    f.write(clean.to_latex(
+        index=False,
+        escape=False,
+        na_rep="",
         column_format="l" + "c"*n_models   # 1 label col + centered model cols
     ))
