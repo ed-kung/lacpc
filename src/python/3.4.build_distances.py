@@ -3,18 +3,16 @@
 
 import csv
 import os
+import yaml
+import os
 
-import yaml, os
 
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 working_file = 'working_file.csv'
 working_file1 = 'working_file1.csv'
 working_file2 = 'working_file2.csv'

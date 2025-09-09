@@ -6,21 +6,19 @@ import csv
 import math
 import numpy as np
 from scipy.spatial import distance
+import yaml
+import os
 
-import yaml, os
-
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 working_file1 = 'working_file1.csv'
 working_file2 = 'working_file2.csv'
 
+# open data
 
 with open(f'{input_path}/{working_file1}', 'r') as g, open(f'{input_path}/{working_file2}', 'w', newline='', encoding='utf-8') as f:
     reader1 = csv.reader(g, delimiter=',')

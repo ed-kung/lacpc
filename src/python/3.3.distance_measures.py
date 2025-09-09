@@ -6,21 +6,21 @@
 import numpy as np
 from collections import defaultdict
 import csv
+import yaml
+import os
 
-import yaml, os
 
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 working_file1 = 'working_file1.csv'
-
 vectors_by_cluster = defaultdict(list)
+
+
+# align data
 
 with open(f'{input_path}/{working_file1}', 'r') as g:
     reader = csv.reader(g)

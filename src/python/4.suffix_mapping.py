@@ -1,20 +1,17 @@
 import csv
-import os, time
+import os
+import yaml
 
 
-import yaml, os
-
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 working_file = 'working_file.csv'
 input_file = 'sfx_mapping.csv'
+
 
 data1 = []
 with open(f'{input_path}/{working_file}', 'r') as g:

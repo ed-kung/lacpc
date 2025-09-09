@@ -1,22 +1,20 @@
 # combine cluster embeddings and cluster centroid data
 # output as working_file1
 
-import csv, time, math
+import csv
+import yaml
+import os
 
-import yaml, os
-
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 input_file1 = 'agenda_item_with_embeddings.25.8.7.csv'
 input_file2 = 'cluster_centroids.25.8.7.csv'
 working_file = 'working_file1.csv'
+
 
 # open working file
 

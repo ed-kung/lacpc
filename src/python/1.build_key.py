@@ -3,19 +3,18 @@
 # add council district dummies
 # output as working_file.csv
 
-import csv, time, math
+import csv
+import math
+import yaml
+import os
 
-import yaml, os
 
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 input_file = 'export-for-joe.25.8.7.csv'
 working_file = 'working_file.csv'
 

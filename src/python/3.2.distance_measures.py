@@ -7,24 +7,21 @@ import csv
 import numpy as np
 from collections import defaultdict
 from pathlib import Path
+import yaml
+import os
 
-
-import yaml, os
-
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 working_file1 = 'working_file1.csv'
 working_file3 = 'working_file3.csv'
 
 
 # Pass1: Gather vectors by cluster to estimate covariance
+
 vectors_by_cluster = defaultdict(list)
 
 with open(f'{input_path}/{working_file1}', 'r', newline='', encoding='utf-8') as g:
@@ -36,6 +33,7 @@ with open(f'{input_path}/{working_file1}', 'r', newline='', encoding='utf-8') as
         vectors_by_cluster[cluster].append(vec)
 
 # Build a pooled/global inverse covariance (fallback)
+
 all_vecs = np.vstack([np.asarray(v, dtype=float) for v in vectors_by_cluster.values()])
 global_cov = np.cov(all_vecs, rowvar=False)
 global_cov += 1e-6 * np.eye(global_cov.shape[0])      # small ridge

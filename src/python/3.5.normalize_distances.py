@@ -3,19 +3,18 @@
 
 import csv
 import statistics
+import yaml
+import os
 
-import yaml, os
 
+# set paths 
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
-
 LOCAL_PATH = local_config['LOCAL_PATH']
-
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
-
-
 working_file = 'working_file.csv'
+
 
 clusters = set()
 with open(f'{input_path}/{working_file}', 'r') as g:
