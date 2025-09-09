@@ -39,6 +39,7 @@
 \usepackage{multirow}
 \usepackage{tikz}
 \usetikzlibrary{decorations.pathreplacing}
+\usepackage{makecell}
 % define check and xmark
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
@@ -163,6 +164,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \begin{threeparttable}
 \input{tables/tab_result_unanimity.tex}
 \begin{tablenotes}
+
 \item {\textit{Notes: } This table shows the number of cases decided on by the City Planning Commission, organized by the implication of the motion for the project proposal and the unanimity of the vote.}
 \end{tablenotes}
 \end{threeparttable}
@@ -197,6 +199,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \begin{threeparttable}
 \begin{center}
 [Ordered logit results]
+\input{tables/ologit_main_effects.tex}
 \end{center}
 \begin{tablenotes}
 \item {\textit{Notes: } This table reports results from the ordered logit regression discussed in Section \ref{sec_methodology}. The ordering of the outcomes: is 0:DENIED / DELIBERATIONS CONTINUED TO FUTURE DATE; 1:PARTIALLY APPROVED OR APPROVED WITH MODIFICATIONS; 2:APPROVED.}
