@@ -192,20 +192,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \pagebreak
 
 \begin{table}[H]
-\caption{Ordered Logit Regression Results}
-\vspace{0.2cm}
-\label{tab_ologit_results}
-\begin{adjustbox}{max width=\textwidth}
-\begin{threeparttable}
-\begin{center}
-[Ordered logit results]
-\input{tables/ologit_main_effects.tex}
-\end{center}
-\begin{tablenotes}
-\item {\textit{Notes: } This table reports results from the ordered logit regression discussed in Section \ref{sec_methodology}. The ordering of the outcomes: is 0:DENIED / DELIBERATIONS CONTINUED TO FUTURE DATE; 1:PARTIALLY APPROVED OR APPROVED WITH MODIFICATIONS; 2:APPROVED.}
-\end{tablenotes}
-\end{threeparttable}
-\end{adjustbox}
+  \caption{Ordered Logit Regression Results}
+  \vspace{0.2cm}
+  \label{tab_ologit_results}
+  \begin{adjustbox}{max width=\textwidth}
+    \begin{threeparttable}
+      \centering
+      \input{tables/ologit_main_effects}
+\begin{tablenotes}[flushleft]
+        \footnotesize
+        \item Robust standard errors in parentheses; * $p<0.05$, ** $p<0.01$, *** $p<0.001$.
+        \item \textit{Notes:} This table reports results from the ordered logit regression 
+        discussed in Section \ref{sec_methodology}. The ordering of the outcomes is 
+        0: DENIED / DELIBERATIONS CONTINUED TO FUTURE DATE; 
+        1: PARTIALLY APPROVED OR APPROVED WITH MODIFICATIONS; 
+        2: APPROVED.
+      \end{tablenotes}
+    \end{threeparttable}
+  \end{adjustbox}
 \end{table}
 
 
