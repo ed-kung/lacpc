@@ -52,6 +52,7 @@ except: pass # kill stata
 # 6. Clean tables
 
 subprocess.run(['python3', f'{script_path1}/5.1.table_clean.py']) # arrange main fx for Latex
+subprocess.run(['python3', f'{script_path1}/5.2.table_clean.py']) # arrange marginal fx for Latex
 
 
 
