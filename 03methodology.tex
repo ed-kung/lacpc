@@ -2,15 +2,15 @@
 
 We model the CPC hearings as having three possible outcomes:
 \begin{enumerate}[start=0]
-\item The project is denied or the decision is postponed
-\item The project is approved in part or with conditions or modifications
-\item The project is approved
+\item The project is denied or the decision is postponed;
+\item The project is approved in part or with conditions or modifications;
+\item The project is approved.
 \end{enumerate}
-Each project proposal $i$ is assumed to have a latent quality variable $y_i^\ast$ which determines the likelihood of the three outcomes. $y_i^\ast$ is modeled as a linear function of its observed project characteristics and bureaucratic factors, plus an error term:
+Each project proposal $i$ is assumed to have a latent quality variable $y_i^\ast$ which determines the likelihood of the three outcomes. $y_i^\ast$ is modeled as a linear function of its observed project characteristics and bureaucratic factors, $\mathbf{X}_i$, plus an error term $\epsilon_i$:
 \begin{align}
 y_i^\ast = \mathbf{X}_i \beta + \epsilon_i
 \end{align}
-The latent quality of the project proposal determines its outcome at the CPC hearing. Let $y_{i} \in \{1, 2, 3\}$ denote project $i$'s outcome. The relationship between $y_i^\ast$ and $y_i$ is as follows:
+The latent quality of the project proposal determines its outcome at the CPC hearing. Let $y_{i} \in \{0, 1, 2\}$ denote project $i$'s outcome. The relationship between $y_i^\ast$ and $y_i$ is as follows:
 \begin{align}
 y_i = \begin{cases}
 0 \text{ if } y_i^\ast < \mu_0 \\
@@ -19,5 +19,18 @@ y_i = \begin{cases}
 \end{cases}
 \end{align}
 with $\mu_0 < \mu_1$. The model is therefore an ordered logit model, and the outcomes are monotonic in $\mathbf{X}_i \beta$. The parameters $\beta$, $\mu_0$, and $\mu_1$ are estimated by maximum likelihood.
+
+\subsection{Explanatory Variables}
+
+We now turn to discussing the explanatory variables we include in the model.
+
+\paragraph{Semantic Uniqueness.} In that one of our goals is to quantify the role of bureaucratic frictions in the CPC approvals process, we here develop a concept which we call ``semantic uniqueness''. At a high level, semantic uniqueness is designed to capture how unique an agenda item is relative to other agenda items that the CPC is accustomed to facing. Our hypothesis is that agenda items which are highly unusual may be less likely to be approved, and more likely to be approved with conditions or denied or delayed. We thus expect to estimate a negative coefficient on semantic uniqueness.
+
+To compute a measure of semantic uniqueness, we first calculate the semantic embedding of each agenda item using OpenAI's \texttt{text-embedding-3-small} embeddings model.\footnote{For an introduction to the concept of embeddings, see \citet{mikolov2013} and \citet{le2014}.} For each agenda item, the model returns a 1,536 dimensional numerical vector that represents the semantic meaning of the text. Two agenda items with very similar proposals will have embeddings that are close to each other, while two agenda items with very different proposals will have embeddings that are far away from each other. 
+
+Because \texttt{text-embedding-3-small} was trained on a general corpus of documents, not specialized to the topic of municipal planning and zoning, not all 1,536 dimensions may be relevant for capturing the important differences between our agenda items. We therefore use principal components analysis to extract the 10 linear combinations of these dimensions which explain the most variance in our corpus. Figure XX shows the scree plot of the principal components analysis, and shows that XX of the variance is explained with 10 components.
+
+
+
 
 
