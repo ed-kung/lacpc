@@ -28,7 +28,7 @@ We now turn to discussing the explanatory variables we include in the model.
 
 To compute a measure of semantic uniqueness, we first calculate the semantic embedding of each agenda item using OpenAI's \texttt{text-embedding-3-small} embeddings model.\footnote{For an introduction to the concept of embeddings, see \citet{mikolov2013} and \citet{le2014}.} For each agenda item, the model returns a 1,536 dimensional numerical vector that represents the semantic meaning of the text. Two agenda items with very similar proposals will have embeddings that are close to each other, while two agenda items with very different proposals will have embeddings that are far away from each other. 
 
-Because \texttt{text-embedding-3-small} was trained on a general corpus of documents, not specialized to the topic of municipal planning and zoning, not all 1,536 dimensions may be relevant for capturing the important differences between our agenda items. We therefore use principal components analysis to extract the 10 linear combinations of these dimensions which explain the most variance in our corpus. Figure XX shows the scree plot of the principal components analysis, and shows that XX of the variance is explained with 10 components.
+Because \texttt{text-embedding-3-small} was trained on a general corpus of documents, not specialized to the topic of municipal planning and zoning, not all 1,536 dimensions may be relevant for capturing the important differences between our agenda items. We therefore use principal components analysis to extract the 10 linear combinations of these dimensions which explain the most variance in our corpus. Figure XX shows the scree plot of the principal components analysis. 10 principal components is enough to explain 
 
 
 
