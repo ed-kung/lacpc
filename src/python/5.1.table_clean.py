@@ -118,13 +118,13 @@ out.append(["Semantic Cluster FE","N","Y","Y","Y"][:n_models+1]); out.append([""
 out.append(["Council District FE","N","N","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
 out.append(["Suffix Group FE","N","N","N","Y"][:n_models+1]);   out.append([""]*(n_models+1))
 
-
 # intercepts + stats (names as they appear in CSV)
-for label, key in [("Intercept 1","cut1"), ("Intercept 2","cut2")]:
+for label, key in [("$\\mu_0$","cut1"), ("$\\mu_1$","cut2")]:
     coef, se = get_row(key)
     out.append([label] + coef)
     out.append([""] + se)
     out.append([""] * (n_models + 1))
+
 
 obs, _ = get_row("Obs")
 r2,  _ = get_row("Pseudo R-squared")

@@ -5,11 +5,18 @@ import pandas as pd
 import re
 import yaml
 import os
+import sys
+import numpy as np
 
 # set paths 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
 LOCAL_PATH = local_config['LOCAL_PATH']
+
+sys.path.append(os.path.join(LOCAL_PATH, 'src/python'))
+
+import writing_tools as wt
+
 input_path = os.path.join(LOCAL_PATH, 'intermediate_data/cpc')
 working_file = 'ologit.marginal_effects.mahalanobis.csv' # esttab export
 output_file = 'ologit_marginal_effects.tex' 
@@ -136,3 +143,44 @@ with open(f"{output_path}/{output_file}", "w") as f:
         na_rep="",
         column_format="l" + "c"*n_models   # 1 label col + centered model cols
     ))
+
+# Update results.json and results.tex
+results = {}
+
+x = float(get_row('mahalanobis')[0][0].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['SemUniME2'] = x
+
+x = float(get_row('mahalanobis')[0][1].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['SemUniME1'] = x
+
+x = float(get_row('mahalanobis')[0][2].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['SemUniME0'] = x
+
+x = float(get_row('consent_calendar')[0][0].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['ConCalME2'] = x
+
+x = float(get_row('consent_calendar')[0][1].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['ConCalME1'] = x
+
+x = float(get_row('consent_calendar')[0][2].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['ConCalME0'] = x
+
+x = float(get_row('n__oppose')[0][0].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['NOppME2'] = x
+
+x = float(get_row('n__oppose')[0][1].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['NOppME1'] = x
+
+x = float(get_row('n__oppose')[0][2].replace('*',''))
+x = f"{np.abs(x)*100:.1f}\\%"
+results['NOppME0'] = x
+
+wt.update_results(results)
