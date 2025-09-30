@@ -232,6 +232,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \pagebreak
 
 \begin{table}[H]
+  \centering
   \caption{Ordered Logit Regression Results}
   \vspace{0.2cm}
   \label{tab_ologit_results}
@@ -241,12 +242,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
       \input{tables/ologit_main_effects}
         \begin{tablenotes}[flushleft]
         \footnotesize
-        \item Robust standard errors in parentheses. * $p<0.05$, ** $p<0.01$, *** $p<0.001$.
-        \item \textit{Notes:} This table reports results from the ordered logit regression 
-        discussed in Section \ref{sec_methodology}. The ordering of the outcomes is 
-        0: DENIED / DELIBERATIONS CONTINUED TO FUTURE DATE; 
-        1: PARTIALLY APPROVED OR APPROVED WITH MODIFICATIONS; 
-        2: APPROVED.
+        \item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
+        \item \textit{Notes:} This table reports coefficient estimates from the ordered logit regression 
+        described in Section \ref{sec_methodology}.
       \end{tablenotes}
     \end{threeparttable}
   \end{adjustbox}
@@ -262,13 +260,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
       \input{tables/ologit_marginal_effects}
         \begin{tablenotes}[flushleft]\footnotesize
             \item[] \parbox[t]{\linewidth}{%
-            Robust standard errors in parentheses.\\
-            * $p<0.05$, ** $p<0.01$, *** $p<0.001$.}
-        \item \textit{Notes:} This table reports results from the ordered logit regression 
-        discussed in Section \ref{sec_methodology}. The ordering of the outcomes is 
-        0: DENIED / DELIBERATIONS CONTINUED TO FUTURE DATE; 
-        1: PARTIALLY APPROVED OR APPROVED WITH MODIFICATIONS; 
-        2: APPROVED.
+            Robust standard errors in parentheses.
+            * $p<0.1$, ** $p<0.05$, *** $p<0.01$.}
+        \item \textit{Notes:} This table reports estimated marginal effects from the ordered logit regression 
+        discussed in Section \ref{sec_methodology}.
       \end{tablenotes}
     \end{threeparttable}
   \end{adjustbox}
