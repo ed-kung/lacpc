@@ -99,12 +99,11 @@ while i < len(rows):
 # build cleaned table
 out = []
 # header row (label + model headers)
-out.append([""] + [r"\makecell{Project \\ Implication}"] * n_models)
 out.append([""] * (n_models + 1))
 out.append([""] * (n_models + 1))
 
 # main variables (rename labels to taste)
-add_var("Distance",               "mahalanobis")
+add_var("Semantic Uniqueness",    "mahalanobis")
 add_var("Agenda Perplexity",      "agenda_perplexity")
 add_var("Agenda Order",           "agenda_order")
 add_var("No. Agenda Items",       "num_agenda_items")
@@ -116,9 +115,9 @@ add_var("No. Oppose",             "n__oppose")
 # block rows, esttab renumbers to (1)(2)(3)(4).
 # adjust n/y flags to match spec
 
-out.append(["Cluster Effects","n","y","y","y"][:n_models+1]); out.append([""]*(n_models+1))
-out.append(["District Effects","n","n","y","y"][:n_models+1]); out.append([""]*(n_models+1))
-out.append(["Suffix Effects","n","n","n","y"][:n_models+1]);   out.append([""]*(n_models+1))
+out.append(["Cluster FE","N","Y","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
+out.append(["Council District FE","N","N","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
+out.append(["Suffix FE","N","N","N","Y"][:n_models+1]);   out.append([""]*(n_models+1))
 
 
 # intercepts + stats (names as they appear in CSV)
