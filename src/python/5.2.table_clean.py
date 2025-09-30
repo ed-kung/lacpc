@@ -122,9 +122,9 @@ add_var("Consent Calendar",       "consent_calendar")
 add_var("$\log_2$(\# Support)",   "n__support")
 add_var("$\log_2$(\# Oppose)",    "n__oppose")
 
-out.append(["Semantic Cluster FE","N","Y","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
-out.append(["Council District FE","N","N","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
-out.append(["Suffix Group FE","N","N","N","Y"][:n_models+1]);   out.append([""]*(n_models+1))
+out.append(["Semantic Cluster FE","Y","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
+out.append(["Council District FE","Y","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
+out.append(["Suffix Group FE","Y","Y","Y"][:n_models+1]);   out.append([""]*(n_models+1))
 
 
 # add stats at bottom if present
