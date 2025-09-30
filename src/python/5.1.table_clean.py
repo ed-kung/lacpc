@@ -100,7 +100,6 @@ while i < len(rows):
 out = []
 # header row (label + model headers)
 out.append([""] * (n_models + 1))
-out.append([""] * (n_models + 1))
 
 # main variables (rename labels to taste)
 add_var("Semantic Uniqueness",    "mahalanobis")
@@ -108,16 +107,16 @@ add_var("Agenda Perplexity",      "agenda_perplexity")
 add_var("Agenda Order",           "agenda_order")
 add_var("No. Agenda Items",       "num_agenda_items")
 add_var("Consent Calendar",       "consent_calendar")
-add_var("No. Support",            "n__support")
-add_var("No. Oppose",             "n__oppose")
+add_var("$\log_2$(\# Support)",   "n__support")
+add_var("$\log_2$(\# Oppose)",    "n__oppose")
 
 
 # block rows, esttab renumbers to (1)(2)(3)(4).
 # adjust n/y flags to match spec
 
-out.append(["Cluster FE","N","Y","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
+out.append(["Semantic Cluster FE","N","Y","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
 out.append(["Council District FE","N","N","Y","Y"][:n_models+1]); out.append([""]*(n_models+1))
-out.append(["Suffix FE","N","N","N","Y"][:n_models+1]);   out.append([""]*(n_models+1))
+out.append(["Suffix Group FE","N","N","N","Y"][:n_models+1]);   out.append([""]*(n_models+1))
 
 
 # intercepts + stats (names as they appear in CSV)
