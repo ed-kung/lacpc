@@ -1,0 +1,79 @@
+\section{Methodology}\label{sec_methodology}
+
+We model the CPC hearings as having three possible outcomes:
+\begin{enumerate}[start=0]
+\item The project is denied or the decision is postponed;
+\item The project is approved in part or with conditions or modifications;
+\item The project is approved.
+\end{enumerate}
+Each project proposal $i$ is assumed to have a latent quality variable $y_i^\ast$ which determines the likelihood of the three outcomes. $y_i^\ast$ is modeled as a linear function of its observed project characteristics and bureaucratic factors, $\mathbf{X}_i$, plus an error term $\epsilon_i$:
+\begin{align}
+y_i^\ast = \mathbf{X}_i \beta + \epsilon_i
+\end{align}
+The latent quality of the project proposal determines its outcome at the CPC hearing. Let $y_{i} \in \{0, 1, 2\}$ denote project $i$'s outcome. The relationship between $y_i^\ast$ and $y_i$ is as follows:
+\begin{align}
+y_i = \begin{cases}
+0 \text{ if } y_i^\ast < \mu_0 \\
+1 \text{ if } \mu_0 \leq y_i^\ast < \mu_1 \\
+2 \text{ if } \mu_1 \leq y_i^\ast
+\end{cases}
+\end{align}
+with $\mu_0 < \mu_1$. The model is therefore an ordered logit model, and the outcomes are monotonic in $\mathbf{X}_i \beta$. The parameters $\beta$, $\mu_0$, and $\mu_1$ are estimated by maximum likelihood.
+
+\subsection{Explanatory Variables}
+
+We now turn to discussing the explanatory variables we include in the model.
+
+\paragraph{Semantic uniqueness.} In that one of our goals is to quantify the role of bureaucratic frictions in the CPC approvals process, we here develop a concept which we call ``semantic uniqueness''. At a high level, semantic uniqueness is designed to capture how unique an agenda item is relative to other agenda items that the CPC is accustomed to facing. Our hypothesis is that agenda items which are highly unusual may be less likely to be approved, and more likely to be approved with conditions or denied or delayed. We thus expect to estimate a negative coefficient on semantic uniqueness.
+
+To compute a measure of semantic uniqueness, we first calculate the semantic embedding of each agenda item using OpenAI's \texttt{text-embedding-3-small} embeddings model.\footnote{For an introduction to the concept of embeddings, see \citet{mikolov2013} and \citet{le2014}.} For each agenda item, the model returns a 1,536 dimensional numerical vector that represents the semantic meaning of the text. Two agenda items with very similar proposals will have embeddings that are close to each other, while two agenda items with very different proposals will have embeddings that are far away from each other. 
+
+Because \texttt{text-embedding-3-small} was trained on a general corpus of documents, not specialized to the topic of municipal planning and zoning, not all 1,536 dimensions may be relevant for capturing the important differences between our agenda items. We therefore use principal components analysis to extract the 10 linear combinations of these dimensions which explain the most variance in our corpus. Figure \ref{fig_scree_plot} shows the scree plot of the principal components analysis. By the 10th principal component, there are diminishing returns to including more components.
+
+After reducing the embeddings down to 10 dimensions, we group the agenda items into three clusters using K-Means clustering. Identifying clusters in our data is important because the CPC handles many different types of cases, and the language used could be very different across different case types. For example, the language used in a case involving the demolition of an existing building followed by the reconstruction of a multifamily home would be very different from a request for a conditional use permit to operate a school. Thus, it only makes sense to measure semantic uniqueness within a set similar case types.
+
+Figure \ref{fig_clusters} shows a scatter plot of the agenda items according to their first two principal components, colored by cluster. Cluster 0, the largest cluster, consists mainly of proposals to build new buildings. Cluster 1 consists mainly of citywide code amendments or plan updates. Cluster 2, the smallest cluster, consists primarily of requests for conditional use permits (i.e. requests to utilize facilities for purposes not allowed by right within the zoning designation.)
+
+To measure the semantic uniqueness of an agenda item, we calculate the Mahalanobis distance between the agenda item's 10-dimensional PCA-reduced embedding to its cluster's centroid. We chose the Mahalanobis distance because [Joe explain]. In the regressions, we normalize the measured semantic uniqueness to have mean 0 and a variance of 1 across all our agenda items.
+
+In addition to including the Mahalanobis distance to the cluster centroid as a measure of semantic uniqueness, we also include fixed effects for each cluster. This allows each cluster to have a separate baseline probability distribution over outcomes.
+
+\paragraph{Perplexity.} Semantic uniqueness measures how unusual a proposal is relative to other cases of similar type. In addition to that, we also try to measure how confusing or hard to understand the proposal is in general. To do this, we ask \texttt{gpt-4o} to summarize each agenda item, then we measure the perplexity of the response. In language models, perplexity is a measure of how uncertain the model is about its response. It is measured as the exponent of the response's cross-entropy  (i.e. the negative mean of the output tokens' conditional log probabilities.\footnote{See \citet{jm2}.}) A perplexity of 1 indicates that the model has no uncertainty about its output, while a higher perplexity means the model is more uncertain. 
+
+\paragraph{Agenda order.} We also hypothesize that the order in which a case appears in the agenda may matter for its outcome. Note that we use the order in which the case appears in the agenda, not the order in which the case was discussed at the actual meeting. The committee chair has the ability to discuss agenda items out of order, and this may be endogenous to the meeting outcomes, so we focus on the order in which the item appears in the agenda published prior to the start of the meeting.
+
+\paragraph{Number of agenda items.} We hypothesize that the number of items on the agenda can have an effect on outcomes. In particular, we hypothesize that a case is more likely to be postponed if there are a large number of items on the agenda.
+
+\paragraph{Consent calendar.} The Los Angeles CPC utilizes a practice for streamlining meetings known as the ``consent calendar''. The consent calendar takes multiple agenda items and groups them into a single motion that the committee votes on together as a whole. The consent calendar tends to include cases that the committee chair has deemed non-controversial and therefore not requiring separate discussion. The consent calendar is published \emph{before} the meeting starts, and items can be taken off the consent calendar during the meeting. We hypothesize that being on the consent calendar significantly predicts approval.
+
+\paragraph{Number of support and opposition letters.} We hypothesize that the amount of public support or public opposition matters for hearing outcomes. We hypothesize that greater public support improves a proposal's probability of being approved, whereas greater public opposition increases the likelihood that the proposal is denied, delayed, or approved with modifications. We include public support and public opposition as two separate explanatory variables to allow for heterogeneous impacts of support vs. opposition. Note that a proposed project can receive multiple letters both in support and in opposition. We measure public support as the log base 2 of the number of letters written in support, and we measure public opposition as the log base 2 of the number of letters written in opposition, as discussed in Section \ref{sec_data}. Figure \ref{fig_support_oppose} shows the distribution of the number of letters in support and in opposition across cases. 
+
+\paragraph{Council districts.} Council districts may matter for case outcomes for a variety of reasons. For one, although City Planning Commission members are appointed from a variety of professional backgrounds, most of them come from backgrounds of urban planning, public service, real estate development, or community advocacy. In all these cases, the member, despite best efforts to remain impartial, may still be influenced by the specific politics of the council district. For another, the Los Angeles City Council has veto power over City Planning Commission decisions, and the Council usually defers to the member whose district the project is located in for such decisions. CPC members may therefore be cognizant of the opinions of the project district's council member when making their decisions. To control for these possibilities, we include council district fixed effects as explanatory variables.
+
+\paragraph{Case suffixes.} As discussed in Section \ref{sec_data}, case suffixes indicate the types of entitlements requested or required by the project, as well as other project indicators. 
+The roughly 75 co-occurring suffix indicators followed a very sparse and uneven distribution, which was problematic for our dataset of \gn{NumberOfCases} observations. Some suffixes appeared in more than 200 cases, while others occurred only once. To make comparisons more meaningful, we collapsed them into fourteen groups with fixed effects for each. The largest suffixes by frequency were retained as their own buckets, and the remaining were grouped according to similarity in their legal descriptions and procedural functions (e.g., land use entitlements, administrative adjustments, housing-related incentives). The suffix groups are as follows:
+\begin{enumerate}
+\item Appeals, including sfx: 1A (249 obs)
+\item Administrative adjustments, including sfx: ACI (1 obs), AMDT1 (1 obs), AMDT2 (1 obs), AMDT3 (1 obs), CA (38 obs), CPIO (2 obs), CPIOA (5 obs), SP (24 obs), SPPA (5 obs)
+\item Conditional use, including sfx: CU (183 obs)
+\item Density bonus, including sfx: DB (209 obs)
+\item Housing Crisis Act, including sfx: HCA (123 obs)
+\item Height districting, including sfx: HD (123 obs)
+\item Master conditional use permitting, including sfx: MCUP (71 obs)
+\item Vesting Housing Crisis Act, including sfx: VHCA (38 obs)
+\item Development reviews, including sfx: BSA (4 obs), DRB (21 obs), PA1 (11 obs), PA2 (1 obs), PAB (2 obs)
+\item Land use entitlements, including sfx: GPA (63 obs), GPAJ (19 obs), VZC (65 obs), VZCJ (16 obs), ZC (64 obs), ZCJ (11 obs), ZV (25 obs)
+\item Other items, including sfx: AD (1obs), BL (13 obs), CCMP (5 obs), CDO(13 obs) , CDP (16 obs), CN (12 obs), COA (1 obs), CPU (6 obs), CU2 (1 obs), CU3 (2 obs), CUB (26 obs), CUW (1 obs), CUX (12 obs), DA (7 obs), DD (11 obs), DI (2 obs), ELD (2 obs), F (6 obs), GB (1 obs), M1 (4 obs), M3 (4 obs), MEL (1 0obs), MSC (6 obs), MSP (6 obs), PHP (22 obs), PMEX (2 obs), PMLA (5 obs), PR (2 obs), PSH (6 obs), PUB (4 obs), RDP (7 obs), SCEA (1 obs), SIP (15 obs), SL (2 obs), SN (13 obs), SPE (9 obs), SPPC (2 obs), SPPE (1 obs), SUD (3 obs), TDR (23 obs), VCU (15 obs), WDI (15 obs), ZAA (20 obs), ZAD (14 obs), ZAI (3 obs)
+\item Specific plan project permit compliance, including sfx: SPP (80 obs)
+\item Site plan reviews, including sfx: SPR (249 obs)
+\item Transit oriented communities, including sfx: TOC (115 obs)
+\end{enumerate}
+
+
+
+
+
+
+
+
+

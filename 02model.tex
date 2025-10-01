@@ -1,0 +1,72 @@
+\section{A Basic Model}
+
+Two recurring constraints arise in bureaucratic decision-making: reputational risks under public oversight and cognitive limits in processing complex proposals. We review these institutional features of the decision environment, then present a simple model in which commissioners choose actions and effort under both constraints. The model shows how these trade-offs generate a systematic bias against unfamiliar or contested projects, while routine items sail through with little resistance.
+
+\subsection{Oversight, Cognition, and Bureaucratic Choice}
+
+Bureaucratic decision-making is shaped by the limited contractibility and imperfect measurability of tasks, which create persistent incentive problems \citep{Dixit2002}. Public officials therefore operate under binding institutional and cognitive constraints that systematically shape their choices.
+
+One constraint arises from the cost of oversight. Establishing and operating monitoring institutions is expensive \citep{HuberShipan2000,DamonteDunlopRadaelli2014}. Consequently, oversight depends on indirect signals. Since the public cannot directly observe bureaucratic effort or expertise, it relies on ``fire alarms'' such as complaints or organized opposition \citep{Prendergast2003}. Such monitoring is asymmetric: failures generate complaints, while successes rarely do. This asymmetry makes bureaucrats rationally defensive, leading them to minimize exposure by avoiding novel or controversial decisions. Moreover, accountability is rarely unitary. Agencies are monitored by legislators, courts, media, and citizens, whose expectations are often incompatible \citep{Black2008,MaggettiPapadopoulos2018}. Such polycentric accountability multiplies reputational risks and encourages defensive choices over efficiency \citep{CarpenterKrause2012,GiladMaorBloom2015,BusuiocLodge2016}. Opposition letters, in this sense, are not merely signals of constituent concern but reputational threats.
+
+A second constraint arises from the internal limits of decision-makers. Rational inattention models \citep{HebertWoodford2023} and bounded rationality frameworks \citep{deClippelRozen2021} show that officials cannot fully process all information and must selectively allocate scarce attention \citep{BesleyGhatak2003}. Unfamiliar proposals therefore impose higher cognitive costs and are more likely to be screened out \citep{DeFrancescoRadaelliTroeger2012}. Choice overload and satisficing push bureaucrats toward routine or standardized options. Goal ambiguity further complicates evaluation: when standards are unclear, performance falls and risk aversion rises \citep{AndersonStritch2016}. In such settings, the safest course is to stress procedural appropriateness or technical diligence, often at the expense of innovation \citep{Gilad2015,Duvanova2012}.
+
+Because the risks are concentrated while the benefits are diffuse, bureaucrats are incentivized to delay or modify proposals even when those projects may generate social value. The result is a systematic bias: safe, routine projects advance, while novel or contested ones are sidelined regardless of their potential.
+
+
+\subsection{Model}
+
+Each commissioner chooses an action $a \in \{0,1,2\}$, where $a=0$ denotes delay, $a=1$ denotes modification, and $a=2$ denotes full approval. The commissioner may 
+also exert effort $e \geq 0$, representing the diligence devoted to evaluating and justifying a project. Effort simultaneously increases the cognitive burden of processing unfamiliar projects and decreases the expected penalties from oversight.
+
+Two observable project attributes matter:
+
+\begin{itemize}
+    \item \textbf{Unfamiliarity} $\delta \geq 0$: Low values correspond to routine, standardized projects; high values correspond to unusual, novel, or hard to evaluate proposals.
+    \item \textbf{Opposition} $\chi \geq 0$: The volume of opposition letters received, which increases the salience of oversight.
+\end{itemize}
+
+The commissioner's utility is
+\begin{equation}
+    U_A(a,e,\delta,\chi) \;=\; B(a) \;-\; C(e,\delta) \;-\; M(a,e,\chi)
+    \label{eq:agentutility}
+\end{equation}
+where:
+\begin{itemize}
+    \item $B(a)$ is the baseline benefit from taking action $a$. These benefits can be interpreted broadly, but in general, approving projects creates visible productivity. We assume $B(2)\geq B(1)\geq B(0)$, so that in the absence of processing costs or oversight risk the commissioner would prefer more approvals.
+    \item $C(e,\delta)$ is the information-processing cost, increasing in both unfamiliarity ($C_\delta >0$). This term captures the cognitive demands of evaluating non-routine projects. As unfamiliarity $\delta$ rises, commissioners face greater goal ambiguity (unclear standards for what counts as an acceptable project) and bounded rationality constraints (limited attention to fully process all pieces of the project). 
+    \item $M(a,e,\chi)$ is the monitoring penalty function from the reputational, political, or legal cost associated with taking action $a$ with effort $e$ when opposition intensity is $\chi$. It is increasing in approval intensity ($M_a > 0$) and in opposition ($M_\chi > 0$), but decreasing in effort ($M_e < 0$). Decreasing in $e$ reflects the idea that additional due diligence makes decisions more defensible under scrutiny, thereby reducing expected penalties.
+\end{itemize}
+
+For any given action $a$, the commissioner chooses optimal effort $e^*$ satisfying the first-order condition
+\begin{equation}
+    C_{e}(e^*,\delta) \;=\; -\, M_{e}(a,e^*,\chi).
+    \label{eq:effortFOC}
+\end{equation}
+The commissioner chooses effort so that the marginal cost of diligence offsets the marginal reduction in expected monitoring penalties. Greater unfamiliarity raises the burden of processing, while higher levels of opposition increase the salience of oversight.
+
+To capture the joint choice of action and effort, we impose a mild regularity so that monitoring responds in the intuitive way, where stronger approval requires greater diligence under scrutiny, and opposition makes diligence more consequential by increasing how much it reduces expected penalties. Formally, the restrictions
+\[
+\begin{aligned}
+M_{ea}(a,e,\chi) &< 0 \\
+M_{e\chi}(a,e,\chi) &< 0 \\
+C_{e\delta}(e,\delta) &> 0
+\end{aligned}
+\]
+imply that optimal effort responds monotonically: $e^*$ increases in action $a$ and opposition $\chi$, but decreases in unfamiliarity $\delta$. This means that approving a contested project requires additional diligence to limit expected penalties, while unfamiliar projects make each unit of diligence more costly. After selecting the optimal effort $e^*$, the commissioner then chooses the action $a$ that maximizes $U_A^*$, evaluating processing costs and monitoring penalties at $e^*$.
+
+\subsection{Comparative Statics}
+
+We derive three simple predictions.\\
+
+
+\textbf{Proposition 1.} \textit{Opposition reduces approvals.}\\
+
+Higher opposition $\chi$ reduces the probability that the commissioner chooses full approval. Since $M_\chi > 0$, greater opposition raises the expected monitoring penalty $M(a,e,\chi)$, reflecting the heightened likelihood of ex post scrutiny. Commissioners can respond by increasing effort to reduce these penalties, but additional diligence is costly and cannot fully neutralize political or reputational blowback. As a result, when opposition is substantial, the safer course is to shift toward modification or delay rather than approve a contested project.\\
+
+\textbf{Proposition 2.} \textit{Unfamiliarity reduces approvals.}\\
+
+Holding opposition $\chi$ fixed, higher unfamiliarity $\delta$ reduces the probability that the commissioner chooses full approval. Since $C_\delta > 0$, greater unfamiliarity raises the processing cost $C(e,\delta)$, making each unit of effort more expensive. Because approving an unusual project also requires more diligence to withstand scrutiny, unfamiliarity couples higher approval outcomes with prohibitively costly effort. Commissioners therefore choose modification or delay as $\delta$ rises.\\
+
+\textbf{Proposition 3.} \textit{Consent items are more likely to be approved.}\\
+
+Projects on the consent calendar correspond to $\delta \approx 0$, implying minimal processing costs $C(e,0)$ and low baseline monitoring penalties. Routine projects therefore require little effort to justify and face low scrutiny, making them strictly more likely to receive full approval than otherwise comparable non-consent items.\\
