@@ -156,15 +156,21 @@ with open(f"{output_path}/{output_file}", "w") as f:
 results = {}
 
 x = float(get_row('mahalanobis')[0][3].replace('*',''))
-x = f"{np.abs(x):.3f}"
-results['SemUniCoef'] = x
+xcoef = f"{np.abs(x):.3f}"
+xpct = f"{np.abs(x)*100:.1f}\\%"
+results['SemUniCoef'] = xcoef
+results['SemUniCoefPct'] = xpct
 
 x = float(get_row('consent_calendar')[0][3].replace('*',''))
-x = f"{np.abs(x):.2f}"
-results['ConCalCoef'] = x
+xcoef = f"{np.abs(x):.2f}"
+xpct = f"{np.abs(x)*100:.1f}\\%"
+results['ConCalCoef'] = xcoef
+results['ConCalCoefPct'] = xpct
 
 x = float(get_row('n__oppose')[0][3].replace('*',''))
-x = f"{np.abs(x):.3f}"
-results['NOppCoef'] = x
+xcoef = f"{np.abs(x):.3f}"
+xpct = f"{np.abs(x)*100:.1f}\\%"
+results['NOppCoef'] = xcoef
+results['NOppCoefPct'] = xpct
 
 wt.update_results(results)
