@@ -5,9 +5,17 @@ import pandas as pd
 import re
 import yaml
 import os
-
+import sys
+import numpy as np
 
 # set paths 
+with open("../../config.local.yaml", 'r') as f:
+    local_config = yaml.safe_load(f)
+LOCAL_PATH = local_config['LOCAL_PATH']
+
+sys.path.append(os.path.join(LOCAL_PATH, 'src/python'))
+
+import writing_tools as wt
 
 with open("../../config.local.yaml", 'r') as f:
     local_config = yaml.safe_load(f)
@@ -143,3 +151,20 @@ with open(f"{output_path}/{output_file}", "w") as f:
         na_rep="",
         column_format="l" + "c"*n_models   # 1 label col + centered model cols
     ))
+
+# Update results.json and results.tex
+results = {}
+
+x = float(get_row('mahalanobis')[0][3].replace('*',''))
+x = f"{np.abs(x):.3f}"
+results['SemUniCoef'] = x
+
+x = float(get_row('consent_calendar')[0][3].replace('*',''))
+x = f"{np.abs(x):.2f}"
+results['ConCalCoef'] = x
+
+x = float(get_row('n__oppose')[0][3].replace('*',''))
+x = f"{np.abs(x):.3f}"
+results['NOppCoef'] = x
+
+wt.update_results(results)
