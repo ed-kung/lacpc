@@ -50,24 +50,7 @@ When computing Mahalanobis distance, we assessed the stability of the covariance
 
 \paragraph{Council districts.} Council districts may matter for case outcomes for a variety of reasons. For one, although City Planning Commission members are appointed from a variety of professional backgrounds, most of them come from backgrounds of urban planning, public service, real estate development, or community advocacy. In all these cases, the member, despite best efforts to remain impartial, may still be influenced by the specific politics of the council district. For another, the Los Angeles City Council has veto power over City Planning Commission decisions, and the Council usually defers to the member whose district the project is located in for such decisions. CPC members may therefore be cognizant of the opinions of the project district's council member when making their decisions. To control for these possibilities, we include council district fixed effects as explanatory variables.
 
-\paragraph{Case suffixes.} As discussed in Section \ref{sec_data}, case suffixes indicate the types of entitlements requested or required by the project, as well as other project indicators. 
-The roughly 75 co-occurring suffix indicators followed a very sparse and uneven distribution, which was problematic for our dataset of \gn{NumberOfCases} observations. Some suffixes appeared in more than 200 cases, while others occurred only once. To make comparisons more meaningful, we collapsed them into fourteen groups with fixed effects for each. The largest suffixes by frequency were retained as their own buckets, and the remaining were grouped according to similarity in their legal descriptions and procedural functions (e.g., land use entitlements, administrative adjustments, housing-related incentives). The suffix groups are as follows:
-\begin{enumerate}
-\item Appeals, including sfx: 1A (249 obs)
-\item Administrative adjustments, including sfx: ACI (1 obs), AMDT1 (1 obs), AMDT2 (1 obs), AMDT3 (1 obs), CA (38 obs), CPIO (2 obs), CPIOA (5 obs), SP (24 obs), SPPA (5 obs)
-\item Conditional use, including sfx: CU (183 obs)
-\item Density bonus, including sfx: DB (209 obs)
-\item Housing Crisis Act, including sfx: HCA (123 obs)
-\item Height districting, including sfx: HD (123 obs)
-\item Master conditional use permitting, including sfx: MCUP (71 obs)
-\item Vesting Housing Crisis Act, including sfx: VHCA (38 obs)
-\item Development reviews, including sfx: BSA (4 obs), DRB (21 obs), PA1 (11 obs), PA2 (1 obs), PAB (2 obs)
-\item Land use entitlements, including sfx: GPA (63 obs), GPAJ (19 obs), VZC (65 obs), VZCJ (16 obs), ZC (64 obs), ZCJ (11 obs), ZV (25 obs)
-\item Other items, including sfx: AD (1obs), BL (13 obs), CCMP (5 obs), CDO(13 obs) , CDP (16 obs), CN (12 obs), COA (1 obs), CPU (6 obs), CU2 (1 obs), CU3 (2 obs), CUB (26 obs), CUW (1 obs), CUX (12 obs), DA (7 obs), DD (11 obs), DI (2 obs), ELD (2 obs), F (6 obs), GB (1 obs), M1 (4 obs), M3 (4 obs), MEL (1 0obs), MSC (6 obs), MSP (6 obs), PHP (22 obs), PMEX (2 obs), PMLA (5 obs), PR (2 obs), PSH (6 obs), PUB (4 obs), RDP (7 obs), SCEA (1 obs), SIP (15 obs), SL (2 obs), SN (13 obs), SPE (9 obs), SPPC (2 obs), SPPE (1 obs), SUD (3 obs), TDR (23 obs), VCU (15 obs), WDI (15 obs), ZAA (20 obs), ZAD (14 obs), ZAI (3 obs)
-\item Specific plan project permit compliance, including sfx: SPP (80 obs)
-\item Site plan reviews, including sfx: SPR (249 obs)
-\item Transit oriented communities, including sfx: TOC (115 obs)
-\end{enumerate}
+\paragraph{Case suffixes.} As discussed in Section \ref{sec_data}, case suffixes indicate the types of entitlements requested or required by the project, as well as other project indicators. The roughly 75 co-occurring suffix indicators followed a very sparse and uneven distribution, which was problematic for our dataset of \gn{NumberOfCases} observations. Some suffixes appeared in more than 200 cases, while others occurred only once. To make comparisons more meaningful, we collapsed them into fourteen groups with fixed effects for each. The largest suffixes by frequency were retained as their own buckets, and the remaining were grouped according to similarity in their legal descriptions and procedural functions (e.g., land use entitlements, administrative adjustments, housing-related incentives). The suffix groups span fourteen case categories: appeals, administrative adjustments, conditional use, density bonus, Housing Crisis Act, master conditional use permitting, development reviews, land use entitlements, Other items, specific plan project permit compliance, site plan reviews, transit oriented communities, and vesting Housing Crisis Act.
 
 
 
