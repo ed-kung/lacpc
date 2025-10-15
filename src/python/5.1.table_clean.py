@@ -157,19 +157,19 @@ results = {}
 
 x = float(get_row('mahalanobis')[0][3].replace('*',''))
 xcoef = f"{np.abs(x):.3f}"
-xpct = f"{np.abs(x)*100:.1f}\\%"
+xpct = f"{np.abs(x)*100:.1f}"
 results['SemUniCoef'] = xcoef
 results['SemUniCoefPct'] = xpct
 
 x = float(get_row('consent_calendar')[0][3].replace('*',''))
 xcoef = f"{np.abs(x):.2f}"
-xpct = f"{np.abs(x)*100:.1f}\\%"
+xpct = f"{np.abs(x)*100:.1f}"
 results['ConCalCoef'] = xcoef
 results['ConCalCoefPct'] = xpct
 
 x = float(get_row('n__oppose')[0][3].replace('*',''))
 xcoef = f"{np.abs(x):.3f}"
-xpct = f"{np.abs(x)*100:.1f}\\%"
+xpct = f"{np.abs(x)*100:.1f}"
 results['NOppCoef'] = xcoef
 results['NOppCoefPct'] = xpct
 
