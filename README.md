@@ -15,7 +15,7 @@ TESSERACT: "<path to your tesseract cmd>"
 
 ## Download the documents
 
-`download-docs.ipynb`
+`01-download-docs.ipynb`
 
 Downloads the raw pdf documents. It can be run again to download any new documents which have been uploaded to the Planning Department website. By default, already downloaded documents won't be re-downloaded. You can change this by setting the `overwrite` flag in the notebook.
 
@@ -29,25 +29,25 @@ All page ranges not contained in this file are single page documents.
 
 ## Extract raw PDFs into text files
 
-`extract-pdf-to-text.ipynb`
+`02-extract-pdf-to-text.ipynb`
 
 Extracts the PDF files into raw text documents, with pages separated by `<PAGE BREAK>`. Resulting text files are stored in `intermediate_data/cpc/<year>/<date>`.
 
 ## Create the list of meetings for analysis
 
-`create-meetings-manifest.ipynb`
+`03-create-meetings-manifest.ipynb`
 
 Creates a list of meetings that will be used for analysis. A meeting will be used for analysis if it contains all three of `agenda.pdf`, `minutes.pdf`, `supplemental-docs.pdf`, and has entries in `supplemental-docs-splits.csv`.
 
 ## Split the supplemental documents files
 
-`split-supplemental-docs.ipynb`
+`04-split-supplemental-docs.ipynb`
 
 Uses `supplemental-docs-splits.csv` to split `supplemental-docs.pdf` for all meetings contained in `meetings-manifest.csv`. Text content of each individual supplemental document is stored in `supplemental-docs.pkl`.
 
 ## Summarize agendas
 
-`summarize-agendas.ipynb`
+`05-summarize-agendas.ipynb`
 
 Uses ChatGPT to summarize individual agenda items from the raw text. Responses are stored in `agenda-summary.txt`.
 
