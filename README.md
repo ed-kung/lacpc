@@ -11,6 +11,7 @@ OPENAI_API_KEY: "<your openai api key>"
 PINECONE_API_KEY: "<your pinecone api key>"
 CHROMEDRIVER: "<path to chromedriver>"
 TESSERACT: "<path to your tesseract cmd>"
+CLAUDE_API_KEY: "<your anthropic api key>"
 ```
 
 ## Download the documents

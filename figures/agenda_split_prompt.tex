@@ -1,12 +1,28 @@
 The following extracted PDF text contains the agenda for a LA City Planning Commission meeting. \\ 
 \\ 
-For each agenda item, return a summary in the following format:\\ 
+Read each agenda item and extract its agenda item number, title (which is often just a Planning Department case number), and a short summary of the agenda item.\\ 
 \\ 
-ITEM NO: <agenda item number>\\ 
-TITLE: <title of agenda item>\\ 
-SUMMARY: <short summary of agenda item>\\ 
+Return a JSON in the following format:\\ 
 \\ 
-Separate each response by "------"\\ 
+{\\ 
+    "agenda_items": [\\ 
+        {\\ 
+            "item_no": "<agenda item number>",\\ 
+            "title": "<title of agenda item>",\\ 
+            "address": "<address or location of agenda item if applicable, empty string if not>",\\ 
+            "council_district": "<council district number as integer if applicable, empty string if not>",\\ 
+            "consent_calendar": "<whether item is on consent calendar: yes|no>",\\ 
+            "is_appeal": "<whether item is an appeal of a previous decision: yes|no|n/a>",\\ 
+            "summary": "<short summary of agenda item>"\\ 
+        }\\ 
+    ]\\ 
+}\\ 
+\\ 
+Guidelines:\\ 
+- Return valid JSON only, no other text or markdown formatting.\\ 
+- Agenda item numbers are usually formatted as "1.", "2.", "3a.", "3b.", etc.\\ 
+- Agenda titles are often Planning Department case numbers like "CPC-2023-1234-DB-SPR", or generic matters of business like "Director's Report and Commission Business" or "General Public Comment".\\ 
+- When the agenda item is a planning case, focus the summary on the key aspects of the case, such as the project type, location, and specific requests being made to the Commission.\\ 
 \\ 
 AGENDA:\\ 
 \\ 
