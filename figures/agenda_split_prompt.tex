@@ -1,33 +1,27 @@
-The following extracted PDF text contains the agenda for a LA City Planning Commission meeting. \\ 
+The following text contains an agenda item from an LA City Planning Commission meeting. \\ 
 \\ 
-Read each agenda item and extract its agenda item number, title (which is often just a Planning Department case number), and the information listed below.\\ 
+Read the agenda item carefully and extract the relevant information as specified below.\\ 
 \\ 
 Return a JSON in the following format:\\ 
 \\ 
 {\\ 
-    "agenda_items": [\\ 
-        {\\ 
-            "item_no": "<agenda item number>",\\ 
-            "title": "<title of agenda item>",\\ 
-            "address": "<address or location of agenda item if applicable, empty string if not>",\\ 
-            "council_district": "<council district number(s), CITYWIDE, or empty string>",\\ 
-            "council_member": "<name(s) of council district member(s), CITYWIDE, or empty string>",\\ 
-            "consent_calendar": "<whether item is on consent calendar: yes|no>",\\ 
-            "last_day_to_act": "<YYYY-MM-DD, or empty string>",\\ 
-            "is_appeal": "<whether item is an appeal of a previous decision: yes|no|n/a>",\\ 
-            "summary_of_appeal": "<short summary of the appeal if applicable, empty string if not>",\\ 
-            "referenced_laws": ["<list any referenced laws, codes, ordinances, or programs>"] | empty list if none,\\ 
-            "summary": "<short summary of agenda item>"\\ 
-        }\\ 
-    ]\\ 
+    "item_no": "<agenda item number, not including the period, e.g. '1', '2', '3a', '3b', etc.>",\\ 
+    "title": "<title of agenda item>",\\ 
+    "address": "<address or location of agenda item if applicable, empty string if not>",\\ 
+    "council_district": "<council district number(s), CITYWIDE, or empty string>",\\ 
+    "council_member": "<name(s) of council district member(s), CITYWIDE, or empty string>",\\ 
+    "last_day_to_act": "<YYYY-MM-DD, or empty string>",\\ 
+    "referenced_laws": ["<list any referenced laws, codes, ordinances, or programs>"] | empty list if none,\\ 
+    "is_appeal": "<whether item is an appeal of a previous decision: yes|no|n/a>",\\ 
+    "summary_of_appeal": "<short summary of the appeal if applicable, empty string if not>",\\ 
+    "summary": "<short summary of agenda item>"\\ 
 }\\ 
 \\ 
 Guidelines:\\ 
 - Return valid JSON only, no other text or markdown formatting.\\ 
-- Read through the entire agenda first to understand the structure and identify agenda items.\\ 
-- Agenda item numbers are usually formatted as "1.", "2.", "3a.", "3b.", etc.\\ 
 - Agenda titles are often Planning Department case numbers like "CPC-2023-1234-DB-SPR", or generic matters of business like "Director's Report and Commission Business" or "General Public Comment".\\ 
-- When the agenda item is a planning case, focus the summary on the key aspects of the case, such as the project type, location, and specific requests being made to the Commission.\\ 
+- When the agenda item is a planning case, focus the summary on the key aspects of the case, such as the project type, location, and requested actions.\\ 
+- If there is an appeal, summarize the grounds of the appeal and note which requested actions are being appealed.\\ 
 \\ 
 AGENDA:\\ 
 \\ 
