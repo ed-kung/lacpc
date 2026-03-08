@@ -1,28 +1,48 @@
-The following text contains an agenda item from an LA City Planning Commission meeting. \\ 
+In what follows, I will provide you with an agenda item from a Los Angeles City Planning Commission meeting, and the full minutes text for that meeting. \\ 
 \\ 
-Read the agenda item carefully and extract the relevant information as specified below.\\ 
+Read the agenda item and minutes carefully and extract the relevant information as specified below.\\ 
 \\ 
 Return a JSON in the following format:\\ 
 \\ 
 {\\ 
-    "item_no": "<agenda item number, not including the period, e.g. '1', '2', '3a', '3b', etc.>",\\ 
-    "title": "<title of agenda item>",\\ 
-    "address": "<address or location of agenda item if applicable, empty string if not>",\\ 
-    "council_district": "<council district number(s), CITYWIDE, or empty string>",\\ 
-    "council_member": "<name(s) of council district member(s), CITYWIDE, or empty string>",\\ 
-    "last_day_to_act": "<YYYY-MM-DD, or empty string>",\\ 
-    "referenced_laws": ["<list any referenced laws, codes, ordinances, or programs>"] | empty list if none,\\ 
-    "is_appeal": "<whether item is an appeal of a previous decision: yes|no|n/a>",\\ 
-    "summary_of_appeal": "<short summary of the appeal if applicable, empty string if not>",\\ 
-    "summary": "<short summary of agenda item>"\\ 
+    "summary": "<One paragraph summary of the deliberations related to the agenda item and the final decision made by the Commission.>",\\ 
+    "item_order_changed": "<Whether the agenda item order was changed during the meeting; your options are: YES | NO>",\\ 
+    "taken_off_consent_calendar": "<Whether the agenda item was taken off the consent calendar; your options are: YES | NO>",\\ 
+    "multiple_votes": "<Whether there were multiple votes on the agenda item; your options are: YES | NO>",\\ 
+    "mover": "<The name of the member who made the motion.>",\\ 
+    "seconder": "<The name of the member who seconded the motion.>",\\ 
+    "ayes": ["<List of names of members who voted in favor of the motion.>"],\\ 
+    "noes": ["<List of names of members who voted against the motion.>"],\\ 
+    "abstentions": ["<List of names of members who abstained from voting.>"],\\ 
+    "absences": ["<List of names of members who were absent for the vote.>"],\\ 
+    "recusals": ["<List of names of members who recused themselves from voting.>"],\\ 
+    "vote_result": "<MOTION PASSED | MOTION FAILED>",\\ 
+    "appeal_result": "<If the agenda item involved an appeal, say whether the appeal was granted or denied; your options are: GRANTED | GRANTED_IN_PART | DENIED | N/A>",\\ 
+    "project_result": "<What does the Commission's decision imply for the project proposed in the agenda item? For example, does it mean the project is approved, denied, sent back for revisions, etc.? Your options are: APPROVED | APPROVED WITH MINOR CONDITIONS OR MODIFICATIONS | APPROVED WITH MAJOR CONDITIONS OR MODIFICATIONS | SENT BACK FOR REVISION | DELAYED | DENIED | APPLICATION WITHDRAWN>" \\ 
 }\\ 
 \\ 
 Guidelines:\\ 
-- Return valid JSON only, no other text or markdown formatting.\\ 
-- Agenda titles are often Planning Department case numbers like "CPC-2023-1234-DB-SPR", or generic matters of business like "Director's Report and Commission Business" or "General Public Comment".\\ 
-- When the agenda item is a planning case, focus the summary on the key aspects of the case, such as the project type, location, and requested actions.\\ 
-- If there is an appeal, summarize the grounds of the appeal and note which requested actions are being appealed.\\ 
+- Focus only on the agenda item provided; ignore other items in the minutes.\\ 
+- Start by reading the agenda item and minutes fully to understand the deliberations and decisions made.\\ 
+- Carefully compare the requested actions in the agenda item with the final decisions recorded in the minutes.\\ 
+- If multiple votes were made on the item, use the final vote, but note the process of the deliberations in the summary and set multiple_votes to "YES".\\ 
+- If a successful motion was to table the item, the project_result is "DELAYED".\\ 
+- If the item was not voted and postponed to a future meeting, the project_result is "DELAYED".\\ 
+- If the item was withdrawn by the applicant, the project_result is "APPLICATION WITHDRAWN".\\ 
+- If there was an appeal but the item was not voted on or postponed, set appeal_result to "N/A".\\ 
+- If there was no vote on the item, set mover, seconder, ayes, noes, abstentions, absences, recusals to empty lists or strings as appropriate, and set vote_result to "N/A".\\ 
+- When listing names, use names as they appear in the minutes.\\ 
+- Before producing the JSON, work through your reasoning inside <reasoning></reasoning> tags. In your reasoning:\\ 
+    - Identify which parts of the minutes relate to the agenda item.\\ 
+    - Note whether there were multiple motions or votes.\\ 
+    - Determine the final motion and its outcome.\\ 
+    - Work through what the decision means for the project.\\ 
+- After your reasoning, return valid JSON only, no other text or markdown formatting.\\ 
 \\ 
-AGENDA:\\ 
+AGENDA ITEM:\\ 
 \\ 
-<<agenda text>>
+...\\ 
+\\ 
+MINUTES TEXT:\\ 
+\\ 
+...
