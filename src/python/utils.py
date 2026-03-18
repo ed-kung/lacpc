@@ -1,5 +1,6 @@
 import hashlib
 import re
+import json
 
 # Get the hash of a string
 def get_hash(text):
@@ -9,6 +10,25 @@ def get_hash(text):
 def is_casenum(s):
     pattern = r'^[A-Za-z]{2,3}-\d+-[A-Za-z0-9-]+$'
     return bool(re.match(pattern, s))
+
+# Handle strings with json in them
+def extract_json(s):
+    try:
+        return json.loads(s)
+    except:
+        pass
+    
+    matches = re.findall(r"```json\s*(.*?)\s*```", s, re.DOTALL)
+    if matches:
+        try:
+            parsed = json.loads(matches[-1])
+            return parsed
+        except json.JSONDecodeError as e:
+            print(f"Error parsing JSON: {e}")
+            return None
+    else:
+        print("No JSON found.")
+        return None
 
 # Canonicalize a case number
 def canonicalize_casenum(caseno):
