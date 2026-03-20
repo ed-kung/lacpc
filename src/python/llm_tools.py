@@ -1,12 +1,10 @@
 # This file contains functions for interacting with OpenAI and Anthropic APIs
 
 import os
-import sys
 import yaml
 import duckdb
 import json
 import numpy as np
-import pandas as pd
 from openai import OpenAI
 import anthropic
 from datetime import datetime

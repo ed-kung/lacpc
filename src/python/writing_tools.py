@@ -1,8 +1,5 @@
 import os
-import sys
 import yaml
-import numpy as np
-import pandas as pd
 import json
 
 with open('../../config.local.yaml', 'r') as f:
