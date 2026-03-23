@@ -1,0 +1,77 @@
+suffix,count,meaning,category,category_total,category_rule
+SPR,249,SITE PLAN REVIEW,SPR - Site Plan Review,249,Standalone because volume is high and function is distinct: site-plan/design review rather than entitlement change.
+1A,234,APPEALS,1A - Appeals,234,Standalone because appeals are procedurally distinct and numerous.
+DB,209,DENSITY BONUS ,DB - Density Bonus,209,Standalone because density bonus cases reflect a specific state-law incentive regime.
+VZC,65,VESTING ZONE CHANGE,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+ZC,64,ZONE CHANGE,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+CA,38,CODE AMENDMENT,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+VZCJ,16,VESTING ZONE CHANGE JJJ,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+ZCJ,11,ZONE CHANGE JJJ,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+ACI,1,AMENDMENT TO COUNCIL INSTRUCTIONS,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+AD,1,ANNEXATION/DETACHMENT,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+AMDT1,1,AMENDMENT,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+AMDT2,1,AMENDMENT,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+AMDT3,1,AMENDMENT,Zoning & Code Amendments,199,"Legislative changes to zoning/code text or map, including vesting/JJJ variants and annexation/amendment codes."
+CU,183,CONDITIONAL USE,CU - Conditional Use,183,Standalone because base conditional use is large and substantively central.
+HD,82,HEIGHT DISTRICT,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+ZV,25,ZONE VARIANCE,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+ZAA,20,"AREA,HEIGHT,YARD,AND BLDG LINE ADJMNTS GT 20% (SLIGHT MODIFICATIONS)","Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+ZAD,14,ZA DETERMINATION (PER LAMC 12.27),"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+BL,13,BUILDING LINE,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+F,6,FENCE HEIGHT,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+BSA,4,BUILDING AND SAFETY APPEAL TO ZA,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+ZAI,3,ZA INTERPRETATIONS,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+DI,2,DIRECTOR OF PLANNING INTERPRETATION,"Height, Yard, Variance & Interpretive Relief",169,Dimensional relief and interpretive zoning actions at the parcel/project level.
+HCA,123,HOUSING CRISIS ACT,HCA/VHCA - Housing Crisis Act,161,Merged only with its vesting variant because both implement the same Housing Crisis Act regime.
+VHCA,38,VESTING HOUSING CRISIS ACT,HCA/VHCA - Housing Crisis Act,161,Merged only with its vesting variant because both implement the same Housing Crisis Act regime.
+WDI,51,WAIVER OF DEDICATIONS AND IMPROVEMENTS,"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+TDR,23,TRANSFER OF DEVELOPMENT RIGHTS (TFAR),"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+PHP,22,PRIORITY HOUSING PROJECT,"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+SIP,15,STREAMLINED INFILL PROCESS (SB35),"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+DA,7,DEVELOPMENT AGREEMENT,"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+MSC,6,"MISCELLANEOUS (POLICIES, GUIDELINES, RESOLUTIONS, ETC.)","Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+PSH,6,PERMANENT SUPPORTIVE HOUSING,"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+PUB,4,PUBLIC BENEFIT,"Incentives, Waivers & Public Benefit Tools",134,"Mechanisms that trade public benefit, waivers, or streamlined treatment for project approvals."
+GPA,63,GENERAL PLAN AMENDMENT,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+GPAJ,19,GENERAL PLAN AMENDMENT JJJ,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+CDO,13,COMMUNITY DESIGN OVERLAY DISTRICT,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+SN,13,SIGN DISTRICT,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+RDP,7,REDEVELOPMENT PLAN PROJECT,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+CPU,6,COMMUNITY PLAN UPDATE,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+CCMP,5,CERTIFICATE OF COMPATIBILITY,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+CPIOA,5,COMMUNITY PLAN IMPLEMENTATION OVERLAY ADJUSTMENT,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+CPIO,2,COMMUNITY PLAN IMPLEMENTATION OVERLAY AMENDMENT AND ESTABLISHMENT,"General, Community & Overlay Plans",133,"Long-range planning, community plans, overlays, sign districts, and similar area-wide planning instruments."
+MCUP,71,MASTER CONDITIONAL USE PERMIT,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+CUB,25,CONDITIONAL USE BEVERAGE-ALCOHOL,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+VCU,15,VESTING CONDITIONAL USE,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+CUX,12,ADULT ENTERTAINMENTS,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+CU3,2,CONDITIONAL USE,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+CUW,2,CONDITIONAL USE WIRELESS,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+PAB,2,PLAN APPROVAL BOOZE,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+CU2,1,CONDITIONAL USE,Specialized Conditional Use Variants,130,"Specialized or vesting conditional-use entitlements (alcohol, wireless, adult-use, master CU, etc.)."
+SPP,80,SPECIFIC PLAN PROJECT PERMIT COMPLIANCE,Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+SP,24,SPECIFIC PLAN (INCLUDING AMENDMENTS),Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+SPE,9,SPECIFIC PLAN EXCEPTION,Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+MSP,6,MULHOLLAND SPECIFIC PLAN,Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+SPPA,5,SPECIFIC PLAN PROJECT PERMIT ADJUSTMENT,Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+SPPC,2,,Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+SPPE,1,,Specific Plans & Project Permit Compliance,127,"Specific-plan adoption, exceptions, amendments, and project-permit compliance instruments."
+TOC,115,TRANSIT ORIENTED COMMUNITIES,TOC - Transit Oriented Communities,115,Standalone because TOC is a distinct incentive program with high volume.
+CDP,16,COASTAL DEVELOPMENT PERMIT,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+CN,12,NEW CONDOMINIUMS,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+MEL,10,MELLO ACT COMPLIANCE REVIEW,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+PMLA,5,PARCEL MAP,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+SUD,3,,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+ELD,2,ELDER CARE FACILITIES,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+PMEX,2,PARCEL MAP EXEMPTION,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+PR,2,,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+SL,2,SMALL LOT SUBDIVISION,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+COA,1,CERTIFICATE OF APPROPRIATENESS,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+GB,1,GREEN BUILDING,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+SCEA,1,SUSTAINABLE COMMUNITIES ENVIRONMENTAL ASSESSMENT,"Coastal, Subdivision & Special Compliance",57,"Coastal permits, parcel/subdivision tools, preservation/compliance reviews, and other specialized compliance actions."
+DRB,21,DESIGN REVIEW BOARD,Design Review & Project Administration,52,Design review and small project-administration codes kept together to avoid a tiny residual bucket.
+DD,11,DIRECTOR'S DETERMINATION,Design Review & Project Administration,52,Design review and small project-administration codes kept together to avoid a tiny residual bucket.
+PA1,11,PLAN APPROVAL,Design Review & Project Administration,52,Design review and small project-administration codes kept together to avoid a tiny residual bucket.
+M1,4,MODIFICATION,Design Review & Project Administration,52,Design review and small project-administration codes kept together to avoid a tiny residual bucket.
+M3,4,MODIFICATION,Design Review & Project Administration,52,Design review and small project-administration codes kept together to avoid a tiny residual bucket.
+PA2,1,PLAN APPROVAL,Design Review & Project Administration,52,Design review and small project-administration codes kept together to avoid a tiny residual bucket.
