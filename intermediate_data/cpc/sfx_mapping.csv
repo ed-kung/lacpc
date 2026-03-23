@@ -1,77 +1,77 @@
-﻿suffix,final_group,count
-SPR,SPR,249
-1A,1A,234
-DB,DB,209
-CU,CU,183
-HCA,HCA,123
-TOC,TOC,115
-HD,HD,82
-SPP,SPP,80
-MCUP,MCUP,71
-VZC,Other - Land use entitlements,65
-ZC,Other - Land use entitlements,64
-GPA,Other - Land use entitlements,63
-WDI,Other - Other,51
-CA,Administrative adjustments,38
-VHCA,Other - Affordable housing / public benefits,38
-ZV,Other - Land use entitlements,25
-CUB,Other - Other,25
-SP,Administrative adjustments,24
-TDR,Other - Other,23
-PHP,Other - Other,22
-DRB,Other - Development review,21
-ZAA,Other - Other,20
-GPAJ,Other - Land use entitlements,19
-VZCJ,Other - Land use entitlements,16
-CDP,Other - Other,16
-SIP,Other - Other,15
-VCU,Other - Other,15
-ZAD,Other - Other,14
-BL,Other - Other,13
-CDO,Other - Other,13
-SN,Other - Other,13
-CN,Other - Other,12
-CUX,Other - Other,12
-PA1,Other - Development review,11
-ZCJ,Other - Land use entitlements,11
-DD,Other - Other,11
-MEL,Other - Other,10
-SPE,Other - Other,9
-DA,Other - Other,7
-RDP,Other - Other,7
-CPU,Other - Other,6
-F,Other - Other,6
-MSC,Other - Other,6
-MSP,Other - Other,6
-PSH,Other - Other,6
-CPIOA,Administrative adjustments,5
-SPPA,Administrative adjustments,5
-CCMP,Other - Other,5
-PMLA,Other - Other,5
-BSA,Other - Development review,4
-M1,Other - Other,4
-M3,Other - Other,4
-PUB,Other - Other,4
-SUD,Other - Other,3
-ZAI,Other - Other,3
-CPIO,Administrative adjustments,2
-PAB,Other - Development review,2
-CU3,Other - Other,2
-CUW,Other - Other,2
-DI,Other - Other,2
-ELD,Other - Other,2
-PMEX,Other - Other,2
-PR,Other - Other,2
-SL,Other - Other,2
-SPPC,Other - Other,2
-ACI,Administrative adjustments,1
-AMDT1,Administrative adjustments,1
-AMDT2,Administrative adjustments,1
-AMDT3,Administrative adjustments,1
-PA2,Other - Development review,1
-AD,Other - Other,1
-COA,Other - Other,1
-CU2,Other - Other,1
-GB,Other - Other,1
-SCEA,Other - Other,1
-SPPE,Other - Other,1
+﻿suffix,group,sfx_desc,group_desc,count
+SPR,SPR,Site Plan Review,Site Plan Review,249
+1A,1A,Appeal,Appeal,234
+DB,DB,Density Bonus,Density Bonus,209
+CU,CU,Conditional Use,Conditional Use,183
+HCA,HCA,Housing Crisis Act,Housing Crisis Act,123
+TOC,TOC,Transit Oriented Communities,Transit Oriented Communities,115
+HD,HD,Height District,Height District,82
+SPP,SPP,Specific Plan Project Permit Compliance,Specific Plan Project Permit Compliance,80
+MCUP,MCUP,Master Conditional Use Permit,Master Conditional Use Permit,71
+VZC,LUE,Vesting Zone Change,Other - Land use entitlements,65
+ZC,LUE,Zone Change,Other - Land use entitlements,64
+GPA,LUE,General Plan Amendment,Other - Land use entitlements,63
+WDI,OTH,Waiver of Dedications and Improvements,Other - Other,51
+CA,Administrative adjustments,,,38
+VHCA,Other - Affordable housing / public benefits,,,38
+ZV,Other - Land use entitlements,,,25
+CUB,Other - Other,,,25
+SP,Administrative adjustments,,,24
+TDR,Other - Other,,,23
+PHP,Other - Other,,,22
+DRB,Other - Development review,,,21
+ZAA,Other - Other,,,20
+GPAJ,Other - Land use entitlements,,,19
+VZCJ,Other - Land use entitlements,,,16
+CDP,Other - Other,,,16
+SIP,Other - Other,,,15
+VCU,Other - Other,,,15
+ZAD,Other - Other,,,14
+BL,Other - Other,,,13
+CDO,Other - Other,,,13
+SN,Other - Other,,,13
+CN,Other - Other,,,12
+CUX,Other - Other,,,12
+PA1,Other - Development review,,,11
+ZCJ,Other - Land use entitlements,,,11
+DD,Other - Other,,,11
+MEL,Other - Other,,,10
+SPE,Other - Other,,,9
+DA,Other - Other,,,7
+RDP,Other - Other,,,7
+CPU,Other - Other,,,6
+F,Other - Other,,,6
+MSC,Other - Other,,,6
+MSP,Other - Other,,,6
+PSH,Other - Other,,,6
+CPIOA,Administrative adjustments,,,5
+SPPA,Administrative adjustments,,,5
+CCMP,Other - Other,,,5
+PMLA,Other - Other,,,5
+BSA,Other - Development review,,,4
+M1,Other - Other,,,4
+M3,Other - Other,,,4
+PUB,Other - Other,,,4
+SUD,Other - Other,,,3
+ZAI,Other - Other,,,3
+CPIO,Administrative adjustments,,,2
+PAB,Other - Development review,,,2
+CU3,Other - Other,,,2
+CUW,Other - Other,,,2
+DI,Other - Other,,,2
+ELD,Other - Other,,,2
+PMEX,Other - Other,,,2
+PR,Other - Other,,,2
+SL,Other - Other,,,2
+SPPC,Other - Other,,,2
+ACI,Administrative adjustments,,,1
+AMDT1,Administrative adjustments,,,1
+AMDT2,Administrative adjustments,,,1
+AMDT3,Administrative adjustments,,,1
+PA2,Other - Development review,,,1
+AD,Other - Other,,,1
+COA,Other - Other,,,1
+CU2,Other - Other,,,1
+GB,Other - Other,,,1
+SCEA,Other - Other,,,1
+SPPE,Other - Other,,,1
