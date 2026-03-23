@@ -1,0 +1,77 @@
+suffix,count,suffix_desc,group,group_count,group_desc
+CU,183,CONDITIONAL USE,CU,311,Conditional Use Permits
+MCUP,71,MASTER CONDITIONAL USE PERMIT,CU,311,Conditional Use Permits
+CUB,25,CONDITIONAL USE BEVERAGE-ALCOHOL,CU,311,Conditional Use Permits
+VCU,15,VESTING CONDITIONAL USE,CU,311,Conditional Use Permits
+CUX,12,ADULT ENTERTAINMENTS,CU,311,Conditional Use Permits
+CU3,2,CONDITIONAL USE (3RD),CU,311,Conditional Use Permits
+CUW,2,CONDITIONAL USE WIRELESS,CU,311,Conditional Use Permits
+CU2,1,CONDITIONAL USE (2ND),CU,311,Conditional Use Permits
+1A,233,FIRST APPEAL,APP,259,"Appeals, Amendments & Modifications"
+PA1,11,PLAN APPROVAL 1,APP,259,"Appeals, Amendments & Modifications"
+M3,5,MODIFICATION 3,APP,259,"Appeals, Amendments & Modifications"
+M1,4,MODIFICATION 1,APP,259,"Appeals, Amendments & Modifications"
+PAB,2,PLAN APPROVAL BOOZE,APP,259,"Appeals, Amendments & Modifications"
+AMDT3,1,AMENDMENT 3,APP,259,"Appeals, Amendments & Modifications"
+AMDT2,1,AMENDMENT 2,APP,259,"Appeals, Amendments & Modifications"
+AMDT1,1,AMENDMENT 1,APP,259,"Appeals, Amendments & Modifications"
+PA2,1,PLAN APPROVAL 2,APP,259,"Appeals, Amendments & Modifications"
+SPR,249,SITE PLAN REVIEW,SPR,249,Site Plan Review
+HD,82,HEIGHT DISTRICT,ZC,237,Zone Changes
+VZC,64,VESTING ZONE CHANGE,ZC,237,Zone Changes
+ZC,64,ZONE CHANGE,ZC,237,Zone Changes
+VZCJ,16,VESTING ZONE CHANGE JJJ,ZC,237,Zone Changes
+ZCJ,11,ZONE CHANGE JJJ,ZC,237,Zone Changes
+DB,211,DENSITY BONUS,DB,211,Density Bonus
+HCA,124,HOUSING CRISIS ACT,HCA,162,Housing Crisis Act
+VHCA,38,VESTING HOUSING CRISIS ACT,HCA,162,Housing Crisis Act
+SPP,80,SPECIFIC PLAN PROJECT PERMIT COMPLIANCE,SP,127,Specific Plan Actions
+SP,24,SPECIFIC PLAN (INCLUDING AMENDMENTS),SP,127,Specific Plan Actions
+SPE,9,SPECIFIC PLAN EXCEPTION,SP,127,Specific Plan Actions
+MSP,6,MULHOLLAND SPECIFIC PLAN,SP,127,Specific Plan Actions
+SPPA,5,SPECIFIC PLAN PROJECT PERMIT ADJUSTMENT,SP,127,Specific Plan Actions
+SPPC,2,SPECIFIC PLAN PROJECT PERMIT COMPLIANCE (VARIANT),SP,127,Specific Plan Actions
+SPPE,1,SPECIFIC PLAN PROJECT PERMIT EXCEPTION,SP,127,Specific Plan Actions
+WDI,52,WAIVER OF DEDICATIONS AND IMPROVEMENTS,INF,121,"Dedications, Subdivisions & Infrastructure"
+SIP,15,STREAMLINED INFILL PROCESS (SB35),INF,121,"Dedications, Subdivisions & Infrastructure"
+BL,13,BUILDING LINE,INF,121,"Dedications, Subdivisions & Infrastructure"
+SN,13,SIGN DISTRICT,INF,121,"Dedications, Subdivisions & Infrastructure"
+CN,12,NEW CONDOMINIUMS,INF,121,"Dedications, Subdivisions & Infrastructure"
+RDP,7,REDEVELOPMENT PLAN PROJECT,INF,121,"Dedications, Subdivisions & Infrastructure"
+PMLA,5,PARCEL MAP,INF,121,"Dedications, Subdivisions & Infrastructure"
+SL,2,SMALL LOT SUBDIVISION,INF,121,"Dedications, Subdivisions & Infrastructure"
+PMEX,2,PARCEL MAP EXEMPTION,INF,121,"Dedications, Subdivisions & Infrastructure"
+TOC,113,TRANSIT ORIENTED COMMUNITIES,TOC,113,Transit Oriented Communities
+GPA,62,GENERAL PLAN AMENDMENT,GPA,85,General Plan Amendments
+GPAJ,19,GENERAL PLAN AMENDMENT JJJ,GPA,85,General Plan Amendments
+CPU,4,COMMUNITY PLAN UPDATE,GPA,85,General Plan Amendments
+ZV,24,ZONE VARIANCE,ZA,77,Zoning Admin Adjustments & Variances
+ZAA,20,"AREA,HEIGHT,YARD,AND BLDG LINE ADJMNTS GT 20% (SLIGHT MODIFICATIONS)",ZA,77,Zoning Admin Adjustments & Variances
+ZAD,13,ZA DETERMINATION (PER LAMC 12.27),ZA,77,Zoning Admin Adjustments & Variances
+DD,11,DIRECTOR'S DETERMINATION,ZA,77,Zoning Admin Adjustments & Variances
+F,6,FENCE HEIGHT,ZA,77,Zoning Admin Adjustments & Variances
+ZAI,3,ZA INTERPRETATIONS,ZA,77,Zoning Admin Adjustments & Variances
+TDR,23,TRANSFER OF DEVELOPMENT RIGHTS (TFAR),DRV,75,Design Review & Historic Preservation
+DRB,21,DESIGN REVIEW BOARD,DRV,75,Design Review & Historic Preservation
+CDP,16,COASTAL DEVELOPMENT PERMIT,DRV,75,Design Review & Historic Preservation
+MEL,10,MELLO ACT COMPLIANCE REVIEW,DRV,75,Design Review & Historic Preservation
+DI,2,DIRECTOR OF PLANNING INTERPRETATION,DRV,75,Design Review & Historic Preservation
+PR,2,PRIVATE STREET REVIEW,DRV,75,Design Review & Historic Preservation
+SCEA,1,SUSTAINABLE COMMUNITIES ENVIRONMENTAL ASSESSMENT,DRV,75,Design Review & Historic Preservation
+CA,38,CODE AMENDMENT,CA,49,Code Amendments & Agreements
+DA,8,DEVELOPMENT AGREEMENT,CA,49,Code Amendments & Agreements
+AD,1,ANNEXATION/DETACHMENT,CA,49,Code Amendments & Agreements
+ACI,1,AMENDMENT TO COUNCIL INSTRUCTIONS,CA,49,Code Amendments & Agreements
+COA,1,CERTIFICATE OF APPROPRIATENESS,CA,49,Code Amendments & Agreements
+PHP,22,PRIORITY HOUSING PROJECT,HSG,42,Housing & Public Benefit Projects
+PSH,6,PERMANENT SUPPORTIVE HOUSING,HSG,42,Housing & Public Benefit Projects
+BSA,4,BUILDING AND SAFETY APPEAL TO ZA,HSG,42,Housing & Public Benefit Projects
+PUB,4,PUBLIC BENEFIT,HSG,42,Housing & Public Benefit Projects
+SUD,3,SUPPLEMENTAL USE DISTRICT,HSG,42,Housing & Public Benefit Projects
+ELD,2,ELDER CARE FACILITIES,HSG,42,Housing & Public Benefit Projects
+GB,1,GREEN BUILDING,HSG,42,Housing & Public Benefit Projects
+CDO,13,COMMUNITY DESIGN OVERLAY DISTRICT,OVR,31,Overlay Districts & Special Plans
+MSC,6,"MISCELLANEOUS (POLICIES, GUIDELINES, RESOLUTIONS, ETC.)",OVR,31,Overlay Districts & Special Plans
+CPIOA,5,COMMUNITY PLAN IMPLEMENTATION OVERLAY ADJUSTMENT,OVR,31,Overlay Districts & Special Plans
+CCMP,5,CERTIFICATE OF COMPATIBILITY,OVR,31,Overlay Districts & Special Plans
+CPIO,2,COMMUNITY PLAN IMPLEMENTATION OVERLAY AMENDMENT AND ESTABLISHMENT,OVR,31,Overlay Districts & Special Plans
