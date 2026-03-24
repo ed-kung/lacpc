@@ -1,6 +1,7 @@
 import hashlib
 import re
 import json
+import numpy as np
 
 # Get the hash of a string
 def get_hash(text):
@@ -11,6 +12,20 @@ def is_casenum(s):
     pattern = r'^[A-Za-z]{2,3}-\d+-[A-Za-z0-9-]+$'
     return bool(re.match(pattern, s))
 
+# p-value stars
+def stars(coef, serr):
+    if serr == 0:
+        return '***'  # Avoid division by zero; treat as highly significant
+    t_stat = np.abs(coef / serr)
+    if t_stat > 2.576:
+        return '***'  # p < 0.01
+    elif t_stat > 1.96:
+        return '**'   # p < 0.05
+    elif t_stat > 1.645:
+        return '*'    # p < 0.10
+    else:
+        return ''
+    
 # Handle strings with json in them
 def extract_json(s):
     # Try directly
