@@ -38,8 +38,8 @@ extract_reg <- function(reg, reg_name) {
   # stats
   stats_df <- data.frame(
     regression_name = reg_name,
-    coef_name = c("num_obs", "0_1_threshold", "1_2_threshold"),
-    estimate = c(reg$nobs, reg$zeta["0|1"], reg$zeta["1|2"]),
+    coef_name = c("num_obs"),
+    estimate = c(reg$nobs),
     serr = NA_real_
   )
   return(rbind(coef_df, stats_df))
