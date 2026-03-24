@@ -1,18 +1,46 @@
 \section{Data Appendix} \label{sec_data_appendix}
 
-\subsection{Data Extraction with LLMs}
+\subsection{Downloading the Raw Data}
 
-Extracting data from the raw PDFs downloaded from the Planning Department website is a multi-step process. First, individual agenda items need to be extracted from the raw agenda PDF. This is difficult using traditional NLP methods because the boundaries between agenda items in the PDF are not always consistently demarcated. However, LLMs are quite suited to this task of identifying the unique agenda items out of a single PDF containing the agenda.
+The Los Angeles Planning Department keeps records of agenda, minutes, and supplemental documents for each City Planning Commission meeting. These are downloadable as PDF files. We wrote an automated scraper to crawl the Planning Department website (\url{https://planning.lacity.gov/about/commissions-boards-hearings#commissions}) and download these PDFs for each meeting. The first meeting date for which we obtained data was May 10th, 2018, and the last date was December 19th, 2024. After the PDFs were downloaded, the textual content was extracted using the \texttt{pdfplumber} package in Python. Some pages were stored as images rather than searchable text; we used optical character recognition software (\texttt{tesseract}) to extract the text.
 
-The first step, therefore, is to extract the individual agenda items. Figure \ref{fig_split_agenda_prompt} shows the prompt we used to have the LLM read the agenda, then extract each individual agenda item. We ask the LLM to return the agenda's item number, its title (which is a Planning Department case number for any items requiring a decision), and a short summary of the agenda item.
 
-After the agenda items are extracted, the next step is to extract data about each agenda item, using the agenda text. The raw agenda PDF is split into its individual components based on the extracted item number and title for each agenda item. The text for each individual agenda item is then fed into the prompt shown in Figure \ref{fig_agenda_items_prompt}. The outputted response is then processed to extract the data features listed in Section \ref{sec_data}.
+\subsection{Extraction of Usable Fields}
 
-After extracting data from the agenda text, we extract information about the deliberations over each agenda item from the minutes text. We first split the minutes PDF into the components relevant to each individual item, using the item number and title. We then take the agenda text for that item and the minutes text for that item and feed it into the prompt shown in Figure \ref{fig_minutes_prompt}. The response from the LLM is then processed to extract the data features.
+\paragraph{Agendas.} We first extracted the unique agenda items out of the agenda text of each meeting. Because the agendas had a consistent format, we were able to do this using traditional pattern matching methods. For each agenda item, we used pattern matching to extract its agenda number (e.g. ``1'', ``2'', ``3a'', ``3b'', etc.) and the title (e.g. ``Director's Report and Commission Business'', ``CPC-2014-2906-TDR-SPR'', etc.) We also used pattern matching to determine whether the agenda item is part of the consent calendar, as a consistent format was used to indicate such. 
 
-Lastly, we need to extract data from the supplemental documents. This step is challenging because all of the supplemental documents are spliced together into a single PDF, and we need to split the PDF into individual documents. While this would be relatively easy for a human to do, we found that LLMs were not able to accomplish this task reliably. We found that LLMs struggled to process longer PDFs, and it also had a hard time recognizing document boundaries when, for example, the document contains a large number of attachments, or when the document contains a page dedicated entirely to signatures. We therefore had to manually annotate the document boundaries in each of the PDFs containing supplemental documents. 
+Once the agenda items were extracted from the agenda, we partitioned the agenda text into the section relevant for each item. We then asked \texttt{claude-opus-4-6} to extract the following information:\footnote{The full prompts used are available at \url{https://github.com/ed-kung/lacpc}.} 
+\begin{itemize}
+\item The address or location of the agenda item's proposed project, if applicable;
+\item The Council District of the proposed item;
+\item The Council Member in charge of said Council District;
+\item Whether or not the agenda item is an appeal of a previous decision;
+\item A short summary of the agenda item.
+\end{itemize}
 
-After manually splitting the individual documents out of the supplemental document PDFs, we fed the document text into the prompt shown in Figure \ref{fig_supplemental_docs_prompt}, along with the full text of the agenda for the associated meeting. It is necessary to include the full agenda in order to identify which agenda items the document is in reference to. We then process the LLM output to extract the relevant data features.
+\noindent It should be noted that all this information is contained in the text of the agenda itself; the LLM does not need to rely on external knowledge. The model was instructed to return this data in a JSON. 
+
+\paragraph{Minutes.} The minutes are much messier and inconsistently formatted than the agendas. This is because items can get moved around in the order in which they are discussed, or sometimes discussion begins on one item, is tabled temporarily, and discussion is resumed after other items were decided on. 
+
+To extract usable information from the minutes, we did the following: For each agenda item that was an active Planning Department case needing a decision by the CPC, we gave \texttt{claude-opus-4-6} the text of that agenda item and the \emph{full text} of the minutes for that meeting. We then asked the model to provide:
+\begin{itemize}
+\item A one paragraph summary of the deliberations related to the agenda item and the final decision made by the Commission;
+\item If a motion was made, the name of the Commission Member who made the motion;
+\item The name of the seconder;
+\item The list of Members who voted yes, voted no, abstained, were absent, or were recused;
+\item The result of the vote (passed or failed);
+\item The implication of the vote for the proposed project (approved, approved with minor conditions, approved with major conditions, delayed, or denied).
+\end{itemize}
+Sometimes multiple motions are made on the same agenda item. This usually happens if the first motion fails. In such cases, the model was instructed to take only the result of the final motion. An advantage of using a state-of-the-art model like \texttt{claude-opus-4-6} is that it was smart enough to properly contextualize the implication of the vote for the proposed project. For example, the model understood that a unanimous vote to reject an appeal implies that the project itself is approved, or that a vote to continue the deliberations to a future date implies that the decision on the project is delayed.
+
+\paragraph{Supplemental Documents.} The supplemental documents were challenging to process because for each meeting, all supplemental documents submitted to that meeting were spliced into a single PDF. This resulted in PDFs of many hundreds of pages, containing potentially hundreds of separate documents. In our experimentation, even state-of-the-art LLMs had trouble identifying the document boundaries, especially when there were many pages of documents, or when a document contained many pages of attachments, or a page of signatures. We therefore went through the supplemental PDFs manually to identify the document boundaries. After manually identifying and extracting the individual documents out of the spliced PDF, we did the following: For each supplemental document submitted to each meeting, we gave \texttt{claude-opus-4-6} the text of the supplemental document and the \emph{full agenda text} of that meeting, then asked it to provide:
+\begin{itemize}
+\item A short summary of the supplemental document and its relation to any items on the agenda;
+\item A list of the agenda items that the supplemental document references, identifying the items by their item number;
+\item Document type (public comment, supplemental materials, administrative or other);
+\item Support or oppose: For each of the referenced agenda items, the model was asked the say whether the document definitely support, somewhat supports, is neutral towards, somewhat opposes, or definitely opposes the project being proposed.
+\end{itemize}
+\noindent As with the minutes, proper contextualization of the document with respect to the referenced agenda items is crucial. For example, a public comment may support the appeal of a decision, which would be an opposition to the underlying project. A pattern-matching approach or a less intelligent model may see words like ``support'' and think that the letter was written in support of the project, despite the truth being quite the opposite. This again highlights the importance of using highly capable models like \texttt{claude-opus-4-6} to handle the extraction of the data.
 
 
 
