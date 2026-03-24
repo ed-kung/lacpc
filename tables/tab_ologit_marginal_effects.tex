@@ -1,0 +1,41 @@
+\begin{table}[H]
+\centering
+\caption{Ordered Logit Marginal Effects}
+\vspace{0.2cm}
+\label{tab_ologit_marginal_effects}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lccc}
+\toprule
+ & (1) & (2) & (3) \\
+\midrule
+ & Outcome 0 & Outcome 1 & Outcome 2 \\
+ &  &  &  \\
+Semantic Uniqueness  & 0.035$^{**}$ & 0.025$^{**}$ & -0.060$^{**}$ \\
+ & (0.014) & (0.010) & (0.023) \\ [1.8ex]
+Agenda Order  & -0.007$^{}$ & -0.005$^{}$ & 0.012$^{}$ \\
+ & (0.006) & (0.004) & (0.011) \\ [1.8ex]
+No. Agenda Items  & -0.000$^{}$ & -0.000$^{}$ & 0.000$^{}$ \\
+ & (0.005) & (0.004) & (0.009) \\ [1.8ex]
+Consent Calendar  &  &  &  \\
+ &  &  &  \\ [1.8ex]
+$\log_2$(\# Support)  & -0.007$^{}$ & -0.005$^{}$ & 0.012$^{}$ \\
+ & (0.008) & (0.006) & (0.013) \\ [1.8ex]
+$\log_2$(\# Oppose)  & 0.017$^{**}$ & 0.012$^{**}$ & -0.029$^{**}$ \\
+ & (0.007) & (0.005) & (0.012) \\ [1.8ex]
+& & & & \\
+Semantic Cluster FE         & N & Y & Y & Y \\
+Council District FE         & N & N & Y & Y \\
+Case Suffix Group FE        & N & N & N & Y \\
+& & & & \\
+Observations  & 118 & 310 & 299 \\ [1.8ex]
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
+\item \textit{Notes:} This table reports estimated marginal effects from the ordered logit regression in column (4) of Table \ref{tab_ologit_results}.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

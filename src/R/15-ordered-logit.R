@@ -6,6 +6,7 @@ library(arrow)
 library(MASS)
 library(stargazer)
 library(broom)
+library(marginaleffects)
 
 
 LOCAL_CONFIG <- read_yaml("../../config.local.yaml")
