@@ -21,7 +21,7 @@ def update_results(x):
         results[k] = v
 
     with open(RESULTS_JSON, 'w') as f:
-        json.dump(results, f)
+        json.dump(results, f, indent=2)
     with open(RESULTS_TEX, 'w') as f:
         for k, v in results.items():
             f.write(f"%<*{k}>\n")
