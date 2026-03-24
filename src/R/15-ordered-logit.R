@@ -103,3 +103,21 @@ out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coef
 write_parquet(coefs_df, out_filename)
 
 
+# ---- Marginals
+
+m1 <- avg_slopes(r1)
+m1$regression_name <- "r1"
+m2 <- avg_slopes(r2)
+m2$regression_name <- "r2"
+m3 <- avg_slopes(r3)
+m3$regression_name <- "r3"
+m4 <- avg_slopes(r4)
+m4$regression_name <- "r4"
+
+marginals_df <- rbind(m1, m2, m3, m4)
+
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_marginals.parquet")
+write_parquet(marginals_df, out_filename)
+
+
+
