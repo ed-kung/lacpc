@@ -7,6 +7,7 @@ library(MASS)
 library(stargazer)
 library(broom)
 library(marginaleffects)
+library(robomit)
 
 
 LOCAL_CONFIG <- read_yaml("../../config.local.yaml")
@@ -54,15 +55,18 @@ in_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_data.
 
 df <- read_parquet(in_filename)
 
+df$outcome_y <- df$outcome
 df$outcome <- as.factor(df$outcome)
 
+df$cluster_fe1 <- df$cluster==1
+df$cluster_fe2 <- df$cluster==2
 
 # ---- Run regressions
 
 vars1 <- c("mahalanobis")
 vars2 <- c("agenda_order", "num_agenda_items", "is_consent_calendar", 
            "log2_support", "log2_oppose")
-cluster_fe <- c("as.factor(cluster)")
+cluster_fe <- c("cluster_fe1", "cluster_fe2")
 cd_fe <- paste0("cd_", 1:15)
 sfx_fe <- grep("^sfx_", names(df), value = TRUE)[-1]
 
@@ -104,6 +108,33 @@ out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coef
 write_parquet(coefs_df, out_filename)
 
 
+# ---- Oster (2019) robustness check
+
+short_reg <- lm(
+  build_fmla("outcome_y", vars1), 
+  data = df
+)
+controlled_reg <- lm(
+  build_fmla("outcome_y", c(vars1, vars2, cluster_fe, cd_fe, sfx_fe)),
+  data = df
+)
+Rmax <- min(1.3*summary(controlled_reg)$r.squared, 1)
+
+
+oster_delta <- o_delta(
+  y = "outcome_y", 
+  x = "mahalanobis",
+  con = paste0(c(vars2, cluster_fe, cd_fe, sfx_fe), collapse=" + "),
+  beta = 0,
+  R2max = Rmax,
+  type = "lm",
+  data = df
+)
+
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_oster_delta.parquet")
+write_parquet(oster_delta, out_filename)
+
+
 # ---- Marginals
 
 m1 <- avg_slopes(r1)
@@ -119,6 +150,5 @@ marginals_df <- rbind(m1, m2, m3, m4)
 
 out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_marginals.parquet")
 write_parquet(marginals_df, out_filename)
-
 
 
