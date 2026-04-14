@@ -25,7 +25,11 @@ def stars(coef, serr):
         return '*'    # p < 0.10
     else:
         return ''
-    
+
+# weighted mean
+def weighted_mean(x, w):
+    return np.sum(x*w) / np.sum(w)
+
 # Handle strings with json in them
 def extract_json(s):
     # Try directly
