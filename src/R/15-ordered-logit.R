@@ -41,7 +41,7 @@ extract_reg <- function(reg, reg_name) {
   stats_df <- data.frame(
     regression_name = reg_name,
     coef_name = c("num_obs"),
-    estimate = c(reg$nobs),
+    estimate = c(nobs(reg)),
     serr = NA_real_
   )
   return(rbind(coef_df, stats_df))
@@ -152,3 +152,59 @@ out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_marg
 write_parquet(marginals_df, out_filename)
 
 
+
+# ---- Regressions on non-delay outcomes
+dfb <- filter(df, project_result!="DELAYED")
+
+dfb$outcome <- dfb$outcome_y
+dfb$outcome[dfb$outcome==1] <- 0
+dfb$outcome[dfb$outcome==2] <- 1
+
+dfb$log2_letters <- log2(1+dfb$n_support+dfb$n_oppose)
+
+vars3 <- c("agenda_order", "num_agenda_items", "is_consent_calendar", 
+           "log2_letters")
+
+#sfx_fe_2 <- sfx_fe[sapply(df_nodelay[sfx_fe], var, na.rm=TRUE) != 0]
+
+r1b <- glm(
+  build_fmla("outcome", vars1),
+  data=dfb, family=binomial(link="logit")
+)
+r2b <- glm(
+  build_fmla("outcome", c(vars1,vars2,cluster_fe)),
+  data=dfb, family=binomial(link="logit")
+)
+r3b <- glm(
+  build_fmla("outcome", c(vars1,vars2,cluster_fe,cd_fe)),
+  data=dfb, family=binomial(link="logit")
+)
+r4b <- glm(
+  build_fmla("outcome", c(vars1,vars2,cluster_fe,cd_fe,sfx_fe)),
+  data=dfb, family=binomial(link="logit")
+)
+r5b <- glm(
+  build_fmla("outcome", c(vars1,vars3,cluster_fe,cd_fe,sfx_fe)),
+  data=dfb, family=binomial(link="logit")
+)
+
+stargazer(
+  r1b, r2b, r3b, r4b, r5b, type="text",
+  keep=c(vars1, vars2, vars3),
+  add.lines=list(
+    c("Cluster FE",          "N", "Y", "Y", "Y", "Y"),
+    c("Council District FE", "N", "N", "Y", "Y", "Y"),
+    c("Case Suffix FE",      "N", "N", "N", "Y", "Y")
+  )
+)
+
+coefs_df <- rbind(
+  extract_reg(r1b, "r1b"),
+  extract_reg(r2b, "r2b"),
+  extract_reg(r3b, "r3b"),
+  extract_reg(r4b, "r4b"),
+  extract_reg(r5b, "r5b")
+)
+
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coefs_nodelay.parquet")
+write_parquet(coefs_df, out_filename)
