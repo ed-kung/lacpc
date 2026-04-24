@@ -154,6 +154,7 @@ write_parquet(marginals_df, out_filename)
 
 
 # ---- Regressions on non-delay outcomes
+
 dfb <- filter(df, project_result!="DELAYED")
 
 dfb$outcome <- dfb$outcome_y

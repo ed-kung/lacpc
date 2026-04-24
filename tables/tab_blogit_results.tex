@@ -1,0 +1,42 @@
+\begin{table}[H]
+\centering
+\caption{Binary Logit Regression Results - Non-Delay Outcomes}
+\vspace{0.2cm}
+\label{tab_blogit_results}
+\begin{adjustbox}{max width=\textwidth}
+\begin{threeparttable}
+\begin{tabular}{lccccc}
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+\midrule
+ &  &  &  &  & \\
+Case Atypicality  & -0.290$^{**}$ & -0.297$^{**}$ & -0.296$^{**}$ & -0.167$^{}$ & -0.165$^{}$ \\
+ & (0.116) & (0.121) & (0.127) & (0.142) & (0.142) \\ [1.8ex]
+Agenda Order  &  & 0.083$^{}$ & 0.080$^{}$ & 0.060$^{}$ & 0.059$^{}$ \\
+ &  & (0.058) & (0.060) & (0.063) & (0.063) \\ [1.8ex]
+No. Agenda Items  &  & 0.009$^{}$ & 0.022$^{}$ & 0.037$^{}$ & 0.036$^{}$ \\
+ &  & (0.048) & (0.050) & (0.053) & (0.053) \\ [1.8ex]
+Consent Calendar  &  & 1.134$^{***}$ & 1.152$^{***}$ & 1.189$^{***}$ & 1.195$^{***}$ \\
+ &  & (0.284) & (0.298) & (0.320) & (0.319) \\ [1.8ex]
+$\log_2$(\# Support)  &  & -0.199$^{***}$ & -0.198$^{**}$ & -0.210$^{**}$ &  \\
+ &  & (0.075) & (0.077) & (0.082) &  \\ [1.8ex]
+$\log_2$(\# Oppose)  &  & -0.065$^{}$ & -0.104$^{}$ & -0.081$^{}$ &  \\
+ &  & (0.069) & (0.072) & (0.076) &  \\ [1.8ex]
+$\log_2$(\# Letters)  &  &  &  &  & -0.180$^{***}$ \\
+ &  &  &  &  & (0.062) \\ [1.8ex]
+& & & & & \\
+Embedding Cluster FE         & N & Y & Y & Y & Y \\
+Council District FE         & N & N & Y & Y & Y \\
+Case Suffix Group FE        & N & N & N & Y & Y \\
+& & & & & \\
+Observations  & 617 & 617 & 617 & 617 & 617 \\ [1.8ex]
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
+\item \textit{Notes:} This table reports coefficient estimates from the binary logit regression described in Section \ref{sec_results}, in which cases where delay was the outcome are removed from the data. The outcome is 1 if the case is approved, and 0 if the case is approved with conditions or denied.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
