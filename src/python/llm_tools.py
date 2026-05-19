@@ -249,17 +249,24 @@ def _write_claude_batch(batch_id, batch_result, response_db_conn, overwrite):
                     continue
 
             # Extract the text content from the response
-            message = entry.result.message.content[0].text
+            try:
+                message = entry.result.message.content[0].text
+                # Claude does not return logprobs, so store as None
+                store_response(
+                    prompt_hash = prompt_hash,
+                    response = message,
+                    total_logprob = 0.0,
+                    perplexity = 0.0,
+                    db_conn = response_db_conn
+                )
+                n_written += 1
+            except Exception as e:
+                print(f"Error processing result for prompt_hash {prompt_hash} in batch {batch_id}: {e}")
+                print(entry.result)
+                print("")
+                print("")
+                n_error += 1
 
-            # Claude does not return logprobs, so store as None
-            store_response(
-                prompt_hash = prompt_hash,
-                response = message,
-                total_logprob = 0.0,
-                perplexity = 0.0,
-                db_conn = response_db_conn
-            )
-            n_written += 1
         else:
             # Covers "errored", "canceled", and "expired"
             n_error += 1
