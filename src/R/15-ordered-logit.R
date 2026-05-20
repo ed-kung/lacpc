@@ -63,7 +63,7 @@ df$cluster_fe2 <- df$cluster==2
 
 # ---- Run regressions
 
-vars1 <- c("mahalanobis")
+vars1 <- c("atypicality")
 vars2 <- c("agenda_order", "num_agenda_items", "is_consent_calendar", 
            "log2_support", "log2_oppose")
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
@@ -123,7 +123,7 @@ Rmax <- min(1.3*summary(controlled_reg)$r.squared, 1)
 
 oster_delta <- o_delta(
   y = "outcome_y", 
-  x = "mahalanobis",
+  x = "atypicality",
   con = paste0(c(vars2, cluster_fe, cd_fe, sfx_fe), collapse=" + "),
   beta = 0,
   R2max = Rmax,
