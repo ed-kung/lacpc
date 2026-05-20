@@ -199,6 +199,7 @@ stargazer(
   )
 )
 
+
 coefs_df <- rbind(
   extract_reg(r1b, "r1b"),
   extract_reg(r2b, "r2b"),
