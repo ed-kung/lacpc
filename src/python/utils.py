@@ -26,6 +26,16 @@ def stars(coef, serr):
     else:
         return ''
 
+def stars_p(pvalue):
+    if pvalue <= 0.01:
+        return '***'
+    elif pvalue <= 0.05:
+        return '**'
+    elif pvalue <= 0.10:
+        return '*'
+    else:
+        return ''
+
 # weighted mean
 def weighted_mean(x, w):
     return np.sum(x*w) / np.sum(w)
