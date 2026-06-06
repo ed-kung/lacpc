@@ -1,78 +1,78 @@
-suffix,count,suffix_desc,group,group_count,group_desc
-SPR,249,SITE PLAN REVIEW,SPR,249,Site Plan Review
-1A,233,FIRST APPEAL,APP,259,"Appeals, Amendments & Modifications"
-DB,211,DENSITY BONUS,DB,211,Density Bonus
-CU,183,CONDITIONAL USE,CU,311,Conditional Use Permits
-HCA,124,HOUSING CRISIS ACT,HCA,162,Housing Crisis Act
-TOC,113,TRANSIT ORIENTED COMMUNITIES,TOC,113,Transit Oriented Communities
-HD,82,HEIGHT DISTRICT,ZC,237,Zone Changes
-SPP,80,SPECIFIC PLAN PROJECT PERMIT COMPLIANCE,SP,127,Specific Plan Actions
-MCUP,71,MASTER CONDITIONAL USE PERMIT,CU,311,Conditional Use Permits
-VZC,64,VESTING ZONE CHANGE,ZC,237,Zone Changes
-ZC,64,ZONE CHANGE,ZC,237,Zone Changes
-GPA,62,GENERAL PLAN AMENDMENT,GPA,85,General Plan Amendments
-WDI,52,WAIVER OF DEDICATIONS AND IMPROVEMENTS,INF,121,"Dedications, Subdivisions & Infrastructure"
-VHCA,38,VESTING HOUSING CRISIS ACT,HCA,162,Housing Crisis Act
-CA,38,CODE AMENDMENT,CA,49,Code Amendments & Agreements
-CUB,25,CONDITIONAL USE BEVERAGE-ALCOHOL,CU,311,Conditional Use Permits
-SP,24,SPECIFIC PLAN (INCLUDING AMENDMENTS),SP,127,Specific Plan Actions
-ZV,24,ZONE VARIANCE,ZA,77,Zoning Admin Adjustments & Variances
-TDR,23,TRANSFER OF DEVELOPMENT RIGHTS (TFAR),DRV,75,Design Review & Historic Preservation
-PHP,22,PRIORITY HOUSING PROJECT,HSG,42,Housing & Public Benefit Projects
-DRB,21,DESIGN REVIEW BOARD,DRV,75,Design Review & Historic Preservation
-ZAA,20,"AREA,HEIGHT,YARD,AND BLDG LINE ADJMNTS GT 20% (SLIGHT MODIFICATIONS)",ZA,77,Zoning Admin Adjustments & Variances
-GPAJ,19,GENERAL PLAN AMENDMENT JJJ,GPA,85,General Plan Amendments
-VZCJ,16,VESTING ZONE CHANGE JJJ,ZC,237,Zone Changes
-CDP,16,COASTAL DEVELOPMENT PERMIT,DRV,75,Design Review & Historic Preservation
-VCU,15,VESTING CONDITIONAL USE,CU,311,Conditional Use Permits
-SIP,15,STREAMLINED INFILL PROCESS (SB35),INF,121,"Dedications, Subdivisions & Infrastructure"
-BL,13,BUILDING LINE,INF,121,"Dedications, Subdivisions & Infrastructure"
-SN,13,SIGN DISTRICT,INF,121,"Dedications, Subdivisions & Infrastructure"
-ZAD,13,ZA DETERMINATION (PER LAMC 12.27),ZA,77,Zoning Admin Adjustments & Variances
-CDO,13,COMMUNITY DESIGN OVERLAY DISTRICT,OVR,31,Overlay Districts & Special Plans
-CUX,12,ADULT ENTERTAINMENTS,CU,311,Conditional Use Permits
-CN,12,NEW CONDOMINIUMS,INF,121,"Dedications, Subdivisions & Infrastructure"
-PA1,11,PLAN APPROVAL 1,APP,259,"Appeals, Amendments & Modifications"
-ZCJ,11,ZONE CHANGE JJJ,ZC,237,Zone Changes
-DD,11,DIRECTOR'S DETERMINATION,ZA,77,Zoning Admin Adjustments & Variances
-MEL,10,MELLO ACT COMPLIANCE REVIEW,DRV,75,Design Review & Historic Preservation
-SPE,9,SPECIFIC PLAN EXCEPTION,SP,127,Specific Plan Actions
-DA,8,DEVELOPMENT AGREEMENT,CA,49,Code Amendments & Agreements
-RDP,7,REDEVELOPMENT PLAN PROJECT,INF,121,"Dedications, Subdivisions & Infrastructure"
-MSP,6,MULHOLLAND SPECIFIC PLAN,SP,127,Specific Plan Actions
-F,6,FENCE HEIGHT,ZA,77,Zoning Admin Adjustments & Variances
-PSH,6,PERMANENT SUPPORTIVE HOUSING,HSG,42,Housing & Public Benefit Projects
-MSC,6,"MISCELLANEOUS (POLICIES, GUIDELINES, RESOLUTIONS, ETC.)",OVR,31,Overlay Districts & Special Plans
-M3,5,MODIFICATION 3,APP,259,"Appeals, Amendments & Modifications"
-SPPA,5,SPECIFIC PLAN PROJECT PERMIT ADJUSTMENT,SP,127,Specific Plan Actions
-PMLA,5,PARCEL MAP,INF,121,"Dedications, Subdivisions & Infrastructure"
-CPIOA,5,COMMUNITY PLAN IMPLEMENTATION OVERLAY ADJUSTMENT,OVR,31,Overlay Districts & Special Plans
-CCMP,5,CERTIFICATE OF COMPATIBILITY,OVR,31,Overlay Districts & Special Plans
-M1,4,MODIFICATION 1,APP,259,"Appeals, Amendments & Modifications"
-CPU,4,COMMUNITY PLAN UPDATE,GPA,85,General Plan Amendments
-BSA,4,BUILDING AND SAFETY APPEAL TO ZA,HSG,42,Housing & Public Benefit Projects
-PUB,4,PUBLIC BENEFIT,HSG,42,Housing & Public Benefit Projects
-ZAI,3,ZA INTERPRETATIONS,ZA,77,Zoning Admin Adjustments & Variances
-SUD,3,SUPPLEMENTAL USE DISTRICT,HSG,42,Housing & Public Benefit Projects
-CU3,2,CONDITIONAL USE (3RD),CU,311,Conditional Use Permits
-CUW,2,CONDITIONAL USE WIRELESS,CU,311,Conditional Use Permits
-PAB,2,PLAN APPROVAL BOOZE,APP,259,"Appeals, Amendments & Modifications"
-SPPC,2,SPECIFIC PLAN PROJECT PERMIT COMPLIANCE (VARIANT),SP,127,Specific Plan Actions
-SL,2,SMALL LOT SUBDIVISION,INF,121,"Dedications, Subdivisions & Infrastructure"
-PMEX,2,PARCEL MAP EXEMPTION,INF,121,"Dedications, Subdivisions & Infrastructure"
-DI,2,DIRECTOR OF PLANNING INTERPRETATION,DRV,75,Design Review & Historic Preservation
-PR,2,PRIVATE STREET REVIEW,DRV,75,Design Review & Historic Preservation
-ELD,2,ELDER CARE FACILITIES,HSG,42,Housing & Public Benefit Projects
-CPIO,2,COMMUNITY PLAN IMPLEMENTATION OVERLAY AMENDMENT AND ESTABLISHMENT,OVR,31,Overlay Districts & Special Plans
-CU2,1,CONDITIONAL USE (2ND),CU,311,Conditional Use Permits
-AMDT3,1,AMENDMENT 3,APP,259,"Appeals, Amendments & Modifications"
-AMDT2,1,AMENDMENT 2,APP,259,"Appeals, Amendments & Modifications"
-AMDT1,1,AMENDMENT 1,APP,259,"Appeals, Amendments & Modifications"
-PA2,1,PLAN APPROVAL 2,APP,259,"Appeals, Amendments & Modifications"
-SPPE,1,SPECIFIC PLAN PROJECT PERMIT EXCEPTION,SP,127,Specific Plan Actions
-SCEA,1,SUSTAINABLE COMMUNITIES ENVIRONMENTAL ASSESSMENT,DRV,75,Design Review & Historic Preservation
-AD,1,ANNEXATION/DETACHMENT,CA,49,Code Amendments & Agreements
-ACI,1,AMENDMENT TO COUNCIL INSTRUCTIONS,CA,49,Code Amendments & Agreements
-COA,1,CERTIFICATE OF APPROPRIATENESS,CA,49,Code Amendments & Agreements
-GB,1,GREEN BUILDING,HSG,42,Housing & Public Benefit Projects
-RDPA,1,REDEVELOPMENT PLAN PROJECT-ADJUSTMENT,INF,121,"Dedications, Subdivisions & Infrastructure"
+suffix,count,suffix_meaning,category,category_code,reasoning
+SPR,264,Site Plan Review,Site Plan Review,SPR,Discretionary review of development projects per LAMC 16.05; directly corresponds to the Site Plan Review category
+1A,259,Appeal (1st appeal),Appeals,APP,Suffix designating the first appeal of a planning decision; directly an appeal action
+DB,247,Density Bonus,Incentive Programs,IP,State density bonus law (Gov. Code 65915) implemented via LAMC 12.22.A.25; a program offering development bonuses for affordable housing
+CU,192,Conditional Use (general),Conditional Use Permits,CUP,"General conditional use permit per LAMC 12.24; directly a conditional use entitlement (now inactive, replaced by CU1/CU2/CU3)"
+HCA,153,Housing Crisis Act (SB 330) compliance,Compliance Review,CR,Compliance determination for SB 330 Housing Crisis Act requirements; a mandated compliance review for housing projects
+TOC,122,Transit Oriented Communities incentive,Incentive Programs,IP,TOC incentive program (LAMC 12.22.A.31) offering density and FAR bonuses near transit; a program designed to streamline permitting and offer development bonuses
+HD,88,Height District change,Variances / Adjustments / Exceptions,VAE,Project-specific request to change the height district component of the zoning classification; a change in the relevant zoning category
+SPP,85,Specific Plan Project Permit Compliance,Compliance Review,CR,"Review of project compliance with specific plan standards (now inactive, replaced by SPPC); indicates required compliance review to specific plan standards"
+MCUP,74,Main Conditional Use Permit,Conditional Use Permits,CUP,"Master/main conditional use permit per LAMC 12.24-W,1 and 12.24-X,2; directly a conditional use entitlement"
+ZC,70,Zone Change,Variances / Adjustments / Exceptions,VAE,Project-specific request to change the zoning classification of a property; a change in the relevant zoning category
+GPA,67,General Plan Amendment,Code or Plan Amendments,CPA,Amendment to the General Plan land use designation; a plan amendment modifying the city's planning policy document
+VZC,65,Vesting Zone Change,Variances / Adjustments / Exceptions,VAE,Vesting zone change providing development rights upon approval; a project-specific change in the relevant zoning category
+WDI,58,Waiver of Dedications and Improvements,Development Agreements,DA,Waiver of required street dedications and public improvements per LAMC 11.12/12.37; a request to waive conditions of development
+VHCA,57,Vesting Housing Crisis Act (SB 330) compliance,Compliance Review,CR,Vesting version of SB 330 Housing Crisis Act compliance determination; a mandated compliance review for housing projects
+CA,44,Code Amendment,Code or Plan Amendments,CPA,Amendment to the Los Angeles Municipal Code (zoning code); a non-project-specific amendment to the zoning code
+CUB,29,Conditional Use for Beverage/Alcohol sales,Conditional Use Permits,CUP,Conditional use permit for the sale of alcoholic beverages per LAMC 12.24; a conditional use entitlement for alcohol
+PHP,27,Priority Housing Project,Incentive Programs,IP,Priority processing program for qualifying housing projects; a program designed to streamline permitting for housing
+ZV,27,Zone Variance,Variances / Adjustments / Exceptions,VAE,Variance from zoning code requirements; directly a project-specific variance from zoning standards
+TDR,26,Transfer of Development Rights (TFAR),Development Agreements,DA,Transfer of Floor Area Rights between properties; a transfer of development rights as specified in the guidelines
+SP,25,Specific Plan (establishment or amendment),Code or Plan Amendments,CPA,Establishment or amendment of a specific plan; a non-project-specific regulatory framework for a defined area
+ZAA,23,Zoning Administrator Adjustment (area/height/yard/building line),Variances / Adjustments / Exceptions,VAE,"Project-specific adjustment to area, height, yard, or building line requirements; directly an adjustment to zoning standards"
+DRB,22,Design Review Board review,Compliance Review,CR,Review by a Design Review Board for compliance with design standards per LAMC 16.50; compliance review for overlay/specific plan design standards
+GPAJ,20,General Plan Amendment per Measure JJJ,Code or Plan Amendments,CPA,General Plan amendment under Measure JJJ framework; a plan amendment modifying the General Plan
+CDP,18,Coastal Development Permit,Compliance Review,CR,Permit required for development in the Coastal Zone per LAMC 12.20.2; compliance review for the coastal zone overlay standards
+SN,17,Sign District (establishment),Code or Plan Amendments,CPA,Establishment of a sign district per LAMC 13.11; a non-project-specific regulatory designation for an area
+VCU,17,Vesting Conditional Use,Conditional Use Permits,CUP,Vesting conditional use permit providing vested development rights; directly a conditional use entitlement (now inactive)
+VZCJ,17,Vesting Zone Change per Measure JJJ,Variances / Adjustments / Exceptions,VAE,Vesting zone change under Measure JJJ framework; a project-specific change in the relevant zoning category
+SIP,15,Streamlined Infill Process (SB 35),Incentive Programs,IP,Ministerial approval process for qualifying infill projects under SB 35; a program designed to streamline permitting
+CU3,14,Class 3 Conditional Use,Conditional Use Permits,CUP,Class 3 conditional use permit; directly a conditional use entitlement
+BL,14,Building Line (establishment or removal),Variances / Adjustments / Exceptions,VAE,Establishment or modification of a building line setback per LAMC 12.32.R; a project-specific change to zoning development standards
+ZAD,14,Zoning Administrator Determination (per LAMC 12.27),Other,OTH,Discretionary determination by the Zoning Administrator; an administrative determination that does not fit other categories
+CUX,13,Conditional Use for Adult Entertainment,Conditional Use Permits,CUP,Conditional use permit for adult entertainment per LAMC 12.22.A.20; directly a conditional use entitlement
+CDO,13,Community Design Overlay District compliance,Compliance Review,CR,Compliance review for Community Design Overlay District standards per LAMC 13.08; required compliance review for an overlay district
+CN,13,New Condominiums (subdivision),Other,OTH,Subdivision action for new condominium projects; a land division/subdivision process that does not fit other categories
+MEL,12,Mello Act Compliance Review,Compliance Review,CR,Compliance review under the Mello Act for affordable housing in the coastal zone; a mandated compliance review
+PA1,11,Plan Approval (1st instance),Conditional Use Permits,CUP,Plan approval for a subsequent phase of a previously approved conditional use per LAMC 12.24-M; directly tied to the CU process
+ZCJ,11,Zone Change per Measure JJJ,Variances / Adjustments / Exceptions,VAE,Zone change under Measure JJJ framework; a project-specific change in the relevant zoning category
+DD,11,Director's Determination,Other,OTH,Discretionary determination by the Director of Planning; an administrative determination that does not fit other categories
+PR,10,Project Review,Site Plan Review,SPR,Project review per LAMC 16.05 (formerly titled Site Plan Review); functionally equivalent to Site Plan Review
+DA,9,Development Agreement,Development Agreements,DA,Formal development agreement between the city and a developer; directly a development agreement
+SPE,9,Specific Plan Exception,Variances / Adjustments / Exceptions,VAE,"Exception from specific plan standards per LAMC 11.5.7.F (now inactive, replaced by SPPE); a project-specific exception"
+BSA,9,Building and Safety Appeal,Appeals,APP,Appeal of a Building and Safety determination to the Director of Planning; directly an appeal action
+SPPC,8,Specific Plan Project Compliance,Compliance Review,CR,Project compliance review for specific plan standards; required compliance review for specific plan standards
+RDP,8,Redevelopment Plan Project compliance,Compliance Review,CR,Compliance review for projects within former redevelopment plan areas per Ordinance 186325; required compliance review for redevelopment plan standards
+MSC,8,"Miscellaneous (policies, guidelines, resolutions)",Other,OTH,"Catch-all suffix for miscellaneous planning actions including policies, guidelines, and resolutions"
+F,7,Fence Height exception,Variances / Adjustments / Exceptions,VAE,Exception or variance for fence height in fence height districts per LAMC 13.10; a project-specific exception to zoning standards
+M3,7,Modification (3rd instance),Development Agreements,DA,Third modification to a prior entitlement approval; a request to modify conditions of a prior development approval
+MSP,6,Mulholland Specific Plan compliance,Compliance Review,CR,Compliance review for the Mulholland Scenic Parkway Specific Plan; required compliance review for specific plan standards
+PSH,6,Permanent Supportive Housing,Incentive Programs,IP,Density bonus program for qualified permanent supportive housing per LAMC 14.00; a program offering development bonuses for supportive housing
+CPIOA,5,Community Plan Implementation Overlay Adjustment,Variances / Adjustments / Exceptions,VAE,Adjustment to Community Plan Implementation Overlay standards (now inactive); a project-specific adjustment to overlay standards
+CPU,5,Community Plan Update,Code or Plan Amendments,CPA,Comprehensive update to a community plan; a non-project-specific plan amendment
+PMLA,5,Parcel Map (subdivision),Other,OTH,Parcel map for land subdivision per LAMC 17.50; a land division/subdivision process that does not fit other categories
+CCMP,5,Certificate of Compatibility,Other,OTH,Certification that a nonconforming use or building is compatible with its surroundings; a unique compatibility determination
+SPPA,5,Specific Plan Project Permit Adjustment,Variances / Adjustments / Exceptions,VAE,Adjustment to specific plan project permit requirements; a project-specific adjustment to specific plan standards
+M1,4,Modification (1st instance),Development Agreements,DA,First modification to a prior entitlement approval; a request to modify conditions of a prior development approval
+SUD,4,Supplemental Use District (establishment),Code or Plan Amendments,CPA,Establishment of a Supplemental Use District adding regulations on top of base zoning; a non-project-specific amendment to zoning standards
+ZAI,4,Zoning Administrator Interpretation,Other,OTH,Official interpretation of the zoning code by the Zoning Administrator; an interpretive action that does not fit other categories
+PUB,4,Public Benefit project,Incentive Programs,IP,Public benefit determination granting development concessions in exchange for community benefits; a program offering development bonuses
+CUW,3,Conditional Use for Wireless facilities,Conditional Use Permits,CUP,Conditional use permit for wireless telecommunications facilities; directly a conditional use entitlement
+SL,3,Small Lot Subdivision,Other,OTH,Small lot subdivision per LAMC 12.22.C.27; a land division/subdivision process that does not fit other categories
+DI,2,Director of Planning Interpretation,Other,OTH,Official interpretation of the zoning code by the Director of Planning; an interpretive action that does not fit other categories
+PMEX,2,Parcel Map Exemption,Other,OTH,Exemption from parcel map requirements; a subdivision-related exemption that does not fit other categories
+SPPE,2,Specific Plan Project Permit Exception,Variances / Adjustments / Exceptions,VAE,Exception from specific plan project permit standards; a project-specific exception to specific plan standards
+ELD,2,Elder Care Facilities,Conditional Use Permits,CUP,Conditional use entitlement for elder care facilities per LAMC 14.3.1; a discretionary permit for a specific use type
+CPIO,2,Community Plan Implementation Overlay (amendment/establishment),Code or Plan Amendments,CPA,Establishment or amendment of a CPIO overlay per LAMC 12.32/11.5.7.I; a non-project-specific overlay regulation
+PAB,2,Plan Approval for alcohol/beverage use,Conditional Use Permits,CUP,Plan approval specifically for alcohol-related conditional use permits; directly tied to the CU/alcohol entitlement process
+SCEA,1,Sustainable Communities Environmental Assessment,Other,OTH,Environmental review under SB 375 for transit-priority projects; an environmental determination rather than a planning entitlement
+GB,1,Green Building compliance,Compliance Review,CR,"Compliance with the Green Building ordinance (Ord. 179820, now inactive); a required compliance review for building standards"
+ACI,1,Amendment to Council Instructions,Development Agreements,DA,Amendment to instructions issued by the City Council on a prior approval; a request to modify conditions of a prior development approval
+COA,1,Certificate of Appropriateness,Compliance Review,CR,Certification that a project in an HPOZ is appropriate per LAMC 12.20.3; compliance review for historic overlay district standards
+AMDT2,1,Amendment (2nd instance) to a prior entitlement,Development Agreements,DA,Second amendment to a prior entitlement decision; a request to modify conditions of a prior development approval
+AMDT1,1,Amendment (1st instance) to a prior entitlement,Development Agreements,DA,First amendment to a prior entitlement decision; a request to modify conditions of a prior development approval
+PA2,1,Plan Approval (2nd instance),Conditional Use Permits,CUP,Second plan approval for a subsequent phase of a previously approved conditional use per LAMC 12.24-M; directly tied to the CU process
+AMDT3,1,Amendment (3rd instance) to a prior entitlement,Development Agreements,DA,Third amendment to a prior entitlement decision; a request to modify conditions of a prior development approval
+AD,1,Annexation/Detachment,Other,OTH,Annexation to or detachment from the City of Los Angeles; a boundary change action that does not fit other categories
+CU2,1,Class 2 Conditional Use,Conditional Use Permits,CUP,Class 2 conditional use permit; directly a conditional use entitlement
+RDPA,1,Redevelopment Plan Project Adjustment,Variances / Adjustments / Exceptions,VAE,Adjustment to redevelopment plan project requirements per Ordinance 186325; a project-specific adjustment to development standards
