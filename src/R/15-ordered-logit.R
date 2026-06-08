@@ -63,12 +63,34 @@ df$cluster_fe2 <- df$cluster==2
 
 # ---- Run regressions
 
+atypicality <- c("atypicality")
+letters <- c("log2_support", "log2_oppose")
+hearing <- c("agenda_order", "num_agenda_items")
+physical <- c("log_square_footage", "height")
+sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
+
+r1 <- polr(
+  build_fmla("outcome", c(physical, hearing, letters)),
+  data=df, Hess=TRUE
+)
+r2 <- polr(
+  build_fmla("outcome", c(physical, hearing, letters, sfx_fe)),
+  data=df, Hess=TRUE
+)
+r3 <- polr(
+  build_fmla("outcome", c(hearing, letters, sfx_fe)),
+  data=df, Hess=TRUE
+)
+
+
+stargazer(r1, r2, r3, type="text")
+
+
 vars1 <- c("atypicality")
 vars2 <- c("agenda_order", "num_agenda_items", "is_consent_calendar", 
            "log2_support", "log2_oppose")
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
 cd_fe <- paste0("cd_", 1:15)
-sfx_fe <- grep("^sfx_", names(df), value = TRUE)[-1]
 
 r1 <- polr(
   build_fmla("outcome", vars1),
@@ -89,7 +111,7 @@ r4 <- polr(
 
 stargazer(
   r1, r2, r3, r4, type="text",
-  keep=c(vars1, vars2),
+  keep=c(vars1, vars2, cluster_fe, cd_fe, sfx_fe),
   add.lines=list(
     c("Cluster FE",          "N", "Y", "Y", "Y"),
     c("Council District FE", "N", "N", "Y", "Y"),
