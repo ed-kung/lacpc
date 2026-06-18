@@ -1,0 +1,78 @@
+﻿suffix,name,meaning
+SPR,Site Plan Review,"Indicates that project requires Site Plan Review, a discretionary review required for qualifying projects"
+1A,Appeal (1st),Indicates that an appeal has been filed against a prior determination in the case
+DB,Density Bonus,Indicates that the project is using the city's Density Bonus Program which offers density incentives in exchange for providing affordable housing
+CU,Conditional Use,Indicates that the applicant seeks a Conditional Use Permit
+HCA,Housing Crisis Act,"Indicates that the project is subject to the California Housing Crisis Act, which limits local discretion over qualifying housing projects"
+TOC,Transit Oriented Communities,Indicates that the project is using the city's Transit Oriented Communities Program which offers incentives to qualifying projects located near public transit
+HD,Height District,Indicates that the applicant seeks to change the project's applicable Height District
+SPP,Specific Plan Project Permit,Indicates that the project requires a permit for development under an applicable Specific Plan
+MCUP,Master Conditional Use Permit,Indicates that the applicant requests a Master Conditional Use Permit
+ZC,Zone Change,Indicates that the applicant seeks to change the project's zoning designation
+GPA,General Plan Amendment,Indicates that the applicant seeks an amendment to the General Plan
+VZC,Vesting Zone Change,Indicates that the applicant seeks a zone change with vesting protections
+WDI,Waiver of Dedication and Improvements,Indicates that the applicant is seeking relief from required right-of-way dedication or street improvement requirements
+VHCA,Vesting Housing Crisis Act,Indicates that the project is utilizing the Housing Crisis Act and is seeking vesting protections
+CA,Code Amendment,Indicates that the applicant seeks an amendment to applicable zoning code
+CUB,Conditional Use Beverage,Indicates that the applicant seeks a Conditional Use Permit for serving alcoholic beverages
+PHP,Priority Housing Project,Indicates that the project is eligible for priority processing under the city's Priority Housing Program
+ZV,Zone Variance,Indicates that the applicant seeks relief from specified zoning standards based on special circumstances or hardship
+TDR,Transfer of Development Rights,Indicates that the case involves transferring unused development capacity from one site to another
+SP,Specific Plan,Indicates that the case seeks adoption of a new Specific Plan or amendment of an existing one
+ZAA,Zoning Administrator Adjustment,"Indicates that the applicant seeks limited adjustments to dimensional standards such as yard, setback, area, height, building line, and floor area rules"
+DRB,Design Review Board,Indicates that the project requires Design Review Board review
+GPAJ,General Plan Amendment Measure JJJ,Indicates that the applicant seeks a General Plan amendment subject to Measure JJJ affordable housing and labor standards
+CDP,Coastal Development Permit,Indicates that the applicant seeks a Coastal Development Permit
+SN,Sign District,Indicates that the case seeks adoption of a new Sign District or amendment of an existing one
+VCU,Vesting Conditional Use,Indicates that the applicant seeks a Conditional Use Permit with vesting protections
+VZCJ,Vesting Zone Change Measure JJJ,Indicates that the applicant seeks a zone change with vesting protections subject to Measure JJJ
+SIP,Streamlined Infill Process,"Indicates the applicant seeks streamlined review under California SB 35, which streamlines review for qualified infill development projects"
+CU3,Class 3 Conditional Use,"Indicates that the applicant requests a Class 3 Conditional Use Permit, which is more substantial in scope than other Conditional Use Permits"
+BL,Building Line,"Indicates that the applicant seeks to establish, modify, or remove a building line"
+ZAD,Zoning Administrator Determination,Indicates that the applicant seeks a special determination or waiver from a Zoning Administrator
+CUX,Conditional Use Adult Entertainment,Indicates that the applicant seeks a Conditional Use Permit for adult entertainment
+CDO,Community Design Overlay,Indicates that the project requires review for compliance with an applicable Community Design Overlay District
+CN,Condominium,Indicates that the project is a condominium project
+MEL,Mello Act Compliance Review,Indicates that the project requires Mello Act compliance review
+PA1,Plan Approval (1st),"Indicates the project requires a Plan Approval determination, typically to confirm consistency with a prior planning decision"
+ZCJ,Zone Change Measure JJJ,Indicates that the applicant seeks a zone change subject to Measure JJJ
+DD,Director's Determination,Indicates that the project requires discretionary determination by the Director of Planning
+PR,Project Review,Functionally equivalent to Site Plan Review
+DA,Development Agreement,Indicates that the applicant seeks approval of a development agreement with the City
+SPE,Specific Plan Exception,Indicates that the applicant seeks an exception to the applicable Specific Plan
+BSA,Building and Safety Appeal,Indicates that an appeal has been filed against a prior determination by the Department of Building and Safety
+SPPC,Specific Plan Project Compliance,Indicates that the project requires review for compliance with an applicable Specific Plan
+RDP,Redevelopment Plan Project,Indicates that the project requires review for compliance with an applicable Redevelopment Plan
+MSC,Miscellaneous,Indicates that the case involves miscellaneous planning actions
+F,Fence Height,Indicates that the applicant seeks an entitlement related to fence height
+M3,Modification (3rd),Indicates that a third modification request has been filed for a prior planning approval
+MSP,Mulholland Specific Plan,Indicates that the project requires review under the Mulholland Specific Plan
+PSH,Permanent Supportive Housing,Indicates that the project involves Permanent Supportive Housing or seeks related incentives or review
+CPIOA,Community Plan Implementation Overlay Adjustment,Indicates that the applicant seeks an adjustment from standards in an applicable Community Plan Implementation Overlay District
+CPU,Community Plan Update,Indicates that the case is part of a Community Plan Update
+PMLA,Preliminary Parcel Map,Indicates that the applicant seeks approval of a preliminary parcel map for a subdivision or condominium project
+CCMP,Certificate of Compatibility,Indicates that the project requires a Certificate of Compatibility for work in an applicable district or regulated area
+SPPA,Specific Plan Project Permit Adjustment,Indicates that the applicant seeks an adjustment from standards in an applicable Specific Plan Project Permit process
+M1,Modification (1st),Indicates that a first modification request has been filed for a prior planning approval
+SUD,Supplemental Use District,"Indicates that the case involves adoption, amendment, or review under a Supplemental Use District"
+ZAI,Zoning Administrator Interpretation,Indicates that the applicant seeks an interpretation from the Zoning Administrator
+PUB,Public Benefit,Indicates that the project involves a Public Benefit approval or review
+CUW,Conditional Use Wireless,Indicates that the applicant seeks a Conditional Use Permit for a wireless telecommunications facility
+SL,Small Lot Subdivision,Indicates that the project involves a small lot subdivision
+DI,Director of Planning Interpretation,Indicates that the applicant seeks an interpretation from the Director of Planning
+PMEX,Parcel Map Exemption,Indicates that the applicant seeks an exemption from parcel map requirements
+SPPE,Specific Plan Project Exception,Indicates that the applicant seeks an exception from standards in an applicable Specific Plan Project review process
+ELD,Elder Care Facilities,Indicates that the project involves an elder care facility approval or review
+CPIO,Community Plan Implementation Overlay,Indicates that the case seeks adoption or amendment of a Community Plan Implementation Overlay District
+PAB,Plan Approval Booze,Indicates that the applicant seeks a Plan Approval related to a prior alcohol-related approval
+SCEA,Sustainable Communities Environmental Assessment,Indicates that environmental review is being processed as a Sustainable Communities Environmental Assessment
+GB,Green Building,Indicates that the case involves Green Building review or requirements
+ACI,Amendment to Council Instructions,Indicates that the case involves an amendment to prior Council instructions
+COA,Certificate of Appropriateness,"Indicates that the project requires a Certificate of Appropriateness, typically for work affecting a historic resource or district"
+AMDT2,Amendment (2nd),Indicates that a second amendment request has been filed for a prior planning approval
+AMDT1,Amendment (1st),Indicates that a first amendment request has been filed for a prior planning approval
+PA2,Plan Approval (2nd),"Indicates the project requires a second Plan Approval determination, typically to confirm consistency with a prior planning decision"
+AMDT3,Amendment (3rd),Indicates that a third amendment request has been filed for a prior planning approval
+AD,Annexation/Detachment,Indicates that the case involves annexation or detachment of land
+CU2,Class 2 Conditional Use,Indicates that the applicant requests a Class 2 Conditional Use Permit
+RDPA,Redevelopment Plan Project Adjustment,Indicates that the applicant seeks an adjustment related to an applicable Redevelopment Plan Project review
