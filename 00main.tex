@@ -49,8 +49,9 @@
 %%%% Other settings
 \captionsetup[table]{skip=0pt}
 \interfootnotelinepenalty=10000
-\newcolumntype{R}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \newtheorem{assumption}{Assumption}
 
@@ -110,7 +111,6 @@ Using data from the Los Angeles City Planning Commission, we document the role o
 %\pagebreak
 
 \pagebreak
-
 \input{figures/fig_example_agenda_item.tex}
 \pagebreak
 \input{figures/fig_example_minutes_item.tex}
@@ -155,6 +155,10 @@ Using data from the Los Angeles City Planning Commission, we document the role o
 
 \input{95data}
 
+\pagebreak
+\input{tables/tab_suffixes_all.tex}
+\pagebreak
+\input{tables/tab_suffixes_all_2.tex}
 
 
 \end{document}
