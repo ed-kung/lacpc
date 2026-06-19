@@ -7,7 +7,7 @@
   "NumberOfYears": "9",
   "NumberOfAgendaItems": "1,730",
   "NumberOfSupplementalDocs": "5,874",
-  "CasesDeniedPct": "1.7",
+  "CasesDeniedPct": "1.2",
   "CasesContinuedPct": "14.9",
   "CasesUnanimousPct": "91.8",
   "SemUniME2": "4.8",
@@ -50,5 +50,8 @@
   "ResolvedMajorExpandPct": "4.1",
   "ResolvedMajorReduce": "2",
   "ResolvedMajorReducePct": "2.7",
-  "CasesContinued": "122"
+  "CasesContinued": "122",
+  "CasesDenied": "10",
+  "CasesWithdrawn": "4",
+  "CasesWithdrawnPct": "0.5"
 }
