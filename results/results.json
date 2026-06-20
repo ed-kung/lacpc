@@ -53,5 +53,8 @@
   "CasesContinued": "122",
   "CasesDenied": "10",
   "CasesWithdrawn": "4",
-  "CasesWithdrawnPct": "0.5"
+  "CasesWithdrawnPct": "0.5",
+  "NumberInSupport": "2,246",
+  "NumberInOpposition": "2,717",
+  "NumberOfPublicComments": "5,020"
 }
