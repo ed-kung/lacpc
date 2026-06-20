@@ -56,5 +56,6 @@
   "CasesWithdrawnPct": "0.5",
   "NumberInSupport": "2,246",
   "NumberInOpposition": "2,717",
-  "NumberOfPublicComments": "5,020"
+  "NumberOfPublicComments": "5,020",
+  "AvgLettersPerCase": "7.8"
 }
