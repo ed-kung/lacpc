@@ -61,5 +61,9 @@
   "PctCasesResidential": "30.8",
   "PctCasesMixedUse": "32.0",
   "PctCasesNonResidential": "15.6",
-  "PctCasesOther": "21.5"
+  "PctCasesOther": "21.5",
+  "PctApprovedCasesResidential": "37.3",
+  "PctDelayedCasesResidential": "24.3",
+  "PctApprovedCasesNonResidential": "9.6",
+  "PctDelayedCasesNonResidential": "19.1"
 }
