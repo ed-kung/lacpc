@@ -57,5 +57,9 @@
   "NumberInSupport": "2,243",
   "NumberInOpposition": "2,712",
   "NumberOfPublicComments": "5,020",
-  "AvgLettersPerCase": "7.8"
+  "AvgLettersPerCase": "7.8",
+  "PctCasesResidential": "30.8",
+  "PctCasesMixedUse": "32.0",
+  "PctCasesNonResidential": "15.6",
+  "PctCasesOther": "21.5"
 }
