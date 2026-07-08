@@ -92,5 +92,6 @@
   "AvgNumSupportApproved": "1.9",
   "AvgNumSupportDelayed": "3.3",
   "AvgNumOpposeApproved": "2.1",
-  "AvgNumOpposeDelayed": "7.0"
+  "AvgNumOpposeDelayed": "7.0",
+  "PctConsentCalendar": "15.6"
 }

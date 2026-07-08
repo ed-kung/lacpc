@@ -63,27 +63,46 @@ df$cluster_fe2 <- df$cluster==2
 
 # ---- Run regressions
 
-atypicality <- c("atypicality")
+atypicality <- c("atypicality", "cluster_fe1", "cluster_fe2")
+project_type <- c("is_residential", "is_nonresidential")
 letters <- c("log2_support", "log2_oppose")
-hearing <- c("agenda_order", "num_agenda_items")
-physical <- c("log_square_footage", "height")
+hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
+physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
 
 r1 <- polr(
-  build_fmla("outcome", c(physical, hearing, letters)),
+  build_fmla("outcome", c(project_type, physical)),
   data=df, Hess=TRUE
 )
 r2 <- polr(
-  build_fmla("outcome", c(physical, hearing, letters, sfx_fe)),
+  build_fmla("outcome", c(project_type, physical, sfx_fe)),
   data=df, Hess=TRUE
 )
 r3 <- polr(
-  build_fmla("outcome", c(hearing, letters, sfx_fe)),
+  build_fmla("outcome", c(project_type, physical, sfx_fe, letters, hearing)),
+  data=df, Hess=TRUE
+)
+r4 <- polr(
+  build_fmla("outcome", c(project_type, physical, sfx_fe, letters, hearing, atypicality)),
+  data=df, Hess=TRUE
+)
+r5 <- polr(
+  build_fmla("outcome", c(project_type, physical, sfx_fe, atypicality)),
+  data=df, Hess=TRUE
+)
+r6 <- polr(
+  build_fmla("outcome", c(project_type, physical, atypicality)),
+  data=df, Hess=TRUE
+)
+r7 <- polr(
+  build_fmla("outcome", c(atypicality)),
   data=df, Hess=TRUE
 )
 
 
-stargazer(r1, r2, r3, type="text")
+
+
+stargazer(r1, r2, r3, r4, r5, r6, r7, type="text")
 
 
 vars1 <- c("atypicality")
