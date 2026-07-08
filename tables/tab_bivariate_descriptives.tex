@@ -1,39 +1,54 @@
 
 \begin{table}[H]
 \centering
-\caption{Descriptive Statistics by Motion Outcome}
+\caption{Descriptive Statistics by Case Outcome}
 \vspace{0.2cm}
 \label{tab_bivariate_descriptives}
 \begin{adjustbox}{max width=\textwidth}
 \begin{threeparttable}
-\begin{tabular}{lrrrll} \toprule
- Variable & \makecell{Approved \\ ($n = 354$)} & \makecell{Approved w/ \\ conditions \\ ($n = 328$)} & \makecell{Delayed / \\ denied \\ ($n = 136$)} & \makecell{Test stat} & \makecell{p-value}  \\ \midrule
+\begin{tabular}{lrrrrl} \toprule
+ Variable & \makecell{Overall \\ ($n = 818$)} & \makecell{Approved \\ ($n = 354$)} & \makecell{Approved w \\ conditions \\ ($n = 328$)} & \makecell{Delayed \\ or denied \\ ($n = 136$)} & \makecell{p-value}  \\ \midrule
  & & & & & \\
-
+\textit{Case type} & & & & & \\
+~ ~ Residential development (\%) & 0.308 & 0.373 & 0.265 & 0.243 & $0.002^{***}$ \\
+~ ~ Mixed use development (\%) & 0.320 & 0.299 & 0.335 & 0.338 & $0.535^{}$ \\
+~ ~ Non-residential development (\%) & 0.156 & 0.096 & 0.207 & 0.191 & $0.000^{***}$ \\
+~ ~ Other case type (\%) & 0.215 & 0.232 & 0.192 & 0.228 & $0.420^{}$ \\
+ & & & & & \\
+\textit{Physical characteristics} & & & & & \\
+~ ~ Square footage (mean) & 197,309 & 131,658 & 231,355 & 284,461 & $0.002^{***}$ \\
+~ ~ Height (ft, mean) & 115 & 93 & 121 & 155 & $0.001^{***}$ \\
+~ ~ Dwelling units (mean) & 178 & 137 & 208 & 229 & $0.003^{***}$ \\
+~ ~ Affordable units (mean) & 27 & 25 & 34 & 12 & $0.106^{}$ \\
+~ ~ Parking spaces (mean) & 217 & 108 & 258 & 413 & $0.002^{***}$ \\
+ & & & & & \\
+\textit{Planning characteristics} & & & & & \\
+~ ~ Site Plan Review (\%) & 0.335 & 0.268 & 0.412 & 0.324 & $0.000^{***}$ \\
+~ ~ Appeals (\%) & 0.317 & 0.336 & 0.262 & 0.397 & $0.010^{**}$ \\
+~ ~ Incentive Programs (\%) & 0.478 & 0.548 & 0.436 & 0.397 & $0.002^{***}$ \\
+~ ~ Conditional Use Permits (\%) & 0.369 & 0.325 & 0.405 & 0.397 & $0.071^{*}$ \\
+~ ~ Variances/Adjustments/Exceptions (\%) & 0.249 & 0.178 & 0.338 & 0.221 & $0.000^{***}$ \\
+~ ~ Compliance Review (\%) & 0.141 & 0.158 & 0.137 & 0.103 & $0.282^{}$ \\
+~ ~ Code or Plan Amendments (\%) & 0.194 & 0.175 & 0.235 & 0.147 & $0.045^{**}$ \\
+~ ~ Development Agreements (\%) & 0.128 & 0.107 & 0.131 & 0.176 & $0.120^{}$ \\
+ & & & & & \\
 \textit{Public input} & & & & & \\
-~ ~ Number of letters (mean) & 4.4 & 10.0 & 11.1 & $F = 6.45$ & $0.002^{***}$ \\
-~ ~ ~ ~ in support & 1.9 & 4.7 & 3.3 & $F = 3.64$ & $0.027^{**}$ \\
-~ ~ ~ ~ in opposition & 2.1 & 4.5 & 7.0 & $F = 7.47$ & $0.001^{***}$ \\
-~ ~ \# of letters mentioning & & & & & \\
-~ ~ ~ ~ housing supply / affordability & 2.0 & 4.5 & 3.3 & $F = 2.21$ & $0.110^{}$ \\
-~ ~ ~ ~ neighborhood character & 1.6 & 3.9 & 4.4 & $F = 6.74$ & $0.001^{***}$ \\
-~ ~ ~ ~ procedural issues & 1.5 & 3.5 & 5.1 & $F = 6.39$ & $0.002^{***}$ \\
-~ ~ ~ ~ building height / size / density & 1.5 & 3.3 & 3.6 & $F = 2.75$ & $0.064^{*}$ \\
-~ ~ ~ ~ climate / environment & 1.0 & 3.0 & 3.8 & $F = 2.99$ & $0.051^{*}$ \\
-~ ~ ~ ~ safety & 1.4 & 2.4 & 3.2 & $F = 3.61$ & $0.028^{**}$ \\
-~ ~ ~ ~ CEQA related matters & 1.4 & 2.7 & 2.6 & $F = 4.62$ & $0.010^{**}$ \\
-~ ~ ~ ~ community engagement & 1.0 & 2.4 & 3.9 & $F = 8.25$ & $0.000^{***}$ \\
-~ ~ ~ ~ traffic / parking & 1.2 & 2.5 & 2.7 & $F = 3.53$ & $0.030^{**}$ \\
-~ ~ ~ ~ displacement / gentrification & 0.6 & 2.6 & 2.0 & $F = 2.09$ & $0.124^{}$ \\
-~ ~ ~ ~ transit access / walkability & 1.1 & 2.3 & 0.8 & $F = 2.21$ & $0.110^{}$ \\
-~ ~ ~ ~ economic impacts / jobs & 0.7 & 1.3 & 1.3 & $F = 2.64$ & $0.072^{*}$ \\
-~ ~ ~ ~ historic / cultural preservation & 0.5 & 1.4 & 0.9 & $F = 3.07$ & $0.047^{**}$ \\
-~ ~ ~ ~ homelessness & 0.8 & 1.1 & 0.6 & $F = 0.19$ & $0.823^{}$ \\
+~ ~ \# Letters (mean) & 7.8 & 4.4 & 10.0 & 11.1 & $0.002^{***}$ \\
+~ ~ ~ ~ in support (mean) & 3.3 & 1.9 & 4.7 & 3.3 & $0.027^{**}$ \\
+~ ~ ~ ~ in opposition (mean) & 3.9 & 2.1 & 4.5 & 7.0 & $0.001^{***}$ \\
+ & & & & & \\
+\textit{Hearing characteristics} & & & & & \\
+~ ~ Item agenda order (mean) & 7.7 & 7.7 & 7.7 & 7.9 & $0.459^{}$ \\
+~ ~ \# Items on agenda (mean) & 10.1 & 10.2 & 9.9 & 10.5 & $0.030^{**}$ \\
+ & & & & & \\
+Atypicality & 3.07 & 2.99 & 3.10 & 3.22 & $0.007^{***}$ \\
 
+ & & & & & \\
 \bottomrule
+\multicolumn{6}{r}{***: $p < 0.01$, **:$p < 0.05$, *: $p < 0.1$}
 \end{tabular}
 \begin{tablenotes}
-\item {\textit{Notes: } This reports descriptive statistics for variables grouped by motion outcome. To test differences between groups, a one-way ANOVA F-test was conducted for continuous variables and a chi-square test was conducted for categorical variables.}
+\item {\textit{Notes: } This table reports descriptive statistics for variables grouped by motion outcome. To test differences between groups, a one-way ANOVA F-test was conducted for continuous variables and a chi-square test was conducted for categorical variables. The p-value for such tests is reported in the last column.}
 \end{tablenotes}
 \end{threeparttable}
 \end{adjustbox}

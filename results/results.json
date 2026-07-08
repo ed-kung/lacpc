@@ -86,5 +86,11 @@
   "AtypicalityDifference": "0.22",
   "AvgNumLetters": "7.8",
   "AvgNumSupport": "3.3",
-  "AvgNumOppose": "3.9"
+  "AvgNumOppose": "3.9",
+  "AvgNumLettersApproved": "4.4",
+  "AvgNumLettersDelayed": "11.1",
+  "AvgNumSupportApproved": "1.9",
+  "AvgNumSupportDelayed": "3.3",
+  "AvgNumOpposeApproved": "2.1",
+  "AvgNumOpposeDelayed": "7.0"
 }
