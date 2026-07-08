@@ -83,5 +83,8 @@
   "AvgNumAgendaItems": "10.1",
   "AvgAtypicalityApproved": "2.99",
   "AvgAtypicalityDelayed": "3.22",
-  "AtypicalityDifference": "0.22"
+  "AtypicalityDifference": "0.22",
+  "AvgNumLetters": "7.8",
+  "AvgNumSupport": "3.3",
+  "AvgNumOppose": "3.9"
 }
