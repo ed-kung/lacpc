@@ -28,7 +28,7 @@ build_fmla <- function(yvar, covars) {
 }
 
 # extracting regression results
-extract_reg <- function(reg, reg_name) {
+extract_reg <- function(reg, reg_name, null_LL) {
   # coefficients
   tidy_df <- tidy(reg)
   coef_df <- data.frame(
@@ -40,8 +40,8 @@ extract_reg <- function(reg, reg_name) {
   # stats
   stats_df <- data.frame(
     regression_name = reg_name,
-    coef_name = c("num_obs"),
-    estimate = c(nobs(reg)),
+    coef_name = c("num_obs", "pseudo_r2"),
+    estimate = c(nobs(reg), 1 - as.numeric(logLik(reg))/null_LL),
     serr = NA_real_
   )
   return(rbind(coef_df, stats_df))
@@ -63,33 +63,42 @@ df$cluster_fe2 <- df$cluster==2
 
 # ---- Run regressions
 
-atypicality <- c("atypicality", "cluster_fe1", "cluster_fe2")
-project_type <- c("is_residential", "is_nonresidential")
+project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
+physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 letters <- c("log2_support", "log2_oppose")
 hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
-physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
+atypicality <- c("atypicality")
+
+cluster_fe <- c("cluster_fe1", "cluster_fe2")
 sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
 cd_fe <- paste0("cd_", 1:15)
+yr_fe <- paste0("yr_", 2019:2026)
+
 keepvars <- c(
-  "atypicality",
-  "log2_support", "log2_oppose", "agenda_order", "num_agenda_items", "is_consent_calendar",
-  "is_residential", "is_nonresidential", "log_square_footage", "height" 
+  project_type,
+  c("log_square_footage", "height"),
+  letters,
+  hearing,
+  atypicality
 )
 
+rnull <- polr(outcome ~ 1, data=df)
+null_LL <- as.numeric(logLik(rnull))
+
 r1 <- polr(
-  build_fmla("outcome", c(project_type, physical, sfx_fe, letters, hearing, atypicality, cd_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe)),
   data=df, Hess=TRUE
 )
 r2 <- polr(
-  build_fmla("outcome", c(sfx_fe, letters, hearing, atypicality, cd_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe)),
   data=df, Hess=TRUE
 )
 r3 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, cd_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe)),
   data=df, Hess=TRUE
 )
 r4 <- polr(
-  build_fmla("outcome", c(project_type, physical, sfx_fe, letters, hearing, atypicality)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df, Hess=TRUE
 )
 
@@ -99,17 +108,19 @@ stargazer(
   type="text",
   keep=keepvars,
   add.lines=list(
-    c("Case Suffix Group FE", "Y", "Y", "N", "Y"),
-    c("Council District FE",  "Y", "Y", "Y", "N")
+    c("Suffix Group Dummies",      "Y", "Y", "Y", "Y"),
+    c("Council District Dummies",  "N", "Y", "Y", "Y"),
+    c("Year Dummies",              "N", "N", "Y", "Y"),
+    c("Embedding Cluster Dummies", "N", "N", "N", "Y")
   )
 )
 
 
 coefs_df <- rbind(
-  extract_reg(r1, "r1"),
-  extract_reg(r2, "r2"),
-  extract_reg(r3, "r3"),
-  extract_reg(r4, "r4")
+  extract_reg(r1, "r1", null_LL),
+  extract_reg(r2, "r2", null_LL),
+  extract_reg(r3, "r3", null_LL),
+  extract_reg(r4, "r4", null_LL)
 )
 
 out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coefs.parquet")
