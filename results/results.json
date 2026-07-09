@@ -20,7 +20,7 @@
   "NOppME1": "1.4",
   "NOppME0": "1.9",
   "SemUniCoef": "0.224",
-  "ConCalCoef": "1.589",
+  "ConCalCoef": "1.649",
   "NOppCoef": "0.154",
   "CasesApprovedPct": "43.3",
   "CasesApprovedMinorPct": "36.2",
@@ -93,5 +93,8 @@
   "AvgNumSupportDelayed": "3.3",
   "AvgNumOpposeApproved": "2.1",
   "AvgNumOpposeDelayed": "7.0",
-  "PctConsentCalendar": "15.6"
+  "PctConsentCalendar": "15.6",
+  "AtypicalityCoef": "0.226",
+  "NumOpposeCoef": "0.148",
+  "AgendaOrderCoef": "0.122"
 }
