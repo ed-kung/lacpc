@@ -105,5 +105,9 @@
   "NumOpposeME0": "1.9",
   "AgendaOrderME2": "2.8",
   "AgendaOrderME1": "1.2",
-  "AgendaOrderME0": "1.6"
+  "AgendaOrderME0": "1.6",
+  "CasesApproved": "354",
+  "CasesApprovedMinor": "296",
+  "CasesApprovedMajor": "32",
+  "CasesApprovedConds": "328"
 }
