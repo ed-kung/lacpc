@@ -89,7 +89,7 @@ rnull <- glm(outcome ~ 1, data=df, family=binomial(link="logit"))
 null_LL <- as.numeric(logLik(rnull))
 
 r <- glm(
-  build_fmla("outcome", c(atypicality)),
+  build_fmla("outcome", c(atypicality, cluster_fe, sfx_fe, cd_fe)),
   data=df, family=binomial(link="logit")
 )
 
