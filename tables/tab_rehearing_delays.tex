@@ -1,0 +1,62 @@
+\begin{table}[H]
+\centering
+\caption{Factors Influencing Approval or Delay - Re-hearings}
+\vspace{0.2cm}
+\label{tab_rehearing_delays}
+\begin{adjustbox}{max height=0.45\textheight}
+\begin{threeparttable}
+\begin{tabular}{lccccc}
+\multicolumn{6}{c}{Binary Logit} \\
+\multicolumn{6}{c}{0=Delayed/Denied, 1=Approved/Approved with Conditions} \\
+\toprule
+ & (1) & (2) & (3) & (4) & (5) \\
+\midrule
+ &  &  &  &  & \\
+Atypicality  & -0.172$^{}$ & 0.060$^{}$ & 0.416$^{}$ & -0.408$^{}$ & -0.050$^{}$ \\
+ & (0.392) & (0.477) & (0.547) & (0.455) & (0.407) \\ [1.8ex]
+$1 - $ Share Returning  & -0.351$^{}$ & -0.525$^{}$ & -0.563$^{}$ & -0.642$^{}$ & -0.418$^{}$ \\
+ & (0.365) & (0.479) & (0.482) & (0.440) & (0.390) \\ [1.8ex]
+Atypicality $\times$ ($1 - $ Share Returning)  & -0.740$^{*}$ & -1.125$^{**}$ & -1.010$^{**}$ & -0.734$^{*}$ & -0.729$^{*}$ \\
+ & (0.381) & (0.483) & (0.465) & (0.433) & (0.395) \\ [1.8ex]
+$\ln$(Days Since Last Hearing)  & 0.470$^{}$ & 0.412$^{}$ & 0.579$^{}$ & 0.477$^{}$ & 0.533$^{*}$ \\
+ & (0.293) & (0.357) & (0.370) & (0.313) & (0.307) \\ [1.8ex]
+Appearances  & -0.376$^{}$ & -0.244$^{}$ & 0.060$^{}$ & -0.471$^{*}$ & -0.351$^{}$ \\
+ & (0.257) & (0.296) & (0.322) & (0.283) & (0.262) \\ [1.8ex]
+Residential Development  &  & -1.629$^{}$ &  &  &  \\
+ &  & (2.533) &  &  &  \\ [1.8ex]
+Mixed-Use Development  &  & -3.683$^{}$ &  &  &  \\
+ &  & (2.698) &  &  &  \\ [1.8ex]
+Non-Residential Development  &  & -3.866$^{}$ &  &  &  \\
+ &  & (2.755) &  &  &  \\ [1.8ex]
+$\ln$(Square Footage)  &  & 0.135$^{}$ &  &  &  \\
+ &  & (0.273) &  &  &  \\ [1.8ex]
+Height (ft)  &  & -0.001$^{}$ &  &  &  \\
+ &  & (0.002) &  &  &  \\ [1.8ex]
+$\log_2$(\# Support)  &  &  &  & 1.002$^{***}$ &  \\
+ &  &  &  & (0.365) &  \\ [1.8ex]
+$\log_2$(\# Oppose)  &  &  &  & -0.299$^{}$ &  \\
+ &  &  &  & (0.205) &  \\ [1.8ex]
+Agenda Order  &  &  &  &  & 0.308$^{}$ \\
+ &  &  &  &  & (0.250) \\ [1.8ex]
+No. Agenda Items  &  &  &  &  & -0.213$^{}$ \\
+ &  &  &  &  & (0.159) \\ [1.8ex]
+
+ & & & & \\ 
+Suffix Group Dummies  & N  & N  & Y  & N  & N  \\ 
+Council District Dummies  & Y  & Y  & Y  & Y  & Y  \\ 
+Year Dummies  & Y  & Y  & Y  & Y  & Y  \\ 
+Embedding Cluster Dummies  & Y  & Y  & Y  & Y  & Y  \\ 
+
+ & & & & \\ 
+Observations  & 124 & 124 & 124 & 124 & 124 \\ [1.8ex]
+McFadden's Pseudo-R$^2$ & 0.282 & 0.348 & 0.390 & 0.345 & 0.301 \\ [1.8ex]
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
+\item \textit{Notes:} This table reports coefficient estimates from the binary logit regression described in Section \ref{sec_results}, where the sample is restricted to re-hearings of previously heard cases. Dummies for missing values of height and square footage are included for cases without reported physical dimensions. Consent calendar is not included due to lack of variation. Atypicality and share returning are demeaned before estimation.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
