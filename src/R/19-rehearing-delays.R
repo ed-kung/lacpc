@@ -58,7 +58,7 @@ df <- read_parquet(in_filename)
 df$cluster_fe1 <- df$cluster==1
 df$cluster_fe2 <- df$cluster==2
 
-df$atypicality_X_frac_new <- df$atypicality * df$frac_new
+df$atypicality_X_frac_new <- df$atypicality_z * df$frac_new_z
 
 df$log_gap <- log(df$days_between)
 
@@ -71,7 +71,7 @@ project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 letters <- c("log2_support", "log2_oppose")
 hearing <- c("agenda_order", "num_agenda_items")
-atypicality <- c("atypicality", "frac_new", "atypicality_X_frac_new", "log_gap", "times_appeared")
+atypicality <- c("atypicality_z", "frac_new_z", "atypicality_X_frac_new", "log_gap", "times_appeared")
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
 sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
 cd_fe <- paste0("cd_", 1:15)
@@ -88,56 +88,48 @@ keepvars <- c(
 rnull <- glm(outcome ~ 1, data=df, family=binomial(link="logit"))
 null_LL <- as.numeric(logLik(rnull))
 
-r <- glm(
-  build_fmla("outcome", c(atypicality, cluster_fe, sfx_fe, cd_fe)),
+r1 <- glm(
+  build_fmla("outcome", c(atypicality, cd_fe, yr_fe, cluster_fe)),
+  data=df, family=binomial(link="logit")
+)
+r2 <- glm(
+  build_fmla("outcome", c(atypicality, project_type, physical, cd_fe, yr_fe, cluster_fe)),
+  data=df, family=binomial(link="logit")
+)
+r3 <- glm(
+  build_fmla("outcome", c(atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  data=df, family=binomial(link="logit")
+)
+r4 <- glm(
+  build_fmla("outcome", c(atypicality, letters, cd_fe, yr_fe, cluster_fe)),
+  data=df, family=binomial(link="logit")
+)
+r5 <- glm(
+  build_fmla("outcome", c(atypicality, hearing, cd_fe, yr_fe, cluster_fe)),
   data=df, family=binomial(link="logit")
 )
 
+
 stargazer(
-  r,
+  r1, r2, r3, r4, r5,
   type = "text",
+   add.lines=list(
+     c("Suffix Group Dummies",      "N", "N", "Y", "N", "N"),
+     c("Council District Dummies",  "Y", "Y", "Y", "Y", "Y"),
+     c("Year Dummies",              "Y", "Y", "Y", "Y", "Y"),
+     c("Embedding Cluster Dummies", "Y", "Y", "Y", "Y", "Y")
+   ),
   keep = keepvars
 )
 
+coefs_df <- rbind(
+ extract_reg(r1, "r1", null_LL),
+ extract_reg(r2, "r2", null_LL),
+ extract_reg(r3, "r3", null_LL),
+ extract_reg(r4, "r4", null_LL),
+ extract_reg(r5, "r5", null_LL)
+)
 
-#r1 <- polr(
-#  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe)),
-#  data=df, Hess=TRUE
-#)
-#r2 <- polr(
-#  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe)),
-#  data=df, Hess=TRUE
-#)
-#r3 <- polr(
-#  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe)),
-#  data=df, Hess=TRUE
-#)
-#r4 <- polr(
-#  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
-#  data=df, Hess=TRUE
-#)
-
-
-#stargazer(
-#  r1, r2, r3, r4,
-#  type="text",
-#  keep=keepvars,
-#  add.lines=list(
-#    c("Suffix Group Dummies",      "Y", "Y", "Y", "Y"),
-#    c("Council District Dummies",  "N", "Y", "Y", "Y"),
-#    c("Year Dummies",              "N", "N", "Y", "Y"),
-#    c("Embedding Cluster Dummies", "N", "N", "N", "Y")
-#  )
-#)
-
-
-#coefs_df <- rbind(
-#  extract_reg(r1, "r1", null_LL),
-#  extract_reg(r2, "r2", null_LL),
-#  extract_reg(r3, "r3", null_LL),
-#  extract_reg(r4, "r4", null_LL)
-#)
-
-#out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coefs.parquet")
-#write_parquet(coefs_df, out_filename)
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/rehearing_delays_coefs.parquet")
+write_parquet(coefs_df, out_filename)
  
