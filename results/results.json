@@ -109,5 +109,6 @@
   "CasesApproved": "354",
   "CasesApprovedMinor": "296",
   "CasesApprovedMajor": "32",
-  "CasesApprovedConds": "328"
+  "CasesApprovedConds": "328",
+  "NumReheardCases": "124"
 }
