@@ -2,7 +2,7 @@
 
 \subsection{Downloading the Raw Data}
 
-The Los Angeles Planning Department keeps records of agenda, minutes, and supplemental documents for each City Planning Commission meeting. These are downloadable as PDF files. We wrote an automated scraper to crawl the Planning Department website (\url{https://planning.lacity.gov/about/commissions-boards-hearings#commissions}) and download these PDFs for each meeting. The first meeting date for which we obtained data was May 10th, 2018, and the last date was December 19th, 2024. After the PDFs were downloaded, the textual content was extracted using the \texttt{pdfplumber} package in Python. Some pages were stored as images rather than searchable text; we used optical character recognition software (\texttt{tesseract}) to extract the text.
+The Los Angeles Planning Department keeps records of agenda, minutes, and supplemental documents for each City Planning Commission meeting. These are downloadable as PDF files. We wrote an automated scraper to crawl the Planning Department website (\url{https://planning.lacity.gov/about/commissions-boards-hearings#commissions}) and download these PDFs for each meeting. The first meeting date for which we obtained data was May 10th, 2018, and the last date was February 2, 2026. After the PDFs were downloaded, the textual content was extracted using the \texttt{pdfplumber} package in Python. Some pages were stored as images rather than searchable text; we used optical character recognition software (\texttt{tesseract}) to extract the text.
 
 
 \subsection{Extraction of Usable Fields}

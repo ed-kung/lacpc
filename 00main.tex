@@ -70,7 +70,7 @@ This project was supported in part by the UCLA Ziman Center for Real Estate Rese
 \author{
     Stuart Gabriel\thanks{UCLA Anderson School of Management, 110 Westwood Plaza, Suite C412, Los Angeles, CA 90095-1481;  stuart.gabriel@anderson.ucla.edu} \and
     M.J. Histen\thanks{California State University, Northridge, David Nazarian College of Business and Economics, 18111 Nordhoff St, Northridge, CA 91330; matthew.histen@csun.edu} \and
-    Edward Kung\thanks{Corresponding Author: California State University, Northridge, David Nazarian College of Business and Economics, 18111 Nordoff St, Northridge, CA 91330; edward.kung@csun.edu}
+    Edward Kung\thanks{Corresponding Author: California State University, Northridge, David Nazarian College of Business and Economics, 18111 Nordhoff St, Northridge, CA 91330; edward.kung@csun.edu}
 }
 
 \date{\today}
@@ -83,10 +83,13 @@ This project was supported in part by the UCLA Ziman Center for Real Estate Rese
 
 \vspace{-1cm}
 
-\begin{abstract}
-We use a novel dataset of Los Angeles City Planning Commission (CPC) agendas and minutes to study the factors determining approval and delay at a large urban planning agency. Using a regression model which controls for a variety of project and case characteristics, we find that the most significant drivers of delay at the CPC are public opposition and how ``unusual'' a case is. We develop a measure of case atypicality based on the text embeddings of proposal summaries. A one standard deviation increase in atpyicality increases the log odds of delay by \gn{SemUniCoef}. Moreover, this effect is greater when more commissioners unfamiliar with the case are present, suggesting the presence of cognitive frictions. Public opposition matters as well: a doubling of the number of opposition letters increases the log odds of delay by \gn{NOppCoef}. These factors were found to be statistically significant and robust, whereas physical characteristics of the project were not. The results suggest that bureaucratic frictions and political considerations are the marginal drivers of approval delay at the CPC level in Los Angeles.
-\end{abstract}
+%\begin{abstract}
+%We use a novel dataset of Los Angeles City Planning Commission (CPC) agendas and minutes to study the factors determining approval and delay at a large urban planning agency. Using a regression model which controls for a variety of project and case characteristics, we find that the most significant drivers of delay at the CPC are public opposition and how ``unusual'' a case is. We develop a measure of case atypicality based on the text embeddings of proposal summaries. A one standard deviation increase in atypicality increases the log odds of delay by \gn{AtypicalityCoef}. Moreover, this effect is greater when more commissioners unfamiliar with the case are present, suggesting the presence of cognitive frictions. Public opposition matters as well: a doubling of the number of opposition letters increases the log odds of delay by \gn{NumOpposeCoef}. These factors were found to be statistically significant and robust, whereas physical characteristics of the project were not. The results suggest that bureaucratic frictions and political considerations are the marginal drivers of approval delay at the CPC level in Los Angeles.
+%\end{abstract}
 
+% suggested NARSC submission; fits their abstract submission portal (just make sure any dashed words across lines are fixed
+\begin{abstract} Land use regulation is a central constraint on urban development, yet how regulators actually review development proposals remains a black box. We pry that box open using the complete written record of the Los Angeles City Planning Commission, applying large language models to convert 29,000 pages of agendas, minutes, and public correspondence (2018-2026) into a structured dataset of 818 development decisions. We show that outright denial is rare (1.2\% of all cases), and that the more salient margin is delay. We then investigate what features of a case predict delay. Surprisingly, we find that once all factors are controlled for, the physical characteristics of the project have little explanatory power. Instead, public opposition and process-based frictions like how unusual a case is, or when in the agenda order it is heard, matter more. To measure unusualness, we develop a measure of atypicality based on the text embeddings of proposal summaries. We find that a one standard deviation increase in atypicality is associated with a 0.206 increase in the log odds of delay. Notably, the association is stronger when there are fewer members who have seen the case before, and furthermore atypicality only predicts delay, not eventual outcome, thus reinforcing the interpretation that the delays stem from process-based frictions rather than latent proposal quality. The results provide rare field evidence that bureaucratic capacity, not statutory rules alone, shapes the pace of urban development.
+\end{abstract}
 
 \noindent{\textit{Keywords}: local land-use regulation, bureaucratic efficiency} \\
 \noindent {\textit{JEL} Classification: D73, R14, R38, R52.} \\
