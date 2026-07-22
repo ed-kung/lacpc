@@ -1,3 +1,5 @@
 .env
 secrets.yaml
 .Rproj.user
+response_store/*.pkl
+
