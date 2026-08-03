@@ -1,0 +1,56 @@
+\begin{table}[H]
+\centering
+\caption{Factors Influencing Approval and Delay -- COVID/Mayoral Robustness Checks}
+\vspace{0.2cm}
+\label{tab_ologit_covid}
+\begin{adjustbox}{max height=0.45\textheight}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\multicolumn{5}{c}{Ordered Logit Model} \\
+\multicolumn{5}{c}{0=Delayed/Denied, 1=Approved with Conditions, 2=Approved} \\
+\toprule
+ & \makecell{COVID Hearings\\Excluded} & \makecell{COVID Hearings\\Only} & \makecell{Garcetti's\\Term} & \makecell{Bass's\\Term} \\
+ & (1) & (2) & (3) & (4) \\
+\midrule
+ &  &  &  &  \\
+Residential Development  & 0.139$^{}$ & 0.061$^{}$ & 0.224$^{}$ & -0.507$^{}$ \\
+ & (0.471) & (0.617) & (0.424) & (0.827) \\ [1.8ex]
+Mixed-Use Development  & -0.504$^{}$ & -0.301$^{}$ & -0.135$^{}$ & -1.289$^{}$ \\
+ & (0.468) & (0.647) & (0.441) & (0.793) \\ [1.8ex]
+Non-Residential Development  & 0.146$^{}$ & -1.270$^{**}$ & -0.535$^{}$ & -0.087$^{}$ \\
+ & (0.471) & (0.553) & (0.404) & (0.749) \\ [1.8ex]
+$\ln$(Square Footage)  & -0.082$^{}$ & 0.062$^{}$ & -0.107$^{}$ & 0.019$^{}$ \\
+ & (0.081) & (0.111) & (0.079) & (0.126) \\ [1.8ex]
+Height (ft)  & 0.001$^{}$ & -0.004$^{**}$ & -0.002$^{*}$ & 0.004$^{**}$ \\
+ & (0.001) & (0.002) & (0.001) & (0.002) \\ [1.8ex]
+$\log_2$(\# Support)  & 0.011$^{}$ & 0.145$^{}$ & 0.066$^{}$ & -0.163$^{}$ \\
+ & (0.081) & (0.108) & (0.074) & (0.134) \\ [1.8ex]
+$\log_2$(\# Oppose)  & -0.029$^{}$ & -0.238$^{***}$ & -0.210$^{***}$ & 0.084$^{}$ \\
+ & (0.083) & (0.090) & (0.067) & (0.124) \\ [1.8ex]
+Agenda Order  & 0.146$^{**}$ & 0.029$^{}$ & 0.100$^{}$ & 0.248$^{***}$ \\
+ & (0.063) & (0.091) & (0.061) & (0.096) \\ [1.8ex]
+No. Agenda Items  & -0.077$^{}$ & 0.080$^{}$ & -0.030$^{}$ & -0.093$^{}$ \\
+ & (0.052) & (0.072) & (0.052) & (0.074) \\ [1.8ex]
+Consent Calendar  & 1.867$^{***}$ & 1.316$^{***}$ & 1.482$^{***}$ & 2.195$^{***}$ \\
+ & (0.335) & (0.463) & (0.333) & (0.505) \\ [1.8ex]
+Atypicality  & -0.269$^{**}$ & -0.154$^{}$ & -0.193$^{}$ & -0.308$^{}$ \\
+ & (0.137) & (0.186) & (0.134) & (0.199) \\ [1.8ex]
+
+ & & & & \\ 
+Suffix Group Dummies  & Y  & Y  & Y  & Y  \\ 
+Council District Dummies  & Y  & Y  & Y  & Y  \\ 
+Year Dummies  & N  & N  & N  & N  \\ 
+Embedding Cluster Dummies  & Y  & Y  & Y  & Y  \\ 
+
+ & & & & \\ 
+Observations  & 517 & 301 & 521 & 297 \\ [1.8ex]
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
+\item \textit{Notes:} This table reports coefficient estimates from the ordered logit regression described in Section \ref{sec_methodology}. Sample is split based on time periods. In column 1, online hearings during COVID lockdowns were excluded (meetings held between March 26th, 2020 and February 23rd, 2023). In column 2, only online hearings during COVID lockdowns were included. In columns 3 and 4, the sample is split based on the mayoral terms of Eric Garcetti (ended December 12th, 2022) and Karen Bass (took office December 12th, 2022). Due to smaller sample sizes, year fixed effects are not included.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}

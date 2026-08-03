@@ -158,9 +158,15 @@ stargazer(
   )
 )
 
+coefs_df <- rbind(
+  extract_reg(robr1, "robr1", null_LL),
+  extract_reg(robr2, "robr2", null_LL),
+  extract_reg(robr3, "robr3", null_LL),
+  extract_reg(robr4, "robr4", null_LL)
+)
 
-
-
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coefs_rob.parquet")
+write_parquet(coefs_df, out_filename)
 
 
  
@@ -194,7 +200,7 @@ out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_oster_delta.par
 write_parquet(oster_delta, out_filename)
 
 
-# ---- Marginals
+# ---- Marginals ---------------------------------------------------------------
 
 m4 <- avg_slopes(r4)
 m4$regression_name <- "r4"
@@ -207,7 +213,7 @@ write_parquet(marginals_df, out_filename)
 
 
 
-# ---- Regressions on non-delay outcomes
+# ---- Regressions on non-delay outcomes ---------------------------------------
 
 dfb <- filter(df, project_result!="DELAYED")
 
