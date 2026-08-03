@@ -61,6 +61,8 @@ extract_reg <- function(reg, reg_name, null_LL=NA) {
 
 df <- read_parquet(INPUT_FILEPATH)
 
+df$log2_support_po <- log2(df$n_support_po + 1)
+
 df$outcome_y <- df$outcome
 df$outcome <- as.factor(df$outcome)
 
@@ -73,6 +75,7 @@ project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
 letters <- c("log2_support", "log2_oppose")
+letters2 <- c("log2_support", "log2_support_po", "log2_oppose")
 atypicality <- c("atypicality")
 
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
@@ -83,7 +86,7 @@ yr_fe <- paste0("yr_", 2019:2026)
 keepvars <- c(
   project_type,
   c("log_square_footage", "height"),
-  letters,
+  letters2,
   atypicality,
   hearing
 )
@@ -97,17 +100,17 @@ r1 <- polr(
 ) # reproduction of main ologit specification
 
 r2 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters2, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df, Hess=TRUE
 ) # main specification but without potentially endogenous agenda setting
 
 r3 <- glm(
-  build_fmla("is_consent_calendar", c(project_type, physical, letters, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("is_consent_calendar", c(project_type, physical, letters2, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df, family=binomial(link="logit")
 )
 
 r4 <- lm(
-  build_fmla("agenda_order", c(project_type, physical, letters, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("agenda_order", c(project_type, physical, letters2, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df
 )
 
