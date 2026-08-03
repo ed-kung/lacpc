@@ -13,8 +13,9 @@ library(robomit)
 LOCAL_CONFIG <- read_yaml("../../config.local.yaml")
 LOCAL_PATH <- LOCAL_CONFIG["LOCAL_PATH"][[1]]
 DATA_PATH <- LOCAL_CONFIG["DATA_PATH"][[1]]
+INPUT_FILEPATH <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_data.parquet")
 
-# ---- Helper functions
+# ---- Helper functions --------------------------------------------------------
 
 # building formulas
 build_fmla <- function(yvar, covars) {
@@ -48,12 +49,9 @@ extract_reg <- function(reg, reg_name, null_LL) {
 }
 
 
+# ---- Data loading and cleaning -----------------------------------------------
 
-# ---- Data loading and cleaning
-
-in_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_data.parquet")
-
-df <- read_parquet(in_filename)
+df <- read_parquet(INPUT_FILEPATH)
 
 df$outcome_y <- df$outcome
 df$outcome <- as.factor(df$outcome)
@@ -82,6 +80,9 @@ keepvars <- c(
   atypicality
 )
 
+
+# ---- Run main ologit regressions ---------------------------------------------
+
 rnull <- polr(outcome ~ 1, data=df)
 null_LL <- as.numeric(logLik(rnull))
 
@@ -102,7 +103,6 @@ r4 <- polr(
   data=df, Hess=TRUE
 )
 
-
 stargazer(
   r1, r2, r3, r4,
   type="text",
@@ -115,7 +115,6 @@ stargazer(
   )
 )
 
-
 coefs_df <- rbind(
   extract_reg(r1, "r1", null_LL),
   extract_reg(r2, "r2", null_LL),
@@ -126,8 +125,46 @@ coefs_df <- rbind(
 out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coefs.parquet")
 write_parquet(coefs_df, out_filename)
  
+
+
+# ---- COVID/Mayoral robustness check ------------------------------------------
+
+robr1 <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  data=filter(df, covid==FALSE), Hess=TRUE
+)
+robr2 <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  data=filter(df, covid==TRUE), Hess=TRUE
+)
+robr3 <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  data=filter(df, bass==FALSE), Hess=TRUE
+)
+robr4 <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  data=filter(df, bass==TRUE), Hess=TRUE
+)
+
+stargazer(
+  robr1, robr2, robr3, robr4,
+  type="text",
+  keep=keepvars,
+  add.lines=list(
+    c("Suffix Group Dummies",      "Y", "Y", "Y", "Y"),
+    c("Council District Dummies",  "Y", "Y", "Y", "Y"),
+    c("Year Dummies",              "Y", "Y", "Y", "Y"),
+    c("Embedding Cluster Dummies", "Y", "Y", "Y", "Y")
+  )
+)
+
+
+
+
+
+
  
-# ---- Oster (2019) robustness check
+# ---- Oster (2019) robustness check -------------------------------------------
 
 vars1 <- c(atypicality)
 vars2 <- c(project_type, physical, letters, hearing, sfx_fe, cd_fe, yr_fe, cluster_fe)
