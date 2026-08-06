@@ -65,6 +65,7 @@ project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 letters <- c("log2_support", "log2_oppose")
 hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
+time_factors <- c("weeks_til_due", "weeks_til_due_missing")
 atypicality <- c("atypicality")
 
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
@@ -77,6 +78,7 @@ keepvars <- c(
   c("log_square_footage", "height"),
   letters,
   hearing,
+  time_factors,
   atypicality
 )
 
@@ -87,19 +89,19 @@ rnull <- polr(outcome ~ 1, data=df)
 null_LL <- as.numeric(logLik(rnull))
 
 r1 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe)),
   data=df, Hess=TRUE
 )
 r2 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe)),
   data=df, Hess=TRUE
 )
 r3 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, yr_fe)),
   data=df, Hess=TRUE
 )
 r4 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df, Hess=TRUE
 )
 
@@ -130,19 +132,19 @@ write_parquet(coefs_df, out_filename)
 # ---- COVID/Mayoral robustness check ------------------------------------------
 
 robr1 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, cluster_fe)),
   data=filter(df, covid==FALSE), Hess=TRUE
 )
 robr2 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, cluster_fe)),
   data=filter(df, covid==TRUE), Hess=TRUE
 )
 robr3 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, cluster_fe)),
   data=filter(df, bass==FALSE), Hess=TRUE
 )
 robr4 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, cluster_fe)),
   data=filter(df, bass==TRUE), Hess=TRUE
 )
 
@@ -173,7 +175,7 @@ write_parquet(coefs_df, out_filename)
 # ---- Oster (2019) robustness check -------------------------------------------
 
 vars1 <- c(atypicality)
-vars2 <- c(project_type, physical, letters, hearing, sfx_fe, cd_fe, yr_fe, cluster_fe)
+vars2 <- c(project_type, physical, letters, hearing, time_factors, sfx_fe, cd_fe, yr_fe, cluster_fe)
 
 short_reg <- lm(
   build_fmla("outcome_y", vars1),
@@ -184,7 +186,6 @@ controlled_reg <- lm(
   data = df
 )
 Rmax <- min(1.3*summary(controlled_reg)$r.squared, 1)
-
 
 oster_delta <- o_delta(
   y = "outcome_y",
@@ -225,19 +226,19 @@ rnullb <- glm(outcome ~ 1, data=dfb, family=binomial(link="logit"))
 nullb_LL <- as.numeric(logLik(rnullb))
 
 r1b <- glm(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe)),
   data=dfb, family=binomial(link="logit")
 )
 r2b <- glm(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe)),
   data=dfb, family=binomial(link="logit")
 )
 r3b <- glm(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, yr_fe)),
   data=dfb, family=binomial(link="logit")
 )
 r4b <- glm(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, letters, hearing, time_factors, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=dfb, family=binomial(link="logit")
 )
 

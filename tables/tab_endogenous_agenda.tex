@@ -7,49 +7,45 @@
 \begin{threeparttable}
 \begin{tabular}{lcccc}
 \toprule
- & \multicolumn{2}{c}{\makecell{Approval/Delay\\Ordered Logit}} & \makecell{Consent Calendar\\Binary Logit} & \makecell{Agenda Order\\OLS} \\
- & (1) & (2) & (3) & (4) \\
+ & \makecell{Consent Calendar\\Binary Logit} & \makecell{Agenda Order\\OLS} \\
+ & (1) & (2) \\
 \midrule
- &  &  &  &  \\
-Residential Development  & 0.195$^{}$ & 0.038$^{}$ & -1.473$^{*}$ & 0.611$^{*}$ \\
- & (0.361) & (0.354) & (0.763) & (0.338) \\ [1.8ex]
-Mixed-Use Development  & -0.285$^{}$ & -0.313$^{}$ & -0.651$^{}$ & 0.536$^{}$ \\
- & (0.368) & (0.363) & (0.790) & (0.347) \\ [1.8ex]
-Non-Residential Development  & -0.346$^{}$ & -0.333$^{}$ & 0.029$^{}$ & -0.024$^{}$ \\
- & (0.343) & (0.338) & (0.623) & (0.332) \\ [1.8ex]
-$\ln$(Square Footage)  & -0.053$^{}$ & -0.050$^{}$ & 0.009$^{}$ & 0.060$^{}$ \\
- & (0.064) & (0.063) & (0.112) & (0.062) \\ [1.8ex]
-Height (ft)  & -0.001$^{}$ & -0.001$^{}$ & -0.002$^{}$ & 0.001$^{}$ \\
- & (0.001) & (0.001) & (0.002) & (0.001) \\ [1.8ex]
-$\log_2$(\# Support)  & 0.089$^{}$ & 0.059$^{}$ & -0.732$^{***}$ & 0.160$^{**}$ \\
- & (0.062) & (0.064) & (0.183) & (0.064) \\ [1.8ex]
-$\log_2$(\# Support by Public Officials)  &  & 0.040$^{}$ & 0.202$^{}$ & -0.056$^{}$ \\
- &  & (0.239) & (0.675) & (0.241) \\ [1.8ex]
-$\log_2$(\# Oppose)  & -0.160$^{***}$ & -0.211$^{***}$ & -0.550$^{***}$ & 0.010$^{}$ \\
- & (0.057) & (0.057) & (0.157) & (0.056) \\ [1.8ex]
-Agenda Order  & 0.136$^{***}$ &  &  &  \\
- & (0.050) &  &  &  \\ [1.8ex]
-No. Agenda Items  & -0.007$^{}$ &  &  &  \\
- & (0.043) &  &  &  \\ [1.8ex]
-Consent Calendar  & 1.708$^{***}$ &  &  &  \\
- & (0.266) &  &  &  \\ [1.8ex]
-Atypicality  & -0.206$^{*}$ & -0.173$^{}$ & 0.133$^{}$ & -0.028$^{}$ \\
- & (0.108) & (0.107) & (0.235) & (0.103) \\ [1.8ex]
+ &  & \\
+Residential Development  & -1.435$^{*}$ & 0.355$^{}$ \\
+ & (0.766) & (0.367) \\ [1.8ex]
+Mixed-Use Development  & -0.604$^{}$ & 0.504$^{}$ \\
+ & (0.792) & (0.377) \\ [1.8ex]
+Non-Residential Development  & 0.044$^{}$ & 0.006$^{}$ \\
+ & (0.629) & (0.377) \\ [1.8ex]
+$\ln$(Square Footage)  & 0.000$^{}$ & 0.049$^{}$ \\
+ & (0.113) & (0.067) \\ [1.8ex]
+Height (ft)  & -0.002$^{}$ & -0.000$^{}$ \\
+ & (0.002) & (0.001) \\ [1.8ex]
+$\log_2$(\# Support)  & -0.745$^{***}$ & 0.082$^{}$ \\
+ & (0.184) & (0.065) \\ [1.8ex]
+$\log_2$(\# Support by Public Officials)  & 0.232$^{}$ & -0.019$^{}$ \\
+ & (0.674) & (0.244) \\ [1.8ex]
+$\log_2$(\# Oppose)  & -0.574$^{***}$ & -0.081$^{}$ \\
+ & (0.161) & (0.057) \\ [1.8ex]
+Time to Act  & 0.041$^{}$ & -0.001$^{}$ \\
+ & (0.031) & (0.004) \\ [1.8ex]
+Atypicality  & 0.143$^{}$ & 0.014$^{}$ \\
+ & (0.237) & (0.109) \\ [1.8ex]
 
  & & & & \\ 
-Suffix Group Dummies  & Y  & Y  & Y  & Y  \\ 
-Council District Dummies  & Y  & Y  & Y  & Y  \\ 
-Year Dummies  & Y  & Y  & Y  & Y  \\ 
-Embedding Cluster Dummies  & Y  & Y  & Y  & Y  \\ 
+Suffix Group Dummies  & Y  & Y  \\ 
+Council District Dummies  & Y  & Y  \\ 
+Year Dummies  & Y  & Y  \\ 
+Embedding Cluster Dummies  & Y  & Y  \\ 
 
- & & & & \\ 
-Observations  & 818 & 818 & 818 & 818 \\ [1.8ex]
+ & & \\ 
+Observations  & 818 & 690 \\ [1.8ex]
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
-\item \textit{Notes:} This table explores the endogeneity of agenda setting. Column 1 is a replication of the ordered logit model of approval outcomes from Column 4 of Table \ref{tab_ologit_results}. Column 2 is the same model not including agenda-related variables. Column 3 is a binary logit model predicting placement on the consent calendar. Column 4 is an OLS model predicting the order of items on the agenda.
+\item \textit{Notes:} This table explores the endogeneity of agenda setting. Column 1 is a binary logit model predicting placement on the consent calendar. Column 2 is an OLS model predicting the order of items on the agenda, for items not on the consent calendar (which are always placed first on the agenda).
 \end{tablenotes}
 \end{threeparttable}
 \end{adjustbox}
