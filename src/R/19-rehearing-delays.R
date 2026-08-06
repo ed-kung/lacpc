@@ -58,7 +58,8 @@ df <- read_parquet(in_filename)
 df$cluster_fe1 <- df$cluster==1
 df$cluster_fe2 <- df$cluster==2
 
-df$atypicality_X_frac_new <- df$atypicality_z * df$frac_new_z
+df$atypicality_X_share_return <- df$atypicality_z * df$share_return
+#df$atypicality_X_frac_new <- df$atypicality_z * df$frac_new_z
 
 df$log_gap <- log(df$days_between)
 
@@ -71,7 +72,7 @@ project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 letters <- c("log2_support", "log2_oppose")
 hearing <- c("agenda_order", "num_agenda_items")
-atypicality <- c("atypicality_z", "frac_new_z", "atypicality_X_frac_new", "log_gap", "times_appeared")
+atypicality <- c("atypicality_z", "share_return", "atypicality_X_share_return", "log_gap", "times_appeared")
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
 sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
 cd_fe <- paste0("cd_", 1:15)
