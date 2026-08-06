@@ -110,5 +110,8 @@
   "CasesApprovedMinor": "296",
   "CasesApprovedMajor": "32",
   "CasesApprovedConds": "328",
-  "NumReheardCases": "124"
+  "NumReheardCases": "124",
+  "AvgWeeksTilDue": "1.5",
+  "PctDelayedLt2Weeks": "16.9",
+  "PctDelayedGt2Weeks": "11.1"
 }
