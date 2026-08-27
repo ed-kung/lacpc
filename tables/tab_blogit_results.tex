@@ -8,7 +8,7 @@
 \begin{tabular}{lcccccc}
 \multicolumn{7}{c}{Binary Logit Models} \\
 \toprule
- & \makecell{Non-Delay\\Outcomes\\0=Approved\\1=Approved with\\Conditions} & \multicolumn{5}{c}{\makecell{Re-hearings\\0=Delayed or Denied\\1=Approved or Approved with Conditions}} \\
+ & \makecell{Non-Delay Outcomes\\0=Approved with\\conditions or denied;\\1=Approved} & \multicolumn{5}{c}{\makecell{Re-hearings\\0=Delayed or denied\\1=Approved or approved with conditions}} \\
  & (1) & (2) & (3) & (4) & (5) & (6) \\
 \midrule
  &  &  &  &  &  &  \\
@@ -53,7 +53,7 @@ McFadden's Pseudo-R$^2$ & 0.150 & 0.120 & 0.170 & 0.202 & 0.221 & 0.156 \\ [1.8e
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
-\item \textit{Notes:} This table reports coefficient estimates from the binary logit regressions described in Section \ref{sec_results}. 
+\item \textit{Notes:} This table reports coefficient estimates from the binary logit regressions described in Section \ref{sec_latent_quality}. 
 In column 1, the sample includes only cases where the outcome was not delay. The outcome is 1 if the case is approved and 0 if the case is approved with conditions or denied. In columns 2-6, the sample includes only cases which were re-hearings of a previously delayed case. The outcome is 1 if the case is approved or approved with conditions and 0 if the case is delayed again or denied. 
 \end{tablenotes}
 \end{threeparttable}
