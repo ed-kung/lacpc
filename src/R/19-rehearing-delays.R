@@ -58,10 +58,11 @@ df <- read_parquet(in_filename)
 df$cluster_fe1 <- df$cluster==1
 df$cluster_fe2 <- df$cluster==2
 
-df$atypicality_X_share_return <- df$atypicality_z * df$share_return_z
+df$my_experience <- df$times_appeared
+df$my_atypicality <- df$atypicality
+df$atypicality_X_experience <- df$my_atypicality * df$my_experience
 
 df$log_gap <- log(df$days_between)
-
 
 
 
@@ -71,7 +72,7 @@ project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 letters <- c("log2_support", "log2_oppose")
 hearing <- c("agenda_order", "num_agenda_items")
-atypicality <- c("atypicality_z", "share_return_z", "atypicality_X_share_return", "log_gap", "times_appeared")
+atypicality <- c("my_atypicality", "my_experience", "atypicality_X_experience", "log_gap")
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
 sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
 cd_fe <- paste0("cd_", 1:15)
@@ -89,7 +90,7 @@ rnull <- glm(outcome ~ 1, data=df, family=binomial(link="logit"))
 null_LL <- as.numeric(logLik(rnull))
 
 r1 <- glm(
-  build_fmla("outcome", c(atypicality, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("outcome", c("my_atypicality")),
   data=df, family=binomial(link="logit")
 )
 r2 <- glm(
