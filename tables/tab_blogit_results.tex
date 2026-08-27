@@ -8,7 +8,7 @@
 \begin{tabular}{lcccccc}
 \multicolumn{7}{c}{Binary Logit Models} \\
 \toprule
- & \makecell{Non-Delay\\Outcomes} & \multicolumn{5}{c}{\makecell{Re-hearings}} \\
+ & \makecell{Non-Delay\\Outcomes\\0=Approved\\1=Approved with\\Conditions} & \multicolumn{5}{c}{\makecell{Re-hearings\\0=Delayed or Denied\\1=Approved or Approved with Conditions}} \\
  & (1) & (2) & (3) & (4) & (5) & (6) \\
 \midrule
  &  &  &  &  &  &  \\
@@ -36,7 +36,7 @@ Atypicality  & -0.203$^{}$ & -0.197$^{}$ & -0.253$^{}$ & 0.023$^{}$ & -0.417$^{}
  & (0.152) & (0.503) & (0.534) & (0.549) & (0.634) & (0.537) \\ [1.8ex]
 \# Previous Hearings  &  & -0.930$^{}$ & -0.694$^{}$ & -0.979$^{}$ & -0.227$^{}$ & -0.485$^{}$ \\
  &  & (0.989) & (0.984) & (1.045) & (1.104) & (1.061) \\ [1.8ex]
-Atypicality $\times$ \# Previous Hearings  &  & 0.240$^{}$ & 0.207$^{}$ & 0.290$^{}$ & 0.075$^{}$ & 0.097$^{}$ \\
+Atypicality $\times$ \# Previous  &  & 0.240$^{}$ & 0.207$^{}$ & 0.290$^{}$ & 0.075$^{}$ & 0.097$^{}$ \\
  &  & (0.290) & (0.292) & (0.308) & (0.324) & (0.315) \\ [1.8ex]
 
  & & & & \\ 
@@ -53,7 +53,8 @@ McFadden's Pseudo-R$^2$ & 0.150 & 0.120 & 0.170 & 0.202 & 0.221 & 0.156 \\ [1.8e
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
-\item \textit{Notes:} This table reports coefficient estimates from the binary logit regression described in Section \ref{sec_results}, in which cases where delay was the outcome were removed from the estimation sample. The outcome is 1 if the case is approved, and 0 if the case is approved with conditions or denied. Dummies for missing values of height and square footage are included for cases without reported physical dimensions.
+\item \textit{Notes:} This table reports coefficient estimates from the binary logit regressions described in Section \ref{sec_results}. 
+In column 1, the sample includes only cases where the outcome was not delay. The outcome is 1 if the case is approved and 0 if the case is approved with conditions or denied. In columns 2-6, the sample includes only cases which were re-hearings of a previously delayed case. The outcome is 1 if the case is approved or approved with conditions and 0 if the case is delayed again or denied. 
 \end{tablenotes}
 \end{threeparttable}
 \end{adjustbox}
