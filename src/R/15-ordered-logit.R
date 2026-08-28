@@ -169,7 +169,48 @@ out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coef
 write_parquet(coefs_df, out_filename)
 
 
- 
+# ---- Distance measure robustness checks --------------------------------------
+
+rnull <- polr(outcome ~ 1, data=df)
+null_LL <- as.numeric(logLik(rnull))
+
+df$atypicality <- df$euclidean
+reucl <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  data=df, Hess=TRUE
+)
+
+df$atypicality <- df$cosine
+rcos <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  data=df, Hess=TRUE
+)
+
+df$atypicality <- df$manhattan
+rman <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  data=df, Hess=TRUE
+)
+
+stargazer(
+  reucl, rcos, rman,
+  type="text",
+  keep=keepvars
+)
+
+coefs_df <- rbind(
+  extract_reg(reucl, "reucl", null_LL),
+  extract_reg(rcos, "rcos", null_LL),
+  extract_reg(rman, "rman", null_LL)
+)
+
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/atypicality_robustness_coefs.parquet")
+write_parquet(coefs_df, out_filename)
+
+
+df$atypicality <- df$mahalanobis  # reset atypicality measure
+
+
 # ---- Oster (2019) robustness check -------------------------------------------
 
 vars1 <- c(atypicality)
@@ -197,17 +238,6 @@ oster_delta <- o_delta(
 
 out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_oster_delta.parquet")
 write_parquet(oster_delta, out_filename)
-
-
-# ---- Marginals ---------------------------------------------------------------
-
-m4 <- avg_slopes(r4)
-m4$regression_name <- "r4"
-
-marginals_df <- m4
- 
-out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_marginals.parquet")
-write_parquet(marginals_df, out_filename)
 
 
 
@@ -281,3 +311,19 @@ coefs_df <- rbind(
 
 out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_coefs_bc.parquet")
 write_parquet(coefs_df, out_filename)
+
+
+# ---- Marginals ---------------------------------------------------------------
+
+m4 <- avg_slopes(r4)
+m4$regression_name <- "r4"
+
+marginals_df <- m4
+
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/ologit_regression_marginals.parquet")
+write_parquet(marginals_df, out_filename)
+
+
+
+
+
