@@ -38,9 +38,13 @@ Sometimes multiple motions are made on the same agenda item. This usually happen
 \item A short summary of the supplemental document and its relation to any items on the agenda;
 \item A list of the agenda items that the supplemental document references, identifying the items by their item number;
 \item Document type (public comment, supplemental materials, administrative or other);
-\item Support or oppose: For each of the referenced agenda items, the model was asked the say whether the document definitely support, somewhat supports, is neutral towards, somewhat opposes, or definitely opposes the project being proposed.
+\item Author type (individual member of the public, public official, professional, organization, or other);
+\item Support or oppose: For each of the referenced agenda items, the model was asked the say whether the document definitely support, somewhat supports, is neutral towards, somewhat opposes, or definitely opposes the project being proposed;
+\item Reasons for support or opposition: For each of the referenced agenda items, a list of reasons mentioned for support or opposition, with the list of possible reasons given in Table \ref{tab_reasons}.
 \end{itemize}
 \noindent As with the minutes, proper contextualization of the document with respect to the referenced agenda items is crucial. For example, a public comment may support the appeal of a decision, which would be an opposition to the underlying project. A pattern-matching approach or a less intelligent model may see words like ``support'' and think that the letter was written in support of the project, despite the truth being quite the opposite. This again highlights the importance of using highly capable models like \texttt{claude-opus-4-6} to handle the extraction of the data.
 
+\subsection{Grouping of Suffixes}
 
+Planning Department case numbers have the format [PREFIX]-[YEAR]-[SERIAL NUMBER]-[SUFFIXES]. The prefix identifies the decision-making body initially responsible for approval, and the case suffixes identify requested entitlements and other case features. The cases in our data contained \gn{NumUniqueSuffixes} different suffixes, which necessitated grouping them into logically related groups. We grouped the \gn{NumUniqueSuffixes} suffixes into \gn{NumSfxGroups}. The meanings of each raw suffix and their assigned groupings are shown in Tables \ref{tab_suffixes_all} and \ref{tab_suffixes_all_2}. 
 
