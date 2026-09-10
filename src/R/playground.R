@@ -61,15 +61,16 @@ df$cluster_fe2 <- df$cluster==2
 
 df$oppose_X_ip <- df$log2_oppose * df$sfx_grp_IP
 df$oppose_X_toc <- df$log2_oppose * df$sfx_TOC
+df$residential_post <- df$is_residential * (df$project_year>=2017)
 
 # ---- Run regressions
 
-project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
+project_type <- c("is_residential", "is_mixed_use", "is_nonresidential", "residential_post")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
-letters <- c("log2_support", "log2_oppose", "oppose_X_toc")
+letters <- c("log2_support", "log2_oppose")
 hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
 atypicality <- c("atypicality")
-
+toc <- c("sfx_TOC")
 
 
 
@@ -97,9 +98,15 @@ r1 <- polr(
   build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df, Hess=TRUE
 )
+r2 <- polr(
+  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, toc, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  data=df, Hess=TRUE
+)
+
+
 
 stargazer(
-  r1, 
+  r1, r2, 
   type="text",
   keep=keepvars
 )
