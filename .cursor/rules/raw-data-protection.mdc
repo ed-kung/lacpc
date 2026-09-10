@@ -10,6 +10,8 @@ alwaysApply: true
 - Treat everything under `DATA_PATH` as read-only input.
 - As the agent, you may write files to `AGENT_DATA_PATH`.
 
+
 # Git policies
 
 - Do not create or switch branches unless specifically instructed.
+- **Never** track, commit, or push `config.local.yaml` as it contains secrets
