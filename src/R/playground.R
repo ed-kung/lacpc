@@ -59,20 +59,38 @@ df$outcome <- as.factor(df$outcome)
 df$cluster_fe1 <- df$cluster==1
 df$cluster_fe2 <- df$cluster==2
 
-df$oppose_X_ip <- df$log2_oppose * df$sfx_grp_IP
-df$oppose_X_toc <- df$log2_oppose * df$sfx_TOC
-df$residential_post <- df$is_residential * (df$project_year>=2017)
+df$iph <- !df$cluster_fe1
+
+df$support_X_cluster1 <- df$log2_support * df$cluster_fe1
+df$support_X_cluster2 <- df$log2_support * df$cluster_fe2
+df$support_X_iph <- df$log2_support * df$iph
+
+df$oppose_X_cluster1 <- df$log2_oppose * df$cluster_fe1
+df$oppose_X_cluster2 <- df$log2_oppose * df$cluster_fe2
+df$oppose_X_iph <- df$log2_oppose * df$iph
+
+df$consent_calendar_X_cluster1 <- df$is_consent_calendar * df$cluster_fe1
+df$consent_calendar_X_cluster2 <- df$is_consent_calendar * df$cluster_fe2
+df$cc_X_iph <- df$is_consent_calendar * df$iph
+
+df$order_X_cluster1 <- df$agenda_order * df$cluster_fe1
+df$order_X_cluster2 <- df$agenda_order * df$cluster_fe2
+df$order_X_iph <- df$agenda_order * df$iph
+
+df$atypicality_X_cluster1 <- df$atypicality * df$cluster_fe1
+df$atypicality_X_cluster2 <- df$atypicality * df$cluster_fe2
+df$atypicality_X_iph <- df$atypicality * df$iph
 
 # ---- Run regressions
 
-project_type <- c("is_residential", "is_mixed_use", "is_nonresidential", "residential_post")
+project_type <- c("is_residential", "is_mixed_use", "is_nonresidential")
 physical <- c("log_square_footage", "log_square_footage_missing", "height", "height_missing")
 letters <- c("log2_support", "log2_oppose")
+lettersX <- c("log2_support", "support_X_iph", "log2_oppose", "oppose_X_iph")
 hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
+hearingX <- c("agenda_order", "order_X_iph", "num_agenda_items", "is_consent_calendar", "cc_X_iph")
 atypicality <- c("atypicality")
-toc <- c("sfx_TOC")
-
-
+atypicalityX <- c("atypicality", "atypicality_X_iph")
 
 cluster_fe <- c("cluster_fe1", "cluster_fe2")
 sfx_fe <- grep("^sfx_grp_", names(df), value = TRUE)[-1]
@@ -82,10 +100,9 @@ yr_fe <- paste0("yr_", 2019:2026)
 keepvars <- c(
   project_type,
   c("log_square_footage", "height"),
-  letters,
-  hearing,
-  atypicality, 
-  sfx_fe
+  lettersX,
+  hearingX,
+  atypicalityX
 )
 
 
@@ -95,18 +112,12 @@ rnull <- polr(outcome ~ 1, data=df)
 null_LL <- as.numeric(logLik(rnull))
 
 r1 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
+  build_fmla("outcome", c(project_type, physical, lettersX, hearing, atypicality, sfx_fe, cd_fe, yr_fe, cluster_fe)),
   data=df, Hess=TRUE
 )
-r2 <- polr(
-  build_fmla("outcome", c(project_type, physical, letters, hearing, atypicality, toc, sfx_fe, cd_fe, yr_fe, cluster_fe)),
-  data=df, Hess=TRUE
-)
-
-
 
 stargazer(
-  r1, r2, 
+  r1, 
   type="text",
   keep=keepvars
 )
