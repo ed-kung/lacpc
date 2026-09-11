@@ -87,7 +87,7 @@ physical <- c("log_square_footage", "log_square_footage_missing", "height", "hei
 letters <- c("log2_support", "log2_oppose")
 lettersX <- c("log2_support", "support_X_cluster1", "support_X_cluster2", "log2_oppose", "oppose_X_cluster1", "oppose_X_cluster2")
 hearing <- c("agenda_order", "num_agenda_items", "is_consent_calendar")
-hearingX <- c("agenda_order", "order_X_cluster1", "order_X_cluster2", "num_agenda_items", "is_consent_calendar", "consent_calendar_X_cluster1", "consent_calendar_X_cluster2")
+hearingX <- c("agenda_order", "order_X_cluster1", "order_X_cluster2", "num_agenda_items", "consent_calendar_X_cluster1", "consent_calendar_X_cluster2")
 atypicality <- c("atypicality")
 atypicalityX <- c("atypicality", "atypicality_X_cluster1", "atypicality_X_cluster2")
 

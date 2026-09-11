@@ -12,11 +12,11 @@
  & (1) & (2) & (3) & (4) \\
 \midrule
  &  &  &  &  \\
-Residential Development  & 0.174$^{}$ & 0.157$^{}$ & 0.068$^{}$ & 0.153$^{}$ \\
+Residential Development  & 0.174$^{}$ & 0.158$^{}$ & 0.068$^{}$ & 0.154$^{}$ \\
  & (0.369) & (0.367) & (0.366) & (0.370) \\ [1.8ex]
-Mixed-Use Development  & -0.309$^{}$ & -0.264$^{}$ & -0.369$^{}$ & -0.314$^{}$ \\
+Mixed-Use Development  & -0.309$^{}$ & -0.263$^{}$ & -0.369$^{}$ & -0.313$^{}$ \\
  & (0.375) & (0.374) & (0.372) & (0.378) \\ [1.8ex]
-Non-Residential Development  & -0.322$^{}$ & -0.299$^{}$ & -0.396$^{}$ & -0.351$^{}$ \\
+Non-Residential Development  & -0.322$^{}$ & -0.298$^{}$ & -0.396$^{}$ & -0.350$^{}$ \\
  & (0.349) & (0.347) & (0.346) & (0.351) \\ [1.8ex]
 $\ln$(Square Footage)  & -0.077$^{}$ & -0.066$^{}$ & -0.057$^{}$ & -0.073$^{}$ \\
  & (0.065) & (0.065) & (0.065) & (0.066) \\ [1.8ex]
@@ -24,7 +24,7 @@ Height (ft)  & -0.001$^{}$ & -0.000$^{}$ & -0.001$^{}$ & -0.001$^{}$ \\
  & (0.001) & (0.001) & (0.001) & (0.001) \\ [1.8ex]
 $\log_2$(\# Support)  & 0.155$^{}$ & 0.086$^{}$ & 0.093$^{}$ & 0.145$^{}$ \\
  & (0.180) & (0.063) & (0.063) & (0.186) \\ [1.8ex]
-$\ldots \times$ Embedding Cluster 1  & -0.130$^{}$ &  &  & -0.112$^{}$ \\
+$\ldots \times$ Embedding Cluster 1  & -0.130$^{}$ &  &  & -0.111$^{}$ \\
  & (0.202) &  &  & (0.208) \\ [1.8ex]
 $\ldots \times$ Embedding Cluster 2  & 0.035$^{}$ &  &  & 0.041$^{}$ \\
  & (0.201) &  &  & (0.207) \\ [1.8ex]
@@ -36,16 +36,18 @@ $\ldots \times$ Embedding Cluster 2  & -0.180$^{}$ &  &  & -0.186$^{}$ \\
  & (0.217) &  &  & (0.221) \\ [1.8ex]
 Agenda Order  & 0.139$^{***}$ & 0.255$^{*}$ & 0.134$^{***}$ & 0.197$^{}$ \\
  & (0.050) & (0.145) & (0.050) & (0.122) \\ [1.8ex]
-$\ldots \times$ Embedding Cluster 1  &  & -0.138$^{}$ &  & -0.071$^{}$ \\
+$\ldots \times$ Embedding Cluster 1  &  & -0.138$^{}$ &  & -0.072$^{}$ \\
  &  & (0.156) &  & (0.130) \\ [1.8ex]
-$\ldots \times$ Embedding Cluster 2  &  & -0.120$^{}$ &  & -0.066$^{}$ \\
+$\ldots \times$ Embedding Cluster 2  &  & -0.120$^{}$ &  & -0.067$^{}$ \\
  &  & (0.152) &  & (0.126) \\ [1.8ex]
 No. Agenda Items  & -0.009$^{}$ & -0.007$^{}$ & -0.002$^{}$ & -0.008$^{}$ \\
  & (0.043) & (0.043) & (0.043) & (0.043) \\ [1.8ex]
-Consent Calendar  & 1.745$^{***}$ & 1.472$^{***}$ & 1.737$^{***}$ & 1.597$^{***}$ \\
- & (0.269) & (0.349) & (0.267) & (0.355) \\ [1.8ex]
-$\ldots \times$ Embedding Cluster 1  &  & 0.527$^{}$ &  & 0.298$^{}$ \\
- &  & (0.507) &  & (0.522) \\ [1.8ex]
+Consent Calendar  & 1.745$^{***}$ &  & 1.737$^{***}$ &  \\
+ & (0.269) &  & (0.267) &  \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 1  &  & 1.999$^{***}$ &  & 1.895$^{***}$ \\
+ &  & (0.389) &  & (0.397) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 2  &  & 1.472$^{***}$ &  & 1.596$^{***}$ \\
+ &  & (0.349) &  & (0.355) \\ [1.8ex]
 Atypicality  & -0.365$^{***}$ & -0.405$^{***}$ & -1.046$^{*}$ & -1.041$^{***}$ \\
  & (0.123) & (0.122) & (0.543) & (0.344) \\ [1.8ex]
 $\ldots \times$ Embedding Cluster 1  &  &  & 0.516$^{}$ & 0.566$^{}$ \\
@@ -66,7 +68,7 @@ Observations  & 818 & 818 & 818 & 818 \\ [1.8ex]
 \begin{tablenotes}[flushleft]
 \footnotesize
 \item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
-\item \textit{Notes:} This table reports coefficient estimates from the ordered logit regression described in Section \ref{sec_methodology}. Dummies for missing values of height and square footage are included for cases without reported physical dimensions. Interaction terms are included to test whether the effect of public opposition, hearing characteristics, and atypicality depend on the embedding cluster. Note that the interaction of consent calendar with embedding cluster 2 is excluded due to multicolinearity with other terms.
+\item \textit{Notes:} This table reports coefficient estimates from the ordered logit regression described in Section \ref{sec_methodology}. Dummies for missing values of height and square footage are included for cases without reported physical dimensions. Interaction terms are included to test whether the effect of public opposition, hearing characteristics, and atypicality depend on the embedding cluster. The direct effect of consent calendar is omitted because no cases in cluster 0 were on the consent calendar.
 \end{tablenotes}
 \end{threeparttable}
 \end{adjustbox}
