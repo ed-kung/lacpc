@@ -142,6 +142,6 @@ coefs_df <- rbind(
   extract_reg(r4, "r4", null_LL)
 )
 
-out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/policy_imp_coefs.parquet")
+out_filename <- paste0(DATA_PATH, "/intermediate_data/cpc/policy_imps_coefs.parquet")
 write_parquet(coefs_df, out_filename)
  

@@ -1,0 +1,73 @@
+\begin{table}[H]
+\centering
+\caption{Embedding Cluster Interaction Effects}
+\vspace{0.2cm}
+\label{tab_policy_imps}
+\begin{adjustbox}{max height=0.45\textheight}
+\begin{threeparttable}
+\begin{tabular}{lcccc}
+\multicolumn{5}{c}{Ordered Logit Model} \\
+\multicolumn{5}{c}{0=Delayed/Denied, 1=Approved with Conditions, 2=Approved} \\
+\toprule
+ & (1) & (2) & (3) & (4) \\
+\midrule
+ &  &  &  &  \\
+Residential Development  & 0.174$^{}$ & 0.157$^{}$ & 0.068$^{}$ & 0.153$^{}$ \\
+ & (0.369) & (0.367) & (0.366) & (0.370) \\ [1.8ex]
+Mixed-Use Development  & -0.309$^{}$ & -0.264$^{}$ & -0.369$^{}$ & -0.314$^{}$ \\
+ & (0.375) & (0.374) & (0.372) & (0.378) \\ [1.8ex]
+Non-Residential Development  & -0.322$^{}$ & -0.299$^{}$ & -0.396$^{}$ & -0.351$^{}$ \\
+ & (0.349) & (0.347) & (0.346) & (0.351) \\ [1.8ex]
+$\ln$(Square Footage)  & -0.077$^{}$ & -0.066$^{}$ & -0.057$^{}$ & -0.073$^{}$ \\
+ & (0.065) & (0.065) & (0.065) & (0.066) \\ [1.8ex]
+Height (ft)  & -0.001$^{}$ & -0.000$^{}$ & -0.001$^{}$ & -0.001$^{}$ \\
+ & (0.001) & (0.001) & (0.001) & (0.001) \\ [1.8ex]
+$\log_2$(\# Support)  & 0.155$^{}$ & 0.086$^{}$ & 0.093$^{}$ & 0.145$^{}$ \\
+ & (0.180) & (0.063) & (0.063) & (0.186) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 1  & -0.130$^{}$ &  &  & -0.112$^{}$ \\
+ & (0.202) &  &  & (0.208) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 2  & 0.035$^{}$ &  &  & 0.041$^{}$ \\
+ & (0.201) &  &  & (0.207) \\ [1.8ex]
+$\log_2$(\# Oppose)  & 0.101$^{}$ & -0.155$^{***}$ & -0.152$^{***}$ & 0.102$^{}$ \\
+ & (0.203) & (0.057) & (0.057) & (0.208) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 1  & -0.373$^{*}$ &  &  & -0.366$^{}$ \\
+ & (0.220) &  &  & (0.224) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 2  & -0.180$^{}$ &  &  & -0.186$^{}$ \\
+ & (0.217) &  &  & (0.221) \\ [1.8ex]
+Agenda Order  & 0.139$^{***}$ & 0.255$^{*}$ & 0.134$^{***}$ & 0.197$^{}$ \\
+ & (0.050) & (0.145) & (0.050) & (0.122) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 1  &  & -0.138$^{}$ &  & -0.071$^{}$ \\
+ &  & (0.156) &  & (0.130) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 2  &  & -0.120$^{}$ &  & -0.066$^{}$ \\
+ &  & (0.152) &  & (0.126) \\ [1.8ex]
+No. Agenda Items  & -0.009$^{}$ & -0.007$^{}$ & -0.002$^{}$ & -0.008$^{}$ \\
+ & (0.043) & (0.043) & (0.043) & (0.043) \\ [1.8ex]
+Consent Calendar  & 1.745$^{***}$ & 1.472$^{***}$ & 1.737$^{***}$ & 1.597$^{***}$ \\
+ & (0.269) & (0.349) & (0.267) & (0.355) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 1  &  & 0.527$^{}$ &  & 0.298$^{}$ \\
+ &  & (0.507) &  & (0.522) \\ [1.8ex]
+Atypicality  & -0.365$^{***}$ & -0.405$^{***}$ & -1.046$^{*}$ & -1.041$^{***}$ \\
+ & (0.123) & (0.122) & (0.543) & (0.344) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 1  &  &  & 0.516$^{}$ & 0.566$^{}$ \\
+ &  &  & (0.567) & (0.366) \\ [1.8ex]
+$\ldots \times$ Embedding Cluster 2  &  &  & 0.869$^{}$ & 0.874$^{**}$ \\
+ &  &  & (0.575) & (0.364) \\ [1.8ex]
+
+ & & & & \\ 
+Suffix Group Dummies  & Y  & Y  & Y  & Y  \\ 
+Council District Dummies  & Y  & Y  & Y  & Y  \\ 
+Year Dummies  & Y  & Y  & Y  & Y  \\ 
+Embedding Cluster Dummies  & Y  & Y  & Y  & Y  \\ 
+
+ & & & & \\ 
+Observations  & 818 & 818 & 818 & 818 \\ [1.8ex]
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\footnotesize
+\item Robust standard errors in parentheses. * $p<0.1$, ** $p<0.05$, *** $p<0.01$.
+\item \textit{Notes:} This table reports coefficient estimates from the ordered logit regression described in Section \ref{sec_methodology}. Dummies for missing values of height and square footage are included for cases without reported physical dimensions. Interaction terms are included to test whether the effect of public opposition, hearing characteristics, and atypicality depend on the embedding cluster. Note that the interaction of consent calendar with embedding cluster 2 is excluded due to multicolinearity with other terms.
+\end{tablenotes}
+\end{threeparttable}
+\end{adjustbox}
+\end{table}
