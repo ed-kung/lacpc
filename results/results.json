@@ -113,5 +113,9 @@
   "NumReheardCases": "129",
   "AvgWeeksTilDue": "1.5",
   "PctDelayedLt2Weeks": "16.9",
-  "PctDelayedGt2Weeks": "11.1"
+  "PctDelayedGt2Weeks": "11.1",
+  "NumOpposeEffectClust1": "0.272",
+  "NumOpposeEffectClust2": "0.079",
+  "AtypicalityEffectClust1": "0.475",
+  "AtypicalityEffectClust2": "0.167"
 }
